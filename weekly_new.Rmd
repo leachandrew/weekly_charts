@@ -50,8 +50,7 @@ knitr::opts_chunk$set(echo=FALSE)
 }
 </style>
 
-```{r EIA_KEY, include=FALSE,cache=FALSE}
-#KEY <- "91b4dca0b858df64a2279d82f71af240"
+```{r CACHE, include=FALSE,cache=FALSE}
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 ```
