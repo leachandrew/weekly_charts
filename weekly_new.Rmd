@@ -956,20 +956,21 @@ wind_fcast<-wind_forecast()
 ```{r aeso_gen_mix,fig.width=10, fig.pos="H"}
 gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
 names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other","Wind")
-gen_mix$date<-dmy_hms(gen_mix$date)
-gen_mix<-melt(gen_mix,id="date",variable.name = "Source",value.name = "gen")
+gen_mix<-gen_mix%>%mutate(Trade=-1*Trade)
+gen_mix<-gen_mix%>%pivot_longer(-date,names_to="Source",values_to="gen")%>%
+  mutate(date=dmy_hms(date),
 #change factor order to sort by avg gen
-gen_mix$Source<-factor(gen_mix$Source, levels=c("Hydro","Wind","Other","Natural Gas","Coal","Trade"))
+        Source=factor(Source, levels=c("Wind","Hydro","Other","Natural Gas","Coal","Trade")))
 gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
   geom_area(position="stack")+
   weekly_small()+
   scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
-  scale_fill_manual("",values=c(colors_ua10()[4],colors_ua10()[1],colors_ua10()[3],colors_ua10()[2],colors_ua10()[5],colors_ua10()[6]))+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[4],colors_ua10()[3],colors_ua10()[2],colors_ua10()[5],colors_ua10()[6]))+
   guides(fill = guide_legend(nrow = 1))+
   #theme(legend.position = "none")+
-  labs(x="Year",y="Average Hourly Generation (MW)",
-       title="Hourly Generation Mix, Past 30 Days",
+  labs(x="Year",y="Average Hourly Supply (MW)",
+       title="Hourly Supply Mix, Past 30 Days",
        caption="Source: AESO Data, accessed via NRGStream")
 #gen_mix_plot
 
