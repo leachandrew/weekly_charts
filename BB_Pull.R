@@ -18,6 +18,7 @@ library(ggthemes)
 library(janitor)
 library(readxl)
 bb_file<-"C:/Users/aleach/Google Drive/BB Stuff/Leach_BB_R.xlsx"
+nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 
 
 ## Make breaks from a starting date at a given hour, occuring by interval,
@@ -60,7 +61,7 @@ load_bb_daily<-function()
 
 forwards_data_pull<-function(comdty){
   #testing
-  #comdty<-"Brent-WTI"
+  #comdty<-"WTI"
   forwards_read <- read.xlsx(xlsxFile = bb_file, sheet = comdty, startRow = 1,skipEmptyRows = TRUE,detectDates = TRUE)
   forwards_data<-forwards_read[-seq(1,4),-1]
   forwards_data<-forwards_data[,c(1,seq(2,ncol(forwards_data),by=2))]
@@ -1201,11 +1202,13 @@ cad_hedged_forwards_graphs<-function(){
   ggsave("p_cad.png",plot=p_cad, width=14, height=7)  
   ggsave("p_usd.png",plot=p_usd,width=14, height=7)  
 }
+## @knitr hedged_forwards
 
+cad_hedged_forwards_graphs()
 
 ## @knitr nwr_graphs
 
-cad_hedged_forwards_graphs()
+
 
 
 data$NWR<-(40250*data$`ULSD Edmonton`/100*168/data$USDCAD+(8790+28266)*data$`Edmonton Condensate`+3363*data$`Edmonton Propane`/1000*42)-78000*data$WCS
@@ -1389,7 +1392,7 @@ dev.off()
 ngx_data_read<-function(file_name){
   #testing stuff
   #file_name<-"NGX_gas_forwards.csv"
-  ngx_data <- read.csv(file_name,blank.lines.skip=T,stringsAsFactors=F,header=F)
+  ngx_data <- read.csv(paste(nrg_folder,file_name,sep="/"),blank.lines.skip=T,stringsAsFactors=F,header=F)
   #figure out where individual series start NGX and NYMEX data
   series<-ngx_data[grep("Trade Date",ngx_data$V1)-1,1]
   series<-sapply(strsplit(series,"\\ - "), `[`, 1) #cut out the other crap in the series labels
@@ -1442,8 +1445,8 @@ ngx_old_data<-function(){
 
 #ngx_old_data()
 
-load(file="C:/Users/aleach/Google Drive/BB Stuff/ngx_gas_old.RData")
-ngx_data<-rbind(ngx_data_old,ngx_data_read("C:/Users/aleach/Google Drive/BB Stuff/NGX_gas_forwards.csv"))
+load(file=paste(nrg_folder,"ngx_gas_old.RData",sep="/"))
+ngx_data<-rbind(ngx_data_old,ngx_data_read("NGX_gas_forwards.csv"))
 
 
 

@@ -10,7 +10,7 @@ output:
       df_print: paged
       toc: yes
       toc_float: yes
-      toc_level: 3
+      toc_level: 1
       always_allow_html: yes
       css: css_weekly.css
 knit: (function(input_file, encoding) {
@@ -53,6 +53,7 @@ knitr::opts_chunk$set(echo=FALSE)
 ```{r CACHE, include=FALSE,cache=FALSE}
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
+nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 ```
 
 
@@ -184,7 +185,7 @@ colors_ua10 <- function()
 read_chunk('BB_Pull.R') #can run this from any google drive folder in case you're not in the BB Stuff folder
 ```
 <!-- run part1 and part 2 chunks and : load the data, make the graphs -->
-```{r first,cache=KEEP_BB_CACHE}
+```{r first,cache=KEEP_BB_CACHE,warning=FALSE,echo=FALSE,include=FALSE}
   #print(getwd())
 <<prelims>>
 #head(data.frame(x,y))
@@ -572,8 +573,10 @@ rail_exports<-ggplot(oil_by_rail) +
 rail_exports
 ```
 
+<!--
 ### Crude Exports to the US
 ![](../EIA_data_pulls/crude_by_proc_padd.png)
+-->
 
 # Refined Products 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
@@ -951,7 +954,7 @@ wind_fcast<-wind_forecast()
 
 
 ```{r aeso_gen_mix,fig.width=10, fig.pos="H"}
-gen_mix <- read.csv("../alberta_power/AESO_Gen_Mix.csv",skip = 2,header = TRUE, stringsAsFactors=FALSE)
+gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
 names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other","Wind")
 gen_mix$date<-dmy_hms(gen_mix$date)
 gen_mix<-melt(gen_mix,id="date",variable.name = "Source",value.name = "gen")
@@ -1119,10 +1122,10 @@ new_forwards<-function(){
   #clip all_forwards
   #all_forwards<-all_forwards%>%filter(Trade_Date<as.Date("2018-01-01"))
   #import and proces new ones
-  forwards<-proc_forwards("../alberta_power/forwards2018.csv","FLAT")
-  peak_forwards<-proc_forwards("../alberta_power/peak_forwards.csv","PEAK")
-  ext_peak_forwards<-proc_forwards("../alberta_power/ext_peak_forwards.csv","EXT_PEAK")
-  off_peaks<-proc_forwards("../alberta_power/off_peak_forwards.csv","OFF_PEAK")
+  forwards<-proc_forwards(paste(nrg_folder,"forwards2018.csv",sep="/"),"FLAT")
+  peak_forwards<-proc_forwards(paste(nrg_folder,"peak_forwards.csv",sep="/"),"PEAK")
+  ext_peak_forwards<-proc_forwards(paste(nrg_folder,"ext_peak_forwards.csv",sep="/"),"EXT_PEAK")
+  off_peaks<-proc_forwards(paste(nrg_folder,"off_peak_forwards.csv",sep="/"),"OFF_PEAK")
   #stack new ones
   new_forwards<-rbind(forwards,peak_forwards,ext_peak_forwards,off_peaks)
   new_forwards<-arrange(new_forwards,Trade_Date,Inst_Date,Type)
@@ -1180,6 +1183,6 @@ aeso_fwds
 
 &nbsp;
 <hr />
-  <p style="text-align: center;"><a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by CABREE, Andrew Leach, Tim Weis, and our FES Grids and Storage Research Team</a></p>
+  <p style="text-align: center;"><a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by CABREE, Andrew Leach, Tim Weis, and our FES Grids and Storage Research Team. Thanks to NRGStream for data accesss!</a></p>
   <p style="text-align: center;">cabree@ualberta.ca</p>
   
