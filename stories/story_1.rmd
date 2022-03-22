@@ -11,9 +11,9 @@ The long-awaited SEC proposed climate change risk disclosure rule was published 
 * The climate related risks likely to impact financial statements, strategy, business model, and outlook in the short-, medium-, or long-term;
 * The impact of identified physcial and transition risks on financial outlook and statements; 
 * Climate-related targets, goals, and transition plan(s).
-* Scope 1 (direct) and 2 (emissions from electricity, steam, heat, or cooling)
-* Scope 3 GHG emissions and intensity (indirect upstream and downstream emissions), if material, or if the company has set a Scope 3 emissions target; and
-* The registrant’s climate-related targets or goals, and transition plan, if any.134
+* Scope 1 (direct) and 2 (emissions from electricity, steam, heat, or cooling); and
+* Scope 3 GHG emissions and intensity (indirect upstream and downstream emissions), **if material**, or **if the company has set a Scope 3 emissions target**.
+
 
 The elements most likely to attract attention are the mandatory disclosure of Scope 1 and 2 emissions, as well as the link between targets and required disclosure for Scope 3 emissions. The latter, I would expect, will be of particular interest to banks since *financed emissions* would generally fall into that category, as well as to oil and gas companies wherein Scope 3 emissions would include emissions associated with the transportation and eventual combustion of produced hydrocarbons.
 
