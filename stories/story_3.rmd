@@ -1,6 +1,6 @@
 ## IPCC AR6 WGII
 #### <font size="+2"> Another Climate Change Report?
-#### Andrew Leach
+<!-- #### Andrew Leach -->
 
 <center>![](stories/sec_3.png)</center>
 <br>

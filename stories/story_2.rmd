@@ -1,6 +1,6 @@
 ## Canada's Climate Plan
 #### <font size="+2"> Canada's climate plan
-#### Andrew Leach
+<!-- #### Andrew Leach -->
 
 <center>![](../NIR/images/emissions_and_targets_simple.png)</center>
 <br>
