@@ -606,6 +606,44 @@ rail_exports
 -->
 
 # Refined Products 
+
+## Canadian Gasoline Prices  {.tabset .tabset-fade}
+```{r echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
+read_chunk('../kalibrate/kalibrate_gas_data.R')
+```
+
+```{r gas_data, results=FALSE,echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
+# run the gas map and charts chunks and use the variables it creates
+<<gas_prelims>>
+<<gas_load>>
+```
+
+```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=TRUE,results=FALSE}
+# run the gas map and charts chunks and use the variables it creates
+<<gas_graphs>>
+<<gas_map>>
+```
+
+
+### Map
+
+```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=TRUE, fig.width=10,fig.height=7, fig.pos="H"}
+weekly_map
+```
+
+### Historic Gasoline Prices
+
+```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+gas_plot
+```
+
+### Historic Diesel Prices
+
+```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+#grid.arrange(daily_prices)
+diesel_plot
+```
+
 ## Canadian Refinery Runs {.tabset .tabset-fade}
 
 ```{r NEB_ref_runs, cache=TRUE}
@@ -692,49 +730,12 @@ ref_prod_price_levels<-levels_chart(data=data,names,10,"CAD",title_sent="Edmonto
 ref_run_graph
 ```
 
+
 ### Western Canada Refinery Runs
 ```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 west_runs
 ```
 
-
-
-## Canadian Gasoline Prices  {.tabset .tabset-fade}
-```{r echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
-read_chunk('../kalibrate/kalibrate_gas_data.R')
-```
-
-```{r gas_data, results=FALSE,echo = FALSE, warning=FALSE, message=FALSE,cache=TRUE}
-# run the gas map and charts chunks and use the variables it creates
-<<gas_prelims>>
-<<gas_load>>
-```
-
-```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=TRUE,results=FALSE}
-# run the gas map and charts chunks and use the variables it creates
-<<gas_graphs>>
-<<gas_map>>
-```
-
-
-### Map
-
-```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-weekly_map
-```
-
-### Historic Gasoline Prices
-
-```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-gas_plot
-```
-
-### Historic Diesel Prices
-
-```{r echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-#grid.arrange(daily_prices)
-diesel_plot
-```
 
 # Natural Gas
 
