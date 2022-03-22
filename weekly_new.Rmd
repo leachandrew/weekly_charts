@@ -10,7 +10,7 @@ output:
       df_print: paged
       toc: yes
       toc_float: yes
-      toc_level: 1
+      toc_depth: 1
       always_allow_html: yes
       css: css_weekly.css
 knit: (function(input_file, encoding) {
@@ -26,18 +26,27 @@ h1, h4 {
   text-align: center;
 }
 ```
-
+<!-- background: background-image: url("https://www.nrgstream.com/img/logo.png");
+background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png;
+background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png");
+-->
 <style>
 #TOC {
-  background: url("../UA-COLOUR.png");
-  background-size: contain;
-  padding-top: 10px !important;
-  padding-right: 10px !important;
-  padding-left: 10px !important;
-  background-repeat: no-repeat;
+  background: url("https://www.ualberta.ca/media-library/ualberta/homepage/university-of-alberta-logo.jpg"),url("https://www.nrgstream.com/img/logo.png");
+  padding-top: 80px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  padding-bottom: 80px !important;
+  background-size: auto 80px,auto 50px;
+  background-repeat: no-repeat,no-repeat;
+  background-position: 50% 7px,50% 95%;
 }
 </style>
 
+
+
+
+  
 
 ```{r echo=FALSE} 
 knitr::opts_chunk$set(echo=FALSE)
@@ -301,6 +310,24 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   p
 }
 ```
+
+
+
+# Featured Stories {.tabset .tabset-fade}
+
+```{r child = 'stories/story_1.Rmd'}
+```
+
+```{r child = 'stories/story_2.Rmd'}
+```
+
+
+```{r child = 'stories/story_3.Rmd'}
+```
+
+```{r child = 'stories/story_4.Rmd'}
+```
+
 # Oil
 
 ## Weekly Crude Prices {.tabset .tabset-fade}
@@ -737,7 +764,7 @@ names<-c("PGE Citygate","Empress","Station 2","Chicago Citygate","Algonquin City
 levels_chart_gas(data=data,names,1,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
 ```
 
-```{r NGX_forwards}
+```{r NGX_forwards,cache=KEEP_BB_CACHE}
 <<NGX_forwards>>
 ```
 
@@ -750,7 +777,7 @@ forwards_graphs(hh_data_retrieve[[1]],hh_data_retrieve[[2]],"Henry Hub Forwards"
 ```
 
 ### Alberta (NIT) ($CAD)
-```{r NGX1a,fig.width=10, fig.pos="H"}
+```{r NGX1a,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE,}
 date_max<-max(ngx_data$trade_date)
 series_sent<-c("AB-NIT Fixed")
 date_list<-rev(c(date_max,date_max-months(1)))
@@ -759,7 +786,7 @@ title_sent<-"Alberta NIT"
 ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="CAD/GJ")
 ```
 ### Alberta (NIT)
-```{r NGX1b,fig.width=10, fig.pos="H"}
+```{r NGX1b,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
 date_max<-max(ngx_data$trade_date)
 series_sent<-c("AB-NIT Fixed")
 date_list<-rev(c(date_max,date_max-months(1)))
@@ -769,7 +796,7 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 ```
 
 ### BC (Stn 2) 
-```{r NGX2,fig.width=10, fig.pos="H"}
+```{r NGX2,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
 date_max<-max(ngx_data$trade_date)
 series_sent<-c("Spectra-Stn 2")
 date_list<-rev(c(date_max,date_max-months(1)))
@@ -779,7 +806,7 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 ```
 
 ### Ontario (Dawn)
-```{r NGX4,fig.width=10, fig.pos="H"}
+```{r NGX4,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
 date_max<-max(ngx_data$trade_date)
 series_sent<-c("Union Dawn")
 date_list<-rev(c(date_max,date_max-months(1)))
@@ -792,14 +819,14 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 
 ## EIA US Natural Gas Storage
 
-```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
 ```
 
 
 # Power
 
-```{r power functions,warning=FALSE,message=FALSE,echo=FALSE}
+```{r power functions,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_BB_CACHE}
 
 assign_peaks<-function(data_orig,time_var=time){
   #default is that we're receiving a data_frame with time as the time variable
@@ -883,7 +910,7 @@ assign_time <- function(data, date_var=date, he_var=he){
 ```
 
 
-```{r aeso,cache=TRUE,warning=FALSE,message=FALSE,echo=FALSE}
+```{r aeso,cache=TRUE,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_BB_CACHE}
 get_forecast_report <- function(start_date, end_date) {
   #testing below here
   #start_date<- Sys.Date()-months(1)
@@ -953,7 +980,7 @@ wind_fcast<-wind_forecast()
 
 
 
-```{r aeso_gen_mix,fig.width=10, fig.pos="H"}
+```{r aeso_gen_mix,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
 gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
 names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other","Wind")
 gen_mix<-gen_mix%>%mutate(Trade=-1*Trade)
@@ -995,7 +1022,7 @@ wind_fcast_plot<-ggplot(wind_fcast) +
 
 
 
-```{r prices_and_loads,,fig.width=10, fig.pos="H",warning=FALSE}
+```{r prices_and_loads,,fig.width=10, fig.pos="H",warning=FALSE,cache=KEEP_BB_CACHE}
 
 period_start<-max(price_ail$start_date)-weeks(1)
 end_date<-max(price_ail$start_date)
@@ -1057,13 +1084,13 @@ mylegend<-g_legend(top_panel)
 ## AESO Market Summary {.tabset .tabset-fade}
 ### Supply Mix
 
-```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 gen_mix_plot
 ```
 
 ### Prices and Loads
 
-```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 grid.arrange(arrangeGrob(top_panel + theme(legend.position="none",
                                            legend.margin=margin(c(0,0,0,0),unit="cm"),
                                            legend.text = element_text(colour="black", size = 14, face = "bold"),
@@ -1094,7 +1121,7 @@ mylegend, nrow=2,heights=c(10, 1),bottom =text_grob(
 
 ### Wind Forecast
 
-```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 wind_fcast_plot
 ```
 
@@ -1175,7 +1202,7 @@ aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
 
 ### AESO Forward Prices
 
-```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 aeso_fwds
 ```
 

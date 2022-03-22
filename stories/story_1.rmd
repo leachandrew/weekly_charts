@@ -1,0 +1,25 @@
+## SEC Climate Change Rules
+#### <font size="+2"> SEC Proposed Climate Disclosure Rule
+#### Andrew Leach
+
+<center>![](stories/sec_1.png)</center>
+<br>
+The long-awaited SEC proposed climate change risk disclosure rule was published this week. The [proposed SEC rule (PDF)](https://www.sec.gov/rules/proposed/2022/33-11042.pdf) document is long (510 pages) but the important parts are pretty much what we were expecting. The SEC guidelines draw extensively from the recommendations of the [Task Force on Climate Related Disclosures (TCFD)](https://assets.bbhub.io/company/sites/60/2020/10/TCFD_Booklet_FNL_Digital_March-2020.pdf), mirroring many aspects of requirements in other jurisdictions. The major parts of the proposed rule (see page 42) require public companies to report on
+
+* The approach to oversight and governance of climate-related risks by the Board and executive team;
+* How climate-related risks are identified, assessed, and managed and how these processes are integrated into other risk management processes;
+* The climate related risks likely to impact financial statements, strategy, business model, and outlook in the short-, medium-, or long-term;
+* The impact of identified physcial and transition risks on financial outlook and statements; 
+* Climate-related targets, goals, and transition plan(s).
+* Scope 1 (direct) and 2 (emissions from electricity, steam, heat, or cooling)
+* Scope 3 GHG emissions and intensity (indirect upstream and downstream emissions), if material, or if the company has set a Scope 3 emissions target; and
+* The registrant’s climate-related targets or goals, and transition plan, if any.134
+
+The elements most likely to attract attention are the mandatory disclosure of Scope 1 and 2 emissions, as well as the link between targets and required disclosure for Scope 3 emissions. The latter, I would expect, will be of particular interest to banks since *financed emissions* would generally fall into that category, as well as to oil and gas companies wherein Scope 3 emissions would include emissions associated with the transportation and eventual combustion of produced hydrocarbons.
+
+Canada is undertaking a similar process, with draft [NI 51-107 rules](https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-107/51-107-consultation-climate-related-disclosure-update-and-csa-notice-and-request-comment-proposed) published last year. Given how extensively Canadian oil sands companies have relied on the talking point that most (80%+) of the *wells-to-wheels* emissions from their products are downstream, expect the conversation around disclosure of Scope 3 emissions to be highly contentious. 
+
+
+[SEC Proposed Rule](https://www.sec.gov/rules/proposed/2022/33-11042.pdf)
+
+[Image copyright David Baird and licensed for reuse under this Creative Commons Licence](https://www.corporateknights.com/responsible-investing/search-risks-sec/)

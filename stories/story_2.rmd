@@ -1,0 +1,13 @@
+## Canada's Climate Plan
+#### <font size="+2"> Canada's climate plan
+#### Andrew Leach
+
+<center>![](../NIR/images/emissions_and_targets_simple.png)</center>
+<br>
+We should see Canada's latest climate change plan sometime in the next couple of weeks. The government has a lot of work to do to close the gap on its Glasgow targets announced last year to reduce emissions by 40-45% below 2005 levels by 2030, and to net zero by 2050. Two interesting reports from [the Net-Zero Advisory Board (NZAB) submission](https://nzab2050.ca/1news-and-notices/news_feed/net-zero-advisory-body-provides-advice-for-canada-s-2030-emissions-reduction-plan) and the [Canadian Institute for Climate Choices (CICC)](https://climateinstitute.ca/reports/setting-canada-up-for-success/) clearly set out the challenge and the tools available to the federal government. 
+
+The NZAB is a government-constituted body, so it's interesting to see what they've set out. Their work focuses on the big sectors (buildings, transport, and oil and gas) with stubborn emissions trajectories and lots of locked-in investment. A couple of things really stood out for me in the report: first, I was interested to see that only their oil and gas sector analysis contained an economic contribution call-out box; and I was glad to see the link between global actions and markets for Canadian oil and gas. I think we need a lot more emphasis on how much Canada is a policy-taker in terms of how global climate action affects the value of our emissions-intensive resources.
+
+The CICC report emphasizes what they'd like to see from the government. Two parts really caught my eye: their calls for more transparent modelling and analysis including clear technology and financial assumptions, and for clear links between policies and emissions trajectories. In a nutshell, they want the government to show their work. I couldn't agree more.
+
+[Image from Leach's NIR data page](https://leachandrew.github.io/NIR/)

@@ -1,0 +1,38 @@
+## IPCC AR6 WGII
+#### <font size="+2"> Another Climate Change Report?
+#### Andrew Leach
+
+<center>![](stories/sec_3.png)</center>
+<br>
+It seems like we're getting a new climate change report about once a week these days. Earlier this month, it was the report of [Working Group (WG) 2 for the IPCC Sixth Assessment Report](https://www.ipcc.ch/report/ar6/wg2/), for which the (much) shorter Summary for Policymakers is [here (PDF)](https://report.ipcc.ch/ar6wg2/pdf/IPCC_AR6_WGII_SummaryForPolicymakers.pdf). Working Group 2 is charged with the assessment of the impacts of climate change on our socio-economic and natural systems. Their work builds on the WG 1 report on the science of climate change, and will be followed by the WG3 report on mitigation options which is [scheduled to be approved](https://www.ipcc.ch/site/assets/uploads/2021/06/WGIII-Schedule_external-May2021.pdf) in the coming weeks.
+
+Of the three reports in which IPCC cycle, WG2 tends to be the one on which I spend the least amount of time, as it tends to be furthest from my areas of research. That's starting to change, especially in light of more recent cases on climate change rights ([*Mathur et al. v R*](http://climatecasechart.com/climate-change-litigation/non-us-case/mathur-et-al-v-her-majesty-the-queen-in-right-of-ontario/) in Ontario, [*Juliana v. United States*](http://climatecasechart.com/climate-change-litigation/case/juliana-v-united-states/), and two major cases in the Netherlands with judgements against [Shell](https://www.bbc.com/news/world-europe-57257982) and the [Dutch Government](http://climatecasechart.com/climate-change-litigation/non-us-case/urgenda-foundation-v-kingdom-of-the-netherlands/)), through which the impacts of climate change have been driving policy responses in a way we haven't seen before.
+
+Five statements in the Summary for Policy Makers that stood out to me were:
+
+<style>
+.nobullet li {
+  list-style-type: none;
+}
+</style>
+
+<div class="nobullet">
+
+* "Other impacts are approaching irreversibility such as the impacts of hydrological changes resulting from the **retreat of glaciers**, or the changes in some **mountain** (medium confidence) and **Arctic** ecosystems driven by permafrost thaw (high confidence)" (at SPM-8);
+  
+* "Near-term risks for biodiversity loss are (...) **high to very high in Arctic sea-ice and terrestrial ecosystems** (high confidence)" (at SPM-13);
+  
+  
+*  "(In the near-term,) violent conflict and, separately, migration patterns, in the near-term will be driven by **socio-economic conditions and governance more than by climate change** (medium confidence)" (at SPM-13);
+  
+*  "Future exposure to climatic hazards is also increasing globally due to socio-economic development trends including migration, growing inequality and urbanization (high confidence)" (at SPM-13); and
+  
+  
+*  "Climate change impacts and risks are becoming increasingly complex and more difficult to manage. Multiple climate hazards will occur simultaneously, and multiple climatic and non-climatic risks will interact, resulting in compounding overall risk and risks cascading across sectors and regions" (at SPM-18).
+
+</div>
+
+
+[Working Group (WG) 2 for the IPCC Sixth Assessment Report](https://www.ipcc.ch/report/ar6/wg2/)
+
+[Image from Summary For Policy Markets of WGII of IPCC AR6](https://www.ipcc.ch/report/ar6/wg2/)
