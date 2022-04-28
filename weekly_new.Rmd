@@ -37,9 +37,9 @@ background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/s
   padding-left: 1px !important;
   padding-right: 1px !important;
   padding-bottom: 80px !important;
-  background-size: auto 80px,auto 50px;
+  background-size: auto 90px,auto 50px;
   background-repeat: no-repeat,no-repeat;
-  background-position: 50% 7px,50% 95%;
+  background-position: 50% 5px,50% 95%;
 }
 </style>
 
