@@ -1,0 +1,28 @@
+## Wind Tops Coal in US Electricity
+#### Yousaff Habib
+
+<!-- <br> -->
+
+On April 14th, the U.S. Energy Information Administration revealed that for the first time ever, wind powered electricity generation had exceeded both coal and nuclear power, according to their [Report on Wind Generation.](https://www.eia.gov/todayinenergy/detail.php?id=52038) While wind generation has exceeded nuclear power and coal generated electricity separately in the past, this marks the first occasion that both have been surpassed simultaneously. 
+
+<center>
+
+![](https://www.eia.gov/todayinenergy/images/2022.04.14/main.svg)
+
+</center>
+
+This landmark comes amid Biden's lofty renewable energy goals, which include building a "Carbon Pollution-Free Power Sector by 2035", investing 2 trillion towards an "Equitable Clean Energy Future", and the mass creation of infrastructure for renewable energy; all of which are outlined within [Biden's Clean Energy Plan.](https://joebiden.com/clean-energy/)
+
+These goals are not without progress however, as the United States has seen massive growth in the renewable energy sector. Wind energy in particular has had notable growth, with a record 14.2 gigawatts of wind capacity being built in 2020, followed by another 13.9 GW in 2021, wind electricity generation has shot from 2 percent of annual electricity generation in America to greater than 9 percent in only a year.
+
+While this news is encouraging, there are a number of factors that play an important role in the creation of this historical moment. 
+
+* *Waning Power Demand*: Generally, during fall and spring months, the demand for power is decreased, likely due to the weather. Subsequently, many generators reduce their outputs, or use this time of lower demand to undergo maintenance.
+* *Surge in Wind Output*: March is generally one of the windiest months, and the window in which wind generated electricity overtook coal and nuclear had extremely high wind speeds in the Southwest Power Pool (Oklahoma, Kansas, Nebraska, North Dakota, South Dakota, and neighboring states)
+* *Demand Matching*: As aforementioned, demand for energy usually falls off during the spring and fall seasons, and as a result, non-renewable energy sources produce less so that the demand is satisfied in a more environmentally conscious manner. 
+
+Nevertheless, this is an achievement that signifies growth in the renewable energy sector, and is promising news for renewable energy and its implementation.
+
+
+[EIA Electricity Generation Hourly Monitor](https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48)
+

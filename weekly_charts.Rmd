@@ -311,14 +311,14 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r story_1, child = 'stories/story_1.Rmd'}
+```{r story_1, child = 'stories/WindEnergy.Rmd'}
 ```
 
-```{r story_2, child = 'stories/story_2.Rmd'}
+```{r story_2, child = 'stories/canadas_bold_energy_transition.Rmd'}
 ```
 
 
-```{r story_3, child = 'stories/story_3.Rmd'}
+```{r story_3, child = 'stories/canadas_planned_energy_export_expansion.Rmd'}
 ```
 
 ```{r child_4, child = 'stories/story_4.Rmd'}
@@ -616,7 +616,7 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 
 ```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=TRUE,results=FALSE}
 # run the gas map and charts chunks and use the variables it creates
-<<gas_graphs>>
+<<gas_weekly>>
 <<gas_map>>
 ```
 
@@ -630,14 +630,14 @@ weekly_map
 ### Historic Gasoline Prices
 
 ```{r gas_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-gas_plot
+weekly_gas_plot
 ```
 
 ### Historic Diesel Prices
 
 ```{r diesel_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 #grid.arrange(daily_prices)
-diesel_plot
+weekly_diesel_plot
 ```
 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
@@ -990,7 +990,7 @@ gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
   weekly_small()+
   scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
-  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[4],colors_ua10()[3],colors_ua10()[2],colors_ua10()[5],colors_ua10()[6]))+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
   guides(fill = guide_legend(nrow = 1))+
   #theme(legend.position = "none")+
   labs(x="Year",y="Average Hourly Supply (MW)",
@@ -1019,7 +1019,7 @@ wind_fcast_plot<-ggplot(wind_fcast) +
 
 
 
-```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=KEEP_BB_CACHE}
+```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=TRUE}
 
 period_start<-max(price_ail$start_date)-weeks(1)
 end_date<-max(price_ail$start_date)
@@ -1081,7 +1081,7 @@ mylegend<-g_legend(top_panel)
 ## AESO Market Summary {.tabset .tabset-fade}
 ### Supply Mix
 
-```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=TRUE, fig.width=10, fig.pos="H"}
 gen_mix_plot
 ```
 
