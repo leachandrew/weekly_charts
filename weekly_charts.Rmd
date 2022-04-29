@@ -321,7 +321,7 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 ```{r story_3, child = 'stories/canadas_planned_energy_export_expansion.Rmd'}
 ```
 
-```{r child_4, child = 'stories/story_4.Rmd'}
+```{r child_4, child = 'stories/2022_NIR.Rmd'}
 ```
 
 # Oil

@@ -1,0 +1,6 @@
+## Canada's 2022 National Emissions Inventory
+#### Andrew Leach
+
+<center>![](https://leachandrew.github.io/NIR/images/inventory_proj.png)</center>
+<br>
+Canada's [National Inventory Report (NIR)](https://www.canada.ca/en/environment-climate-change/services/climate-change/greenhouse-gas-emissions/inventory.html) and [emissions projections (PDF)](https://publications.gc.ca/collections/collection_2022/eccc/En1-78-2021-eng.pdf) were released last week, and along with the [Emissions Reduction Plan (ERP)](https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/climate-plan-overview/emissions-reduction-2030.html) released a week earlier, dramatically updates the picture we have of Canada's emissions through the first months of the COVID pandemic, and also gives us a sense of just how far we have to go to meet our targets. I've updated most of my [NIR data page](https://leachandrew.github.io/NIR/) which gives you a group of data visualizations you are more than welcome to use. I hope you enjoy it.
