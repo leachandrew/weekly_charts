@@ -782,6 +782,7 @@ label_list<-c("Alberta NIT")
 title_sent<-"Alberta NIT"
 ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="CAD/GJ")
 ```
+
 ### Alberta (NIT)
 ```{r NGX_nit,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
 date_max<-max(ngx_data$trade_date)
@@ -1203,8 +1204,7 @@ aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
 aeso_fwds
 ```
 
-
-
+#
 
 &nbsp;
 <hr />
