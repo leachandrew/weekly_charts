@@ -565,7 +565,7 @@ forwards_graphs(brent_data_retrieve[[1]],brent_data_retrieve[[2]],"Brent Forward
 
 ## Canadian Crude Exports {.tabset .tabset-fade}
 
-```{r NEB_crude_by_rail, cache=TRUE,echo = FALSE, warning=FALSE, message=FALSE}
+```{r CER_crude_by_rail, cache=TRUE,echo = FALSE, warning=FALSE, message=FALSE}
 #crude_by_rail_exports
 download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/canadian-crude-oil-exports-rail-monthly-data.xlsx", destfile="crude_by_rail.xlsx", mode = "wb")
 
@@ -589,7 +589,7 @@ rail_exports<-ggplot(oil_by_rail) +
   weekly_small()+
   labs(y="Export Volumes (1000 bbl/d)",x="Date",
        title=paste("Canadian Oil Exports by Rail",sep=""),
-       caption="Source: NEB Data.")
+       caption="Source: CER Data.")
 
 ```
 
@@ -644,7 +644,7 @@ weekly_diesel_plot
 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
 
-```{r NEB_ref_runs, cache=TRUE}
+```{r CER_ref_runs, cache=TRUE}
 
 ref_runs <- read.xlsx(xlsxFile = "https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/weekly-crude-run-summary-data/historical-weekly-crude-run-data-donnees-sur-les-charges-hebdomadaires-historiques.xlsx", sheet = "WeeklyRegional", startRow = 8,skipEmptyRows = TRUE,detectDates = TRUE)
 names(ref_runs)[1]<-"Date"
@@ -686,7 +686,7 @@ ref_run_graph<-ggplot(ref_runs) +
   weekly_small()+
   labs(y="Weekly Refinery Runs (Thousands of barrels per day)",x="Date",
        title=paste("Canadian Weekly Refinery Runs",sep=""),
-       caption="Source: NEB Data, graph by Andrew Leach.")
+       caption="Source: CER Data, graph by Andrew Leach.")
 
 
 
@@ -708,7 +708,7 @@ west_runs<-ggplot(filter(ref_runs,Region=="Western Canada")) +
   weekly_small()+
   labs(y="Weekly Refinery Runs (Thousands of barrels per day)",x="Date",
        title=paste("Western Canadian Weekly Refinery Runs",sep=""),
-       caption="Source: NEB Data, graph by Andrew Leach.")
+       caption="Source: CER Data, graph by Andrew Leach.")
 
 data<-data %>% mutate(`Edmonton Wholesale Refined Products`=`ULSD Edmonton`/3+2*`Mid Grd Gas Edm`/3,
                       `Edmonton Retail Refined Products ex Tax`=`Diesel Retail Excl Tax Edmton`/3+
