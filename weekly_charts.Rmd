@@ -58,7 +58,7 @@ knitr::opts_chunk$set(echo=FALSE)
 ```{r CACHE, include=FALSE,cache=FALSE}
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
-KEEP_CER_CACHE<-TRUE
+KEEP_CER_CACHE<-FALSE
 KEEP_KALIBRATE_CACHE<-TRUE
 nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 ```
