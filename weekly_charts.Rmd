@@ -86,6 +86,7 @@ library(ggpubr)
 library(readxl)
 #library(plotly)
 library(ggrepel)
+library(ggthemes)
 #quick function to make time breaks on axes
 
 
@@ -616,7 +617,7 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 <<gas_load>>
 ```
 
-```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=TRUE,results=FALSE}
+```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE,results=FALSE}
 # run the gas map and charts chunks and use the variables it creates
 <<gas_weekly>>
 <<gas_map>>
@@ -625,7 +626,7 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 
 ### Map
 
-```{r map, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=TRUE, fig.width=10,fig.height=7, fig.pos="H"}
+```{r map, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10,fig.height=7, fig.pos="H"}
 weekly_map
 ```
 
