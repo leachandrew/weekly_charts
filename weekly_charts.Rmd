@@ -58,6 +58,8 @@ knitr::opts_chunk$set(echo=FALSE)
 ```{r CACHE, include=FALSE,cache=FALSE}
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
+KEEP_CER_CACHE<-TRUE
+KEEP_KALIBRATE_CACHE<-TRUE
 nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 ```
 
@@ -451,9 +453,6 @@ all_data<-all_data%>% mutate(
 ```
 
 ```{r crude_functions,cache=TRUE}
-
-
-
 ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
   #melt the data into long form
   df1<-melt(data_sent,id=c("date","week","month","year"),measure.vars = series_name)
@@ -516,33 +515,37 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 ```
 
 
-### US Crude Oil Production
+### Crude Oil Production
 ```{r us_crude_prod, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
-EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,
-                 title_sent ="US Weekly Field Production of Crude Oil",y_lab="Production (1000 bbl/d)" )
+EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
+  theme(legend.position = "none")
 ```
 
-### US Net Crude Oil Imports
-
-Displays the most recent crude net imports data and historic ranges.
+### Net Crude Oil Imports
 
 ```{r us_crude_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-ribbon_graph(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10)
+EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
+      title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
+  theme(legend.position = "none")
 ```
 
 
-### US Net Imports of Crude Oil and Products
+### Net Imports of Crude Oil and Products
 
 ```{r us_crude_net_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-ribbon_graph(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",5)
+EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
+  title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
+  theme(legend.position = "none")
 ```
   
   
-### US Crude Inventories
+### Crude Inventories
 
 ```{r us_crude_inv, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-ribbon_graph(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",5)
+EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
+      title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
+  theme(legend.position = "none")
 ```
 
 
@@ -566,7 +569,7 @@ forwards_graphs(brent_data_retrieve[[1]],brent_data_retrieve[[2]],"Brent Forward
 
 ## Canadian Crude Exports {.tabset .tabset-fade}
 
-```{r CER_crude_by_rail, cache=TRUE,echo = FALSE, warning=FALSE, message=FALSE}
+```{r CER_crude_by_rail, cache=KEEP_CER_CACHE,echo = FALSE, warning=FALSE, message=FALSE}
 #crude_by_rail_exports
 download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/canadian-crude-oil-exports-rail-monthly-data.xlsx", destfile="crude_by_rail.xlsx", mode = "wb")
 
@@ -607,17 +610,17 @@ rail_exports
 # Refined Products 
 
 ## Canadian Gasoline Prices  {.tabset .tabset-fade}
-```{r kalibrate, echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
+```{r kalibrate, echo = FALSE, warning=FALSE, message=FALSE,cache=KEEP_KALIBRATE_CACHE}
 read_chunk('../kalibrate/kalibrate_gas_data.R')
 ```
 
-```{r gas_data, results=FALSE,echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE}
+```{r gas_data, results=FALSE,echo = FALSE, warning=FALSE, message=FALSE,cache=KEEP_KALIBRATE_CACHE}
 # run the gas map and charts chunks and use the variables it creates
 <<gas_prelims>>
 <<gas_load>>
 ```
 
-```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=FALSE,results=FALSE}
+```{r gas_maps, echo = FALSE, warning=FALSE, message=FALSE,cache=KEEP_KALIBRATE_CACHE,results=FALSE}
 # run the gas map and charts chunks and use the variables it creates
 <<gas_weekly>>
 <<gas_map>>
@@ -626,26 +629,26 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 
 ### Map
 
-```{r map, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10,fig.height=7, fig.pos="H"}
+```{r map, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 weekly_map
 ```
 
 ### Historic Gasoline Prices
 
-```{r gas_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+```{r gas_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 weekly_gas_plot
 ```
 
 ### Historic Diesel Prices
 
-```{r diesel_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+```{r diesel_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 #grid.arrange(daily_prices)
 weekly_diesel_plot
 ```
 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
 
-```{r CER_ref_runs, cache=TRUE}
+```{r CER_ref_runs, cache=KEEP_CER_CACHE}
 
 ref_runs <- read.xlsx(xlsxFile = "https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/weekly-crude-run-summary-data/historical-weekly-crude-run-data-donnees-sur-les-charges-hebdomadaires-historiques.xlsx", sheet = "WeeklyRegional", startRow = 8,skipEmptyRows = TRUE,detectDates = TRUE)
 names(ref_runs)[1]<-"Date"
@@ -667,7 +670,6 @@ ref_runs<- ref_runs %>% group_by(Region) %>%
 
 lims=c(min(ref_runs$Date),max(ref_runs$Date)+months(3))
 breaks<-seq.Date(min(ref_runs$Date), max(ref_runs$Date)+months(3), by="1 year")
-
 
 ref_run_graph<-ggplot(ref_runs) +
   geom_area(aes(Date,Runs*6.2929,fill=Region),position="stack") +
@@ -725,13 +727,13 @@ ref_prod_price_levels<-levels_chart(data=data,names,10,"CAD",title_sent="Edmonto
 ```
 
 ### Canadian Refinery Runs
-```{r cdn_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r cdn_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_CER_CACHE, fig.width=10, fig.pos="H"}
 ref_run_graph
 ```
 
 
 ### Western Canada Refinery Runs
-```{r west_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r west_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_CER_CACHE, fig.width=10, fig.pos="H"}
 west_runs
 ```
 
