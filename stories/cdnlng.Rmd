@@ -1,0 +1,13 @@
+## New Hope for Canadian LNG Projects?
+#### [Erica Beattie](https://www.linkedin.com/in/erica-beattie-594b471a1/)
+
+The global [liquified natural gas (LNG)](https://www.lngcanada.ca/about-lng-canada/lng-101/) market is poised to grow dramatically. Dramatic increases in natural gas prices in Europe and Asia are creating optimism among suppliers that has been missing since the early-2010s. 
+
+<center>
+![Gas and LNG Prices Increases in 2021](https://fourleafdigital.shell.com/webapps/LNG_outlook_2022/images/Tab_01_graph.svg#centre){width=400}
+</center>
+ The long-term demand outlook is also [robust](https://www.shell.com/energy-and-innovation/natural-gas/liquefied-natural-gas-lng/lng-outlook-2022.html#iframe=L3dlYmFwcHMvTE5HX291dGxvb2tfMjAyMi8), although there are stark differences in forecasts of LNG's role in a carbon-constrained world. LNG presents an economic opportunity for Canada, with Shell's LNG Canada project under construction, [Woodfibre LNG](https://www.canadianenergycentre.ca/extra-low-ghg-canadian-lng-project-gets-the-green-light/) beginning construction, and a major expansion of LNG Canada plant under consideration. 
+
+![Shell LNG Outlook](stories/shell_lng.png){height=375} 
+
+Major [current events](https://www.mckinsey.com/industries/oil-and-gas/our-insights/petroleum-blog/reflecting-on-2021-global-lng-and-european-pipeline-flows) such as the COVID-19 pandemic and Russia's invasion of Ukraine have had tremendous impacts on the outlook for LNG. Canada's LNG industry has a unique value proposition owing to its potential to use of hydroelectricity to drive liquefaction, enhancing potential opportunities to reduce emissions through fuel switching. With the Glasgow climate conference in the rear-view mirror, there remains some pontential for [Article 6 credits](https://www.iisd.org/articles/paris-agreement-article-6-rules) for LNG production and export in the context of a bilateral arrangement.

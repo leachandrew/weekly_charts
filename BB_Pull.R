@@ -94,8 +94,8 @@ diffs_chart<-function(data_sent=data,names=c("LLS","Maya"),years=10,curr="USD",b
     pivot_longer(-c(Date,USDCAD,diff),names_to="variable")
   if(curr=="USD")
     p <- ggplot(data_sent) +
-    geom_ribbon(aes(Date,ymax=diff,ymin=0,fill="Differential"),size=1.7)+
-    geom_line(aes(Date,value,group = variable,colour=variable),size=1.7) +
+    geom_ribbon(aes(Date,ymax=diff,ymin=0,fill="Differential"),size=1.25)+
+    geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
     #geom_area(data=filter(df1,variable=="diff"),aes(Date,value,group = variable,fill=variable))+
     #geom_point(size=1) +
     scale_colour_manual(NULL,values=colors_ua10(), labels=names)+
@@ -110,8 +110,8 @@ diffs_chart<-function(data_sent=data,names=c("LLS","Maya"),years=10,curr="USD",b
   
   if(curr=="CAD")
     p <- ggplot(df1,aes(Date,value*USDCAD,group = variable,colour=variable,fill=variable)) +
-    geom_area(data=filter(df1,variable=="diff"),size=1.7)+
-    geom_line(data=df1,size=1.7) +
+    geom_area(data=filter(df1,variable=="diff"),size=1.25)+
+    geom_line(data=df1,size=1.25) +
     #geom_point(size=1) +
     scale_colour_brewer(NULL,labels=c(names,paste(names[1],"Premium or\nDiscount to",names[2],sep=" ")),type = "seq", palette = "Paired", direction = -1)+
     scale_fill_brewer(NULL,labels=c(names,paste(names[1],"Premium or\nDiscount to",names[2],sep=" ")),type = "seq", palette = "Paired", direction = -1)+
@@ -148,10 +148,10 @@ ref_margin_charts<-function(data_sent,curr="USD",years=5,break_set="12 months")
   data_sent$bitumen_gulf_margin<-data_sent$gulf_yield-data_sent$`Implied Bitumen`-7.50
   data_sent$bitumen_nymex_margin<-data_sent$nymex_yield-data_sent$`Implied Bitumen`-5
   p <- ggplot(data_sent) +
-    geom_area(aes(Date,bitumen_margin_false,fill="Maya-based margin"),size=1.5)+
+    geom_area(aes(Date,bitumen_margin_false,fill="Maya-based margin"),size=1.25)+
     geom_area(aes(Date,bitumen_margin,fill="WCS-based margin"),alpha=0.5)+
-    geom_line(aes(Date,`WCS`,color="WCS spot price"),size=1.5)+
-    geom_line(aes(Date,`Maya`-7.50,color="Maya net toll"),size=1.5)+
+    geom_line(aes(Date,`WCS`,color="WCS spot price"),size=1.25)+
+    geom_line(aes(Date,`Maya`-7.50,color="Maya net toll"),size=1.25)+
     geom_line(aes(Date,edm_yield-7.50,color="Edmonton refined products\n(coking refinery yield)"),size=1.5)+
     #geom_point(size=1) +
     scale_colour_manual(NULL,values=colors_ua10())+
@@ -202,7 +202,7 @@ cad_net_back_area_chart<-function(data_sent,years=10,break_set="12 months",bw=F)
                    "Bitumen value at site") 
   p <- ggplot(df1) +
     #geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.7) +
-    geom_line(aes(Date,Brent*USDCAD,colour = "Global Light Oil"),size=2.5)+
+    geom_line(aes(Date,Brent*USDCAD,colour = "Global Light Oil"),size=1.25)+
     geom_area(aes(Date,Brent*USDCAD,fill="A"))+
     geom_area(aes(Date,Maya*USDCAD,fill="B"))+  
     geom_area(aes(Date,(Maya*USDCAD-toll),fill="C"))+  
@@ -351,7 +351,7 @@ levels_chart<-function(data_sent,names,years,curr="USD",title_sent="Benchmark Oi
   lims_y<-round(lims_y/5)*5 #round to nearest multiple of 5
   if(curr=="USD")
     p<-ggplot(df1) +
-    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.7) +
+    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.25) +
     #geom_point(size=1) +
     scale_colour_manual(NULL,values=colors_ua10(), labels=names)+
     scale_x_date(name=NULL,date_breaks = break_set, date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
@@ -363,7 +363,7 @@ levels_chart<-function(data_sent,names,years,curr="USD",title_sent="Benchmark Oi
     weekly_graphs()
   if(curr=="CAD")
     p <- ggplot(df1,aes(Date,value*USDCAD,group = variable,colour=variable,fill=variable)) +
-    geom_line(data=df1,size=1.7) +
+    geom_line(data=df1,size=1.25) +
     scale_colour_manual(NULL,values=colors_ua10(), labels=names)+
     scale_x_date(name=NULL,date_breaks = break_set, date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
     scale_y_continuous(expand = c(0, 0),limits=lims_y,breaks=c(-10,seq(0,lims_y[2],10))) +
@@ -399,7 +399,7 @@ levels_chart_gas<-function(data_sent,names,years,curr="USD",title_sent="Benchmar
   #lims_y<-round(lims_y/5)*5 #round to nearest multiple of 5
   if(curr=="USD")
     p<-ggplot(df1) +
-    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.7) +
+    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.25) +
     #geom_point(size=1) +
     scale_colour_manual(NULL,values=colors_ua10(), labels=names)+
     scale_x_date(name=NULL,date_breaks = break_set, date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
@@ -757,7 +757,7 @@ ngl_levels_chart<-function(data_sent,names,labels_sent,years,curr="USD",title_se
   lims_y<-c(min(0,min(df1$value)-5),max(df1$value)+5)
   lims_y<-round(lims_y/5)*5 #round to nearest multiple of 5
   p<-ggplot(df1) +
-    geom_line(data=df1,aes(Date,value,group = variable,colour=variable),size=1.7)
+    geom_line(data=df1,aes(Date,value,group = variable,colour=variable),size=1.25)
   p<-p+  
     #geom_point(size=1) +
     scale_fill_manual(NULL,values=rev(colors_ua10()))+
@@ -1049,7 +1049,7 @@ forwards_graphs<-function(data_sent,units_sent,title_sent,single=1,relative_labe
   if(relative_labels==0)
     labs<-label_list
   p<-ggplot(subset(df1,Date %in% date_list)) +
-    geom_line(aes(Inst_Date,value,group=as.factor(Date),colour=as.factor(Date)),size=2)+
+    geom_line(aes(Inst_Date,value,group=as.factor(Date),colour=as.factor(Date)),size=1.25)+
     #geom_vline(xintercept = as.Date("2017-04-19")+
     #scale_color_brewer("Calendar Strip Year",palette = "Set1")+
     #scale_y_continuous(limits=c(0,max(df1%>% filter(Date %in% date_list) %>% select(value))))+

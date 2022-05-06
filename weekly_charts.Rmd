@@ -56,10 +56,22 @@ knitr::opts_chunk$set(echo=FALSE)
 </style>
 
 ```{r CACHE, include=FALSE,cache=FALSE}
+
+KEEP_AESO_CACHE<-TRUE
+KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
-KEEP_CER_CACHE<-FALSE
+KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
+reset<-0
+if(reset==1){
+  KEEP_AESO_CACHE<-FALSE
+  KEEP_NRGSTREAM_CACHE<-FALSE
+  KEEP_EIA_CACHE<-FALSE
+  KEEP_BB_CACHE<-FALSE
+  KEEP_CER_CACHE<-FALSE
+  KEEP_KALIBRATE_CACHE<-FALSE
+  }
 nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 ```
 
@@ -296,7 +308,7 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   lims_y<-c(min(0,min(df1$value)-5),max(df1$value)+10)
   
   p<-ggplot(df1) +
-    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.7) +
+    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.25) +
     #geom_point(size=1) +
     scale_colour_manual(NULL,values=colors_ua10(), labels=name_labels)+
     scale_x_date(name=NULL,date_breaks = "1 year", date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
@@ -316,17 +328,17 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r story_1, child = 'stories/WindEnergy.Rmd'}
+```{r story_1, child = 'stories/indiarussia.Rmd'}
 ```
 
-```{r story_2, child = 'stories/canadas_bold_energy_transition.Rmd'}
+```{r story_2, child = 'stories/cdnlng.Rmd'}
 ```
 
 
-```{r story_3, child = 'stories/canadas_planned_energy_export_expansion.Rmd'}
+```{r story_3, child = 'stories/ozone.Rmd'}
 ```
 
-```{r child_4, child = 'stories/2022_NIR.Rmd'}
+```{r child_4, child = 'stories/wind_and_temps.Rmd'}
 ```
 
 # Oil
@@ -481,10 +493,10 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
   #We can then trick ggplot into printing a nice title for the fill on the legend, by setting fill inside aes to the intended string. Because fill is set in aes(), we control its color with scale_fill_manual.
   graph<- ggplot() +
     geom_ribbon(data = df.year.range, aes(x = week, ymin = min, ymax = max, fill =  "fill1")) +
-    geom_line(data = df.year.range, aes(x = week, y = mean,colour="3"),size=1.7) +
-    geom_line(data = subset(df.years,year==max_year-1), aes(x = week, y = value, color = "2"),size=1.7)+ 
-    geom_line(data = subset(df.years,year==max_year), aes(x = week, y = value, color = "1"),size=1.7) +
-    geom_point(data = subset(df.years,year==max_year), aes(x = week, y = value, color = "1"),size=1.7) +
+    geom_line(data = df.year.range, aes(x = week, y = mean,colour="3"),size=1.25) +
+    geom_line(data = subset(df.years,year==max_year-1), aes(x = week, y = value, color = "2"),size=1.25)+ 
+    geom_line(data = subset(df.years,year==max_year), aes(x = week, y = value, color = "1"),size=1.25) +
+    geom_point(data = subset(df.years,year==max_year), aes(x = week, y = value, color = "1"),size=1.25) +
     #scale_fill_manual(values = '#ffccff')
     #  scale_fill_manual("",values = #'grey70',labels=paste(max_year-years,"-",max_year-1,"\nrange",sep =""))+     
     #  scale_color_viridis("",discrete=TRUE,option="C",labels=c(max_year, #max_year-1,paste(max_year-years,"-",max_year-1,"\naverage",sep ="")))+
@@ -697,7 +709,7 @@ west_runs<-ggplot(filter(ref_runs,Region=="Western Canada")) +
   geom_area(aes(Date,Runs*6.2929,fill=Region),position="stack") +
   #geom_area(data=filter(df1,df1$Pipeline!="test"),aes(Year,Capacity*6.2929/1000,fill=Pipeline),position="stack",alpha=0.8) +
   #geom_line(aes(Year,Oil.Available.for.Export*6.2929/1000, colour = "test" ),size=3) +
-  geom_line(aes(Date,m12_avg*6.2929,colour=Region),position="stack",size=3) +
+  geom_line(aes(Date,m12_avg*6.2929,colour=Region),position="stack",size=1.25) +
   #scale_color_viridis("",discrete=TRUE,option="D",labels="Expected Export Demand")+
   scale_colour_manual("",labels=c("52 Week Average"),values=colors_ua10()[3])+
   #scale_fill_manual("",labels=c("Weekly Throughput"),values=c("Red"))+
@@ -829,7 +841,7 @@ ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground St
 
 # Power
 
-```{r power functions,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_BB_CACHE}
+```{r power functions,warning=FALSE,message=FALSE,echo=FALSE,cache=FALSE}
 
 assign_peaks<-function(data_orig,time_var=time){
   #default is that we're receiving a data_frame with time as the time variable
@@ -913,7 +925,7 @@ assign_time <- function(data, date_var=date, he_var=he){
 ```
 
 
-```{r aeso,cache=TRUE,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_BB_CACHE}
+```{r aeso,cache=TRUE,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_AESO_CACHE}
 get_forecast_report <- function(start_date, end_date) {
   #testing below here
   #start_date<- Sys.Date()-months(1)
@@ -983,7 +995,7 @@ wind_fcast<-wind_forecast()
 
 
 
-```{r aeso_gen_mix,fig.width=10, fig.pos="H",cache=KEEP_BB_CACHE}
+```{r aeso_gen_mix,fig.width=10, fig.pos="H",cache=KEEP_NRGSTREAM_CACHE}
 gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
 names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other","Wind")
 gen_mix<-gen_mix%>%mutate(Trade=-1*Trade)
@@ -1006,7 +1018,7 @@ gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
 
 
 wind_fcast_plot<-ggplot(wind_fcast) +
-  geom_line(aes(Date,MOST.LIKELY,colour="A"), size=1.7)+
+  geom_line(aes(Date,MOST.LIKELY,colour="A"), size=1.25)+
   geom_ribbon(aes(x = Date, ymin =MIN , ymax = MAX,fill="B"))+
   weekly_small()+
   scale_x_datetime(expand = c(0,0),labels = date_format("%b %d\n%H:00"),breaks = "1 day")+
@@ -1025,7 +1037,7 @@ wind_fcast_plot<-ggplot(wind_fcast) +
 
 
 
-```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=TRUE}
+```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=KEEP_AESO_CACHE}
 
 period_start<-max(price_ail$start_date)-weeks(1)
 end_date<-max(price_ail$start_date)
@@ -1041,8 +1053,8 @@ max_price<-max(max(peak_data$actual_posted_pool_price))
 #previous week prices
 
 top_panel<-ggplot(peak_data) +
-  geom_line(aes(time,actual_posted_pool_price,colour="basic"),size=1.5)+
-  geom_line(aes(time,peak_price,colour="peak"),size=1.5)+
+  geom_line(aes(time,actual_posted_pool_price,colour="basic"),size=1.25)+
+  geom_line(aes(time,peak_price,colour="peak"),size=1.25)+
   #geom_col(aes(time,actual_posted_pool_price,fill=on_peak,colour=on_peak),size=.8)+
   scale_color_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
   scale_fill_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
@@ -1059,8 +1071,8 @@ top_panel<-ggplot(peak_data) +
        subtitle=paste(month.name[month(period_start)]," ",day(period_start),", ",year(period_start)," to ",month.name[month(end_date)]," ",day(end_date), ", ",year(end_date),sep="")
   )
 bottom_panel<-ggplot(peak_data) +
-  geom_line(aes(time,actual_ail,colour="basic"),size=1.5)+
-  geom_line(aes(time,peak_ail,colour="peak"),size=1.5)+
+  geom_line(aes(time,actual_ail,colour="basic"),size=1.25)+
+  geom_line(aes(time,peak_ail,colour="peak"),size=1.25)+
   scale_color_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
   scale_fill_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
   scale_x_datetime(expand=c(0,0),breaks="1 day",labels = date_format("%H:00\n%b %d\n%Y",tz="America/Denver"))+
@@ -1087,13 +1099,13 @@ mylegend<-g_legend(top_panel)
 ## AESO Market Summary {.tabset .tabset-fade}
 ### Supply Mix
 
-```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=TRUE, fig.width=10, fig.pos="H"}
+```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H"}
 gen_mix_plot
 ```
 
 ### Prices and Loads
 
-```{r aeso_prices_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r aeso_prices_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H"}
 grid.arrange(arrangeGrob(top_panel + theme(legend.position="none",
                                            legend.margin=margin(c(0,0,0,0),unit="cm"),
                                            legend.text = element_text(colour="black", size = 14, face = "bold"),
@@ -1124,12 +1136,12 @@ mylegend, nrow=2,heights=c(10, 1),bottom =text_grob(
 
 ### Wind Forecast
 
-```{r wind_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r wind_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H"}
 wind_fcast_plot
 ```
 
 
-```{r ngx_forwards_aeso}
+```{r ngx_forwards_aeso,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE}
 
 
 proc_forwards<-function(file_sent,type){
@@ -1178,11 +1190,12 @@ dates<-c(today_date,today_date-years(1))
 dates<-c(today_date)
 
 aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="OFF_PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=2)+
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="FLAT"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=2)+
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=2)+
+  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="OFF_PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
+  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="FLAT"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
+  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
   #geom_line(aes(Inst_Year,Peak_Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype="dashed"),size=2)+
-  scale_y_continuous(limits=c(0,100))+
+  scale_y_continuous(breaks=pretty_breaks())+
+  expand_limits(y=0)+
   scale_color_manual("Trade Date",values=colors_ua10(),guide=guide_legend(nrow=1,order=1))+
   scale_linetype("Contract",guide=guide_legend(nrow=3,order=1))+ # Change linetypes
   theme_minimal()+theme(    
@@ -1205,7 +1218,7 @@ aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
 
 ### AESO Forward Prices
 
-```{r aeso_fwd_prices, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+```{r aeso_fwd_prices, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE, fig.width=10, fig.pos="H"}
 aeso_fwds
 ```
 

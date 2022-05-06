@@ -1,0 +1,6 @@
+## It's a dry (but not windy) cold
+#### Andrew Leach
+
+<center>![](stories/wind_temps.png)</center>
+<br>
+In the context of another research project I'm working on, I built this graph that I hope some of you will interesting -- it captures both the variability of Alberta's wind power generation and its relationship to temperatures. The box-plot shows that, no matter what the temperature, wind generation varies significantly (the boxes represent the 25th to 75th percentile of hourly generation in each temperature bin). More importantly, I think, the graph shows how low wind generation hours are much more likely when it's really cold or really hot than at any other time. On the positive side though, wind generation is winter-peaking, at the time when Alberta's electricity load is higher on average. 
