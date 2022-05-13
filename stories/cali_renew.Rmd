@@ -1,0 +1,9 @@
+## Renewable Energy in California
+
+#### Debosree Mukherjee
+
+
+April 30th, 2022 was a big day for clean energy advocates in California as the state reached a major milestone. [<span style="color:green">California was almost 100% powered by renewables for the first time in history.</span>](https://www.abc10.com/article/weather/california-renewable-energy/103-98fa3c6b-7763-4e35-b4f0-6162c0c0774a) Solar and wind energy supplied 99.87% of the state's electricity demand for two minutes at around 2:50 pm. According to the California Independent System Operator (CAISO) tracker, energy demand was 18,672 megawatts on April 30th at 2:45 pm, so we're not talking about a small-volume market!
+
+California's main source of renewable energy is solar followed by  wind, geothermal, biofuels, and hydro. California, the world's fifth largest economy, is the largest renewable energy producer in US and [<span style="color:green">is currently aiming to achieve 100% clean electricity by 2045.</span>](https://www.independent.co.uk/climate-change/news/california-clean-energy-solar-power-b2070040.html) Although the new record was set only for a brief moment, it is certainly significant. In recent years, around 60% of the state's total electricity generation from renewable and zero-carbon sources.  
+

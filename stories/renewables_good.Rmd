@@ -1,0 +1,12 @@
+## Global Renewable Growth
+
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+Renewable energy growth has accelerated for nearly a decade, and this trend will only be amplified by current events, a new [IEA report](https://www.iea.org/news/renewable-power-is-set-to-break-another-global-record-in-2022-despite-headwinds-from-higher-costs-and-supply-chain-bottlenecks) suggests. Despite supply chain issues, construction delays, and high prices stemming from the COVID-19 pandemic, [renewable net capacity additions are still rising](https://www.iea.org/data-and-statistics/charts/renewable-net-capacity-additions-2019-2021). The waning COVID-19 pandemic, the Russia-Ukraine conflict, and continued concerns about climate change following the recent [IPCC report.](https://www.ipcc.ch/report/ar6/wg2/downloads/report/IPCC_AR6_WGII_FinalDraft_TechnicalSummary.pdf) continue to drive markets for alternatives to natural gas and other fossil fuels and boost the prospects for renewables.
+
+<center>![Renewable net capacity additions by country and region, 2019-20](stories/youssaf_may_13.png)
+
+The European Commission has launched a renewed push for the expansion of renewable and other secure sources of energy. The [outline](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2022%3A108%3AFIN) mentions importing higher levels of hydrogen, reducing the use of fossil fuels, increasing renewables, and addressing energy infrastructure bottlenecks. 
+
+For more details, see the [IEA May 2022 Report on renewable electricity](https://www.iea.org/reports/renewable-energy-market-update-may-2022/renewable-electricity).
+

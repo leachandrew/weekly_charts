@@ -1,0 +1,11 @@
+## EIA's STEO
+
+#### Andrew Leach
+
+<center>![](https://leachandrew.github.io/EIA-STEO/images/demand.png)</center>
+<br>
+The US [Energy Information Administration (EIA)](https://www.eia.gov/) releases a monthly [short-term energy outlook](https://www.eia.gov/outlooks/steo/) with outlooks for most energy commodities. I maintain an updated graph pack for these outlooks at my [STEO data page](https://leachandrew.github.io/EIA-STEO/). I hope you enjoy it.
+
+<center>![](https://leachandrew.github.io/EIA-STEO/images/opec_non_opec_supply.png)</center>
+
+

@@ -326,20 +326,30 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 [Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
 </p>
 
+
 # Featured Stories {.tabset .tabset-fade}
 
-```{r story_1, child = 'stories/indiarussia.Rmd'}
-```
 
-```{r story_2, child = 'stories/cdnlng.Rmd'}
+```{r story_3, child = 'stories/climate_vs_security.Rmd'}
 ```
 
 
-```{r story_3, child = 'stories/ozone.Rmd'}
+```{r story_1, child = 'stories/tree_losses.Rmd'}
 ```
 
-```{r child_4, child = 'stories/wind_and_temps.Rmd'}
+
+```{r story_2, child = 'stories/renewables_good.Rmd'}
 ```
+
+
+```{r child_4, child = 'stories/cali_renew.Rmd'}
+```
+
+
+```{r child_5, child = 'stories/andrew_steo.Rmd'}
+```
+
+
 
 # Oil
 
