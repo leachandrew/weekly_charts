@@ -1,0 +1,10 @@
+## Wind power windfall!
+
+#### <font size="+2"> Andrew Leach
+
+<center>![](stories/rep_price_capture_cpi.png)</center>
+<br>
+This past week, Sara Hastings-Simon, Blake Shaffer, Tim Weis and I finished a working paper on Alberta's Reneable Electricity Program  (REP). One conclusion of the analysis that stood out to me is the current value of the REP contracts signed to bring more wind power onto the grid. To date, if you count both the energy and the carbon credit value of those contracts, they have produced a net gain of $100 million so far to the Government of Alberta and the AESO. That's a far cry from the [$10 million per year loss that was forecast by the AESO](https://calgaryherald.com/business/energy/varcoe-alberta-nabs-cheap-renewable-power-price-but-faces-10-million-annual-subsidy) when the program began.
+
+There are still many years to go on those contracts, but so far so good.
+

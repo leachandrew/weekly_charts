@@ -1,0 +1,342 @@
+---
+title: Weekly Energy Charts
+date: <text>`r format(Sys.time(), '%B %d, %Y')`</text>
+output:
+  html_document:
+      html_document:
+      includes:
+      after_body: 
+      theme: lumen
+      df_print: paged
+      toc: yes
+      toc_float: yes
+      toc_depth: 1
+      always_allow_html: yes
+      css: css_weekly.css
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, '2022_05_20.html'), output_format = "all")})
+  
+---
+
+```{css, echo=FALSE}
+h1, h4 {
+  text-align: center;
+}
+```
+<!-- background: background-image: url("https://www.nrgstream.com/img/logo.png");
+background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png;
+background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png");
+-->
+<style>
+#TOC {
+  background: url("https://www.ualberta.ca/media-library/ualberta/homepage/university-of-alberta-logo.jpg"),url("https://www.nrgstream.com/img/logo.png");
+  padding-top: 85px !important;
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+  padding-bottom: 80px !important;
+  background-size: auto 90px,auto 50px;
+  background-repeat: no-repeat,no-repeat;
+  background-position: 50% 5px,50% 95%;
+}
+</style>
+
+
+```{r echo=FALSE} 
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+<style>
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: #007C41;
+    color: white
+}
+</style>
+
+```{r CACHE, include=FALSE,cache=FALSE}
+
+KEEP_CANSIM_CACHE<-TRUE
+KEEP_AESO_CACHE<-TRUE
+KEEP_NRGSTREAM_CACHE<-TRUE
+KEEP_EIA_CACHE<-TRUE
+KEEP_BB_CACHE<-FALSE
+KEEP_CER_CACHE<-TRUE
+KEEP_KALIBRATE_CACHE<-TRUE
+reset<-1
+if(reset==1){
+  KEEP_AESO_CACHE<-FALSE
+  KEEP_NRGSTREAM_CACHE<-FALSE
+  KEEP_EIA_CACHE<-FALSE
+  KEEP_BB_CACHE<-FALSE
+  KEEP_CER_CACHE<-FALSE
+  KEEP_KALIBRATE_CACHE<-FALSE
+  }
+nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
+```
+
+
+```{r basics, cache=FALSE,warning=FALSE,message=FALSE}
+#packages used
+library(RColorBrewer)
+library(viridis)
+library(scales) 
+library(pdfetch)
+library(tidyverse)
+library(lubridate)
+library(reshape2)
+library(knitr)
+library(prettydoc)
+library(xml2)
+library(zoo)
+library(openxlsx)
+library(grid)
+library(gridExtra)
+library(janitor)
+library(stringi)
+library(httr)
+library(timeDate)
+library(ggpubr)
+library(readxl)
+#library(plotly)
+library(ggrepel)
+library(ggthemes)
+library(cansim)
+#quick function to make time breaks on axes
+
+
+#get multiple series listing from the EIA API
+data_fetch<-function(key, cat){
+  #key<-KEY
+  #cat=476336
+  ifelse(cat==999999999,
+         url <- paste("https://api.eia.gov/category/?api_key=",
+                      key, "&out=xml", sep="" ),
+         url <- paste("https://api.eia.gov/category/?api_key=",
+                      key, "&category_id=", cat, "&out=xml", sep="" )
+  )
+  
+  #http://api.eia.gov/category/?api_key=YOUR_API_KEY_HERE&category_id=476336
+  #url <- paste("https://api.eia.gov/category?api_key=",
+  #             key, "&category_id=", cat, "&out=xml", sep="" )
+  #https://api.eia.gov/category/?api_key=91b4dca0b858df64a2279d82f71af240&category_id=476336&out=xml
+  #https://api.eia.gov/category?api_key=91b4dca0b858df64a2279d82f71af240&category_id=476336&out=xml
+  
+  x <- read_xml(url)
+  doc <- XML::xmlParse(file=x)
+  
+  
+  Parent_Category <- tryCatch(XML::xmlToDataFrame(,stringsAsFactors = F,nodes =
+                                               XML::getNodeSet(doc, "//category/parent_category_id")),
+                              warning=function(w) FALSE, error=function(w) FALSE)
+  Sub_Categories <- XML::xmlToDataFrame(,stringsAsFactors = F,nodes =
+                                     XML::getNodeSet(doc, "//childcategories/row"))
+  Series_IDs <- XML::xmlToDataFrame(nodes =
+                                 XML::getNodeSet(doc, "///childseries/row"),stringsAsFactors = F)
+  Categories <- list(Parent_Category, Sub_Categories, Series_IDs)
+  names(Categories) <- c("Parent_Category", "Sub_Categories", "Series_IDs")
+  Categories
+}
+
+ get_children<-function(category_id=476336){
+   subs<-data_fetch(KEY,cat=category_id)
+   sub_cats<-subs$Sub_Categories
+   #build list from sub_cats
+   cat_store <- list()
+   cat_count<-1
+   for (cat in sub_cats$category_id) {
+     #cat<-sub_cats$category_id[1]
+     series<-data_fetch(KEY,cat=cat)
+     cat_store[[cat_count]]<-series$Series_IDs
+     cat_count<-cat_count+1
+   }
+   data.frame(do.call(rbind,cat_store))
+ }
+ #get_children()
+ 
+ get_series<-function(category_id=476336){
+   #series,name,f,units,updated
+   subs<-data_fetch(KEY,cat=category_id)
+   subs$Series_IDs
+ }
+ #get_series()
+ 
+
+
+pd_fix<-function(data,name){
+   data<-data.frame(date=index(data), coredata(data))
+   data$date<-ymd(data$date)
+   data <- setNames(data, c("date",name)) 
+ }
+ 
+EIA_to_DF<-function(series_info){
+   data<- pdfetch_EIA(series_info$series_id,KEY)
+   pd_fix(data,series_info$name)
+   }
+ 
+
+colors_tableau10 <- function()
+{
+  return(c("#1F77B4", "#FF7F0E", "#2CA02C", "#D62728", "#9467BD", "#8C564B",
+           "#E377C2", "#7F7F7F", "#BCBD22", "#17BECF"))
+}
+
+colors_tableau10_light <- function()
+{
+  return(c("#AEC7E8", "#FFBB78", "#98DF8A", "#FF9896", "#C5B0D5", "#C49C94",
+           "#F7B6D2", "#C7C7C7", "#DBDB8D", "#9EDAE5"))
+}
+
+colors_tableau10_medium <- function()
+{
+  return(c("#729ECE", "#FF9E4A", "#67BF5C", "#ED665D", "#AD8BC9", "#A8786E",
+           "#ED97CA", "#A2A2A2", "#CDCC5D", "#6DCCDA"))
+}
+
+colors_ua10 <- function()
+{
+  #return(c("#007C41", "#FFDB05", "#7D9AAA", "#CA7700", "#165788", "#A8B400",
+  #         "#E0D760", "#404545", "#8D3C1E", "#004250"))
+  c("#007C41", "#FFDB05", "#7D9AAA","#165788","#404545","#8D3C1E","#3CB6CE") 
+}
+```
+<!--[test link](weekly_jan_18.html#featured-chart)-->
+```{r BB_code}
+#opts_chunk$set(echo = FALSE, cache=FALSE)
+read_chunk('BB_Pull.R') #can run this from any google drive folder in case you're not in the BB Stuff folder
+```
+<!-- run part1 and part 2 chunks and : load the data, make the graphs -->
+```{r bb_prelims,cache=KEEP_BB_CACHE,warning=FALSE,echo=FALSE,include=FALSE}
+<<prelims>>
+```
+
+```{r eia_spot_prices, cache=KEEP_EIA_CACHE} 
+#don't need to cache this long-term - it's daily data
+#GET EIA NYMEX SPOTS 
+subs<-data_fetch(KEY,cat=241335)
+series<-t(subs$Series_IDs$series_id)
+series<- as.character(series)
+names<-t(subs$Series_IDs$name)
+
+subs<-data_fetch(KEY,cat=241347)
+series<-c(series,t(subs$Series_IDs$series_id))
+series<- as.character(series)
+names<-c(names,t(subs$Series_IDs$name))
+
+
+nymex_data<- pdfetch_EIA(series,KEY)
+nymex_data <- setNames(nymex_data, names)
+nymex_data<-data.frame(date=index(nymex_data), coredata(nymex_data),stringsAsFactors = F)
+nymex_data$date<-as.Date(nymex_data$date,format = "%m/%d/%Y")
+
+annual_crude<-cbind(nymex_data$date,nymex_data[,grep("Annual", colnames(nymex_data))])  #all annual columns
+annual_crude<-na.omit(annual_crude)
+names(annual_crude)[1]<-paste("Date")  
+
+monthly_crude<-cbind(nymex_data$date,nymex_data[,grep("Monthly", colnames(nymex_data))])  #all monthly columns
+monthly_crude<-na.omit(monthly_crude)
+names(monthly_crude)[1]<-paste("Date")
+
+weekly_crude<-cbind(nymex_data$date,nymex_data[,grep("Weekly", colnames(nymex_data))])  #all weekly_crude columns
+#weekly_crude<-na.omit(weekly_crude)
+names(weekly_crude)[1]<-paste("Date")
+weekly_crude<-subset(weekly_crude, Date > as.Date("2007-01-01"))
+weekly_crude<-na.omit(weekly_crude)
+
+daily_crude<-cbind(nymex_data$date,nymex_data[,grep("Daily", colnames(nymex_data))])  #all weekly_crude columns
+#weekly_crude<-na.omit(weekly_crude)
+names(daily_crude)[1]<-paste("Date")
+
+daily_crude$WTI_Brent_diff<- daily_crude$Europe.Brent.Spot.Price.FOB..Daily-daily_crude$Cushing..OK.WTI.Spot.Price.FOB..Daily
+```
+
+```{r levels_chart_code}
+#set up graph format
+weekly_graphs<-function(caption_align=1){
+  theme_minimal()+theme(
+    plot.margin = margin(.25, .75, .25, .75, "cm"),
+    legend.position = "bottom",
+    legend.margin=margin(c(0,0,0,0),unit="cm"),
+    legend.text = element_text(colour="black", size = 14, face = "bold"),
+    plot.caption = element_text(size = 14, face = "italic",hjust=caption_align),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 16, face = "italic"),
+    panel.grid.minor = element_blank(),
+    text = element_text(size = 14,face = "bold"),
+    axis.title.x = element_text(size = 14,face = "bold", colour="black",margin = margin(t = 15, b = 0)),
+    axis.title.y = element_text(size = 14,face = "bold", colour="black",margin = margin(r = 10)),
+    axis.text = element_text(size = 14,face = "bold", colour="black",margin = margin(t = 10, b = 10)),
+  )
+}
+
+weekly_small<-function(caption_align=1){
+  theme_minimal()+theme(
+    plot.margin = margin(.25, .75, .25, .75, "cm"),
+    legend.position = "bottom",
+    legend.margin=margin(c(0,0,0,0),unit="cm"),
+    legend.text = element_text(colour="black", size = 9),
+    plot.caption = element_text(size = 11, face = "italic",hjust=caption_align),
+    plot.title = element_text(size = 16,face = "bold"),
+    plot.subtitle = element_text(size = 14, face = "italic"),
+    panel.grid.minor = element_blank(),
+    text = element_text(size = 11,face = "bold"),
+    axis.title.x = element_text(size = 11,face = "bold", colour="black",margin = margin(t = 15, b = 0)),
+    axis.text = element_text(size = 11,face = "bold", colour="black",margin = margin(t = 10, b = 10)),
+  )
+}
+
+
+#define levels chart design function
+EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
+{
+  #send a data set and variable names
+  #testing
+    #data_sent<-daily_crude
+    #names<-"Europe.Brent.Spot.Price.FOB..Daily"
+    #name_labels<-"Brent"
+    #years<-5   
+    #break_set<-"12 months"
+    #title_sent<-"Benchmark Oil Prices"
+  if(grep("date",names(data_sent)))
+     names(data_sent)[grep("date",names(data_sent))]<-"Date"
+  rows_legend<-max(1,round(sum(nchar(names))/60))
+  data_sent<-filter(data_sent,Date>=max(Date)-years(years))
+  
+  df1<-melt(data_sent,id=c("Date"),measure.vars = names)
+  df1<-na.omit(df1)
+  lims<-c(max(df1$Date)-years(years),max(df1$Date)+months(1))
+  lims_y<-c(min(0,min(df1$value)-5),max(df1$value)+10)
+  
+  p<-ggplot(df1) +
+    geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.25) +
+    #geom_point(size=1) +
+    scale_colour_manual(NULL,values=colors_ua10(), labels=name_labels)+
+    scale_x_date(name=NULL,date_breaks = "1 year", date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
+    scale_y_continuous(expand = c(0, 0),limits=lims_y) +
+    guides(colour=guide_legend(nrow=rows_legend))+
+    labs(y=y_lab,x="Date",
+         title=title_sent,
+         caption="Data via EIA API")+
+    weekly_graphs()
+  p
+}
+```
+
+  <p style="text-align: center;">
+[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
+</p>
+
+
+```{r aeso_fwd_prices, echo = TRUE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE, fig.width=10, fig.pos="H"}
+paste(names(data))
+```
+
+
+### Feature Crude
+
+```{r feature_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+names<-c("Brent","WTI","WCS")
+paste(names(data))
+levels_chart(data=data,names,5,curr="USD")
+```

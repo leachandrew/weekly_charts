@@ -57,6 +57,7 @@ knitr::opts_chunk$set(echo=FALSE)
 
 ```{r CACHE, include=FALSE,cache=FALSE}
 
+KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
@@ -101,6 +102,7 @@ library(readxl)
 #library(plotly)
 library(ggrepel)
 library(ggthemes)
+library(cansim)
 #quick function to make time breaks on axes
 
 
@@ -208,8 +210,12 @@ read_chunk('BB_Pull.R') #can run this from any google drive folder in case you'r
 ```{r bb_prelims,cache=KEEP_BB_CACHE,warning=FALSE,echo=FALSE,include=FALSE}
   #print(getwd())
 <<prelims>>
+
+<<forwards_prelims>>
+
 #head(data.frame(x,y))
 ```
+
 ```{r eia_spot_prices, cache=KEEP_EIA_CACHE} 
 #don't need to cache this long-term - it's daily data
 #GET EIA NYMEX SPOTS 
@@ -330,25 +336,21 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r story_3, child = 'stories/climate_vs_security.Rmd'}
+```{r story_3, child = 'stories/yyc_netzero.Rmd'}
 ```
 
 
-```{r story_1, child = 'stories/tree_losses.Rmd'}
+
+```{r story_1, child = 'stories/kenney_oil_exp.Rmd'}
 ```
 
 
-```{r story_2, child = 'stories/renewables_good.Rmd'}
+```{r story_4, child = 'stories/andrew_ab_power.Rmd'}
 ```
 
 
-```{r child_4, child = 'stories/cali_renew.Rmd'}
+```{r story_2, child = 'stories/andrew_bitcoin.Rmd'}
 ```
-
-
-```{r child_5, child = 'stories/andrew_steo.Rmd'}
-```
-
 
 
 # Oil
@@ -414,6 +416,130 @@ diffs_chart(data=data,names,5,curr="USD")
 names<-c("MEH","WTI")
 diffs_chart(data=data,names,5,curr="USD")
 ```
+
+## Forward Curves {.tabset .tabset-fade}
+
+### WTI
+```{r wti_fwd, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+wti_data_retrieve<-forwards_data_pull("WTI")
+forwards_graphs(wti_data_retrieve[[1]],wti_data_retrieve[[2]],"WTI Forward Contract",single=0,relative_labels = 1,lag=1)
+```
+
+### Brent
+```{r brent_fwd, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
+brent_data_retrieve<-forwards_data_pull("Brent")
+forwards_graphs(brent_data_retrieve[[1]],brent_data_retrieve[[2]],"Brent Forward Contract",single=0,relative_labels = 1,lag=1)
+```
+
+## Canadian Crude Supply and Disposition {.tabset .tabset-fade}
+
+```{r CER_crude_by_rail, cache=KEEP_CER_CACHE,echo = FALSE, warning=FALSE, message=FALSE}
+#crude_by_rail_exports
+download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/canadian-crude-oil-exports-rail-monthly-data.xlsx", destfile="crude_by_rail.xlsx", mode = "wb")
+
+
+oil_by_rail<-read_excel("crude_by_rail.xlsx", sheet = NULL, range = NULL, col_names = TRUE,
+                        col_types = NULL, na = "", trim_ws = TRUE, skip = 7)
+oil_by_rail <- oil_by_rail %>% clean_names () %>% select(-1)
+
+#oil_by_rail <- xlsx::read.xlsx("cndncrdlxprtsrl-eng.xls",sheetName = "CrudeOilExportsByRail")
+oil_by_rail$mth_num<-match(oil_by_rail$month,month.name)
+oil_by_rail$day<-days_in_month(oil_by_rail$mth_num)
+oil_by_rail<- oil_by_rail %>% fill(year) %>% 
+  mutate(
+    date=ymd(paste(year,"-",mth_num,"-",day,sep = "")))
+
+rail_exports<-ggplot(oil_by_rail) +
+  geom_col(aes(date,volume_bbl_per_day/1000,fill="Crude by Rail Exports")) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_date(name=NULL,date_breaks="6 months",date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_fill_manual("",values = colors_ua10(),guide = "legend")+
+  weekly_small()+
+  labs(y="Export Volumes (1000 bbl/d)",x="Date",
+       title=paste("Canadian Oil Exports by Rail",sep=""),
+       caption="Source: CER Data.")
+
+```
+
+```{r cansim_crude, cache=KEEP_CANSIM_CACHE,echo = FALSE, warning=FALSE, message=FALSE}
+crude_disp_new <-get_cansim(25100063)%>% clean_names()%>% 
+  mutate(geo=as.factor(geo),
+         Date=ymd(paste(ref_date,"-01",sep="-"))
+  )%>%
+  group_by(geo,supply_and_disposition,units_of_measure) %>%
+  mutate(m12_avg=rollapplyr(value, 12, mean, partial=TRUE,align = c("right"))) %>% ungroup()
+  
+cdn_crude_exports<-crude_disp_new %>% filter(geo=='Canada',supply_and_disposition%in% c("Exports","Export to the United States"),
+                          uom=="Barrels")%>%
+  mutate(supply_and_disposition=factor(supply_and_disposition),
+         supply_and_disposition=fct_recode(supply_and_disposition,"Exports to the United States"="Export to the United States"),
+         supply_and_disposition=fct_recode(supply_and_disposition,"Total Exports"="Exports"),
+         supply_and_disposition=fct_relevel(supply_and_disposition,"Total Exports"))%>%
+ggplot(aes(group=supply_and_disposition,color=supply_and_disposition))+
+  geom_line(aes(Date,value/10^6/days_in_month(month(Date))))+
+  scale_colour_manual(NULL,values=colors_ua10())+
+    scale_x_date(date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0))+
+    scale_y_continuous(expand = c(0, 0)) +
+    guides(colour=guide_legend(nrow=1))+
+    labs(y="Crude oil exports (mmbbl/d)",x="",
+          #title="Canadian crude oil imports",
+         caption="Data via Statistics Canada: Table 25-10-0063-01  Supply and disposition of crude oil and equivalent")+
+    weekly_graphs()
+#exports
+
+cdn_crude_production<-crude_disp_new %>% filter(geo=='Canada',supply_and_disposition%in% c("Heavy crude oil","Light and medium crude oil",
+ "In-Situ crude bitumen production",
+ "Mined crude bitumen production") , uom=="Barrels")%>%
+ggplot(aes(group=supply_and_disposition,fill=supply_and_disposition))+
+  geom_area(aes(Date,value/10^6/days_in_month(month(Date))),position = "stack",color="black",size=0.5)+
+  scale_fill_manual(NULL,values=colors_ua10())+
+    scale_x_date(date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0))+
+    scale_y_continuous(expand = c(0, 0)) +
+    guides(fill=guide_legend(nrow=2))+
+    labs(y="Crude oil exports (mmbbl/d)",x="",
+         #title="Canadian crude oil imports",
+         caption="Data via Statistics Canada: Table 25-10-0063-01  Supply and disposition of crude oil and equivalent")+
+  weekly_graphs()
+
+cdn_crude_imports<-crude_disp_new %>% filter(geo=='Canada',supply_and_disposition%in% c("Imports"),
+                          uom=="Barrels")%>%
+  ggplot(aes(group=supply_and_disposition,color=supply_and_disposition))+
+  geom_line(aes(Date,value/10^3/days_in_month(month(Date))))+
+  scale_colour_manual(NULL,values=colors_ua10())+
+    scale_x_date(date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0))+
+    scale_y_continuous(expand = c(0, 0)) +
+    guides(colour="none")+
+    labs(y="Crude oil imports (kbbl/d)",x="",
+         #title="Canadian crude oil imports",
+         caption="Data via Statistics Canada: Table 25-10-0063-01  Supply and disposition of crude oil and equivalent")+
+    weekly_graphs()
+#cdn_crude_imports
+
+```
+
+
+### Crude Oil Production
+```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+cdn_crude_production
+```
+
+### Crude Oil Imports
+```{r cdn_imports_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+cdn_crude_imports
+```
+
+### Crude Oil Exports
+```{r cdn_exports_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+cdn_crude_exports
+```
+
+
+### Crude by Rail Exports
+```{r cbr_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+rail_exports
+```
+
+
 
 
 ## EIA Petroleum Status Report {.tabset .tabset-fade}
@@ -569,65 +695,6 @@ EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
 ```
-
-
-```{r forward_prelims_load}
-<<forwards_prelims>>
-```
-
-## Forward Curves {.tabset .tabset-fade}
-
-### WTI
-```{r wti_fwd, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
-wti_data_retrieve<-forwards_data_pull("WTI")
-forwards_graphs(wti_data_retrieve[[1]],wti_data_retrieve[[2]],"WTI Forward Contract",single=0,relative_labels = 1,lag=1)
-```
-
-### Brent
-```{r brent_fwd, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
-brent_data_retrieve<-forwards_data_pull("Brent")
-forwards_graphs(brent_data_retrieve[[1]],brent_data_retrieve[[2]],"Brent Forward Contract",single=0,relative_labels = 1,lag=1)
-```
-
-## Canadian Crude Exports {.tabset .tabset-fade}
-
-```{r CER_crude_by_rail, cache=KEEP_CER_CACHE,echo = FALSE, warning=FALSE, message=FALSE}
-#crude_by_rail_exports
-download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/crude-oil-petroleum-products/statistics/canadian-crude-oil-exports-rail-monthly-data.xlsx", destfile="crude_by_rail.xlsx", mode = "wb")
-
-
-oil_by_rail<-read_excel("crude_by_rail.xlsx", sheet = NULL, range = NULL, col_names = TRUE,
-                        col_types = NULL, na = "", trim_ws = TRUE, skip = 7)
-oil_by_rail <- oil_by_rail %>% clean_names () %>% select(-1)
-
-#oil_by_rail <- xlsx::read.xlsx("cndncrdlxprtsrl-eng.xls",sheetName = "CrudeOilExportsByRail")
-oil_by_rail$mth_num<-match(oil_by_rail$month,month.name)
-oil_by_rail$day<-days_in_month(oil_by_rail$mth_num)
-oil_by_rail<- oil_by_rail %>% fill(year) %>% 
-  mutate(
-    date=ymd(paste(year,"-",mth_num,"-",day,sep = "")))
-
-rail_exports<-ggplot(oil_by_rail) +
-  geom_col(aes(date,volume_bbl_per_day/1000,fill="Crude by Rail Exports")) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_x_date(name=NULL,date_breaks="6 months",date_labels =  "%b\n%Y",expand=c(0,0)) +
-  scale_fill_manual("",values = colors_ua10(),guide = "legend")+
-  weekly_small()+
-  labs(y="Export Volumes (1000 bbl/d)",x="Date",
-       title=paste("Canadian Oil Exports by Rail",sep=""),
-       caption="Source: CER Data.")
-
-```
-
-### Crude by Rail Exports
-```{r cbr_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-rail_exports
-```
-
-<!--
-### Crude Exports to the US
-![](../EIA_data_pulls/crude_by_proc_padd.png)
--->
 
 # Refined Products 
 

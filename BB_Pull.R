@@ -2,9 +2,6 @@
 #make sure the working directory is set here
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 old_wd<-getwd()
-
-## @knitr prelims
-
 library(tidyverse)
 library(grid)
 library(gridExtra)
@@ -17,6 +14,9 @@ library(ggpubr)
 library(ggthemes)
 library(janitor)
 library(readxl)
+
+## @knitr prelims
+
 bb_file<-"C:/Users/aleach/Google Drive/BB Stuff/Leach_BB_R.xlsx"
 nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 
@@ -1202,6 +1202,8 @@ cad_hedged_forwards_graphs<-function(){
   ggsave("p_cad.png",plot=p_cad, width=14, height=7)  
   ggsave("p_usd.png",plot=p_usd,width=14, height=7)  
 }
+
+
 ## @knitr hedged_forwards
 
 cad_hedged_forwards_graphs()
