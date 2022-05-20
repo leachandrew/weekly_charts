@@ -518,23 +518,23 @@ cdn_crude_imports<-crude_disp_new %>% filter(geo=='Canada',supply_and_dispositio
 ```
 
 
-### Crude Oil Production
+### Production
 ```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 cdn_crude_production
 ```
 
-### Crude Oil Imports
+### Imports
 ```{r cdn_imports_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 cdn_crude_imports
 ```
 
-### Crude Oil Exports
+### Exports
 ```{r cdn_exports_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 cdn_crude_exports
 ```
 
 
-### Crude by Rail Exports
+### Rail Exports
 ```{r cbr_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 rail_exports
 ```
