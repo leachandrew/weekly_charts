@@ -542,7 +542,7 @@ rail_exports
 
 
 
-## EIA Petroleum Status Report {.tabset .tabset-fade}
+## US Oil {.tabset .tabset-fade}
 
 ```{r wpsr_setup, cache=TRUE}
 #first, build a list of series names we want to access
@@ -663,14 +663,17 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 ```
 
 
-### Crude Oil Production
+### Production
 ```{r us_crude_prod, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
 EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
   theme(legend.position = "none")
 ```
 
-### Net Crude Oil Imports
+
+
+
+### Net Imports
 
 ```{r us_crude_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
@@ -679,7 +682,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 ```
 
 
-### Net Imports of Crude Oil and Products
+### Oil and Product Net Imports
 
 ```{r us_crude_net_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
@@ -688,7 +691,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
 ```
   
   
-### Crude Inventories
+### Inventories
 
 ```{r us_crude_inv, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
