@@ -60,7 +60,7 @@ knitr::opts_chunk$set(echo=FALSE)
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
-KEEP_EIA_CACHE<-TRUE
+KEEP_EIA_CACHE<-FALSE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
@@ -670,6 +670,60 @@ EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Tho
   theme(legend.position = "none")
 ```
 
+```{r dpr_data, echo = TRUE,message=FALSE,  include=FALSE, warning=FALSE,cache=KEEP_EIA_CACHE}
+dpr_file<-"https://www.eia.gov/petroleum/drilling/xls/dpr-data.xlsx"
+
+download.file(dpr_file,"dpr-data.xlsx",mode="wb")
+plays<-getSheetNames("dpr-data.xlsx")
+plays<-plays[plays!="RegionCounties"]
+wb <- loadWorkbook("dpr-data.xlsx")
+cnames<-c("Month","Rigcount",	"Oil_Production_per_rig",	"Oil_Legacy_prod_chg",	"Total_oil_prod","Gas_Production_per_rig",	"Gas_Legacy_prod_chg",	"Total_gas_prod")
+
+
+dpr_data<-data.frame()
+for(play in plays){
+  play_data <- read.xlsx(xlsxFile = "dpr-data.xlsx", sheet = play, startRow = 2,skipEmptyRows = TRUE,detectDates = TRUE)
+  names(play_data)<-cnames
+  play_data$play<-play
+  dpr_data<-rbind(dpr_data,play_data)
+}
+
+
+dpr_data<-melt(dpr_data,id=c("Month","Total_oil_prod","Total_gas_prod"),measure.vars = c("play"),value.name = "Play")
+dpr_data$variable<-NULL
+dpr_data<-dpr_data%>%na.omit()%>%
+  mutate(Play=gsub(" Region","",Play),
+         Play=factor(Play))
+```
+
+```{r dpr_graphs, message=FALSE, warning=FALSE,cache=KEEP_EIA_CACHE}
+
+lto_dpr<-ggplot(dpr_data,aes(Month,Total_oil_prod/1000,group = Play,fill=Play)) +
+  geom_area(position = "stack",color="black",size=0.5) +
+  #geom_point(size=1) +
+  #scale_color_viridis("",discrete=TRUE,option="D")+
+  #scale_fill_viridis("",discrete=TRUE,option="D")+   
+  scale_fill_manual("",values = colors_ua10(),guide = guide_legend(nrow=2,order=1))+
+  weekly_graphs()+
+  labs(y="Crude Oil Production by Play \n(Monthly, Thousands of Barrels per Day)",x="Week",
+       title=paste("US Production of Tight Oil",sep=""),
+              caption="Source: EIA Drilling Productivity Report.")
+gas_dpr<-ggplot(dpr_data,aes(Month,Total_gas_prod/10^6,group = Play,fill=Play)) +
+  geom_area(position = "stack",color="black",size=0.5) +
+  #geom_point(size=1) +
+  #scale_color_viridis("",discrete=TRUE,option="D")+
+  #scale_fill_viridis("",discrete=TRUE,option="D")+   
+  scale_fill_manual("",values = colors_ua10(),guide = guide_legend(nrow=2,order=1))+
+  weekly_graphs()+
+  labs(y="Shale and Tight Gas Production by Play \n(Monthly, Billion Cubic Feet per Day)",x="Week",
+       title=paste("US Production of Tight and Shale Gas",sep=""),
+       caption="Source: EIA Drilling Productivity Report.")
+```
+
+### LTO Production by Play
+```{r dpr_oil_play, echo = FALSE, warning=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
+lto_dpr
+```  
 
 
 
@@ -684,7 +738,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 
 ### Oil and Product Net Imports
 
-```{r us_crude_net_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r us_crude_net_imp, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -693,7 +747,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
   
 ### Inventories
 
-```{r us_crude_inv, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r us_crude_inv, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
@@ -912,7 +966,14 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 
 
 
-## EIA US Natural Gas Storage
+## US Natural Gas {.tabset .tabset-fade}
+
+### Shale Gas Production
+```{r dpr_gas_play, echo = FALSE, warning=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
+gas_dpr
+```  
+
+### Storage
 
 ```{r nat_gas_store, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
