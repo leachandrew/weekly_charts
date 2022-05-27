@@ -66,6 +66,7 @@ KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
 reset<-0
 if(reset==1){
+  KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
   KEEP_NRGSTREAM_CACHE<-FALSE
   KEEP_EIA_CACHE<-FALSE
@@ -336,20 +337,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r story_3, child = 'stories/yyc_netzero.Rmd'}
+```{r story_3, child = 'stories/turning_point.Rmd'}
 ```
 
-
-
-```{r story_1, child = 'stories/kenney_oil_exp.Rmd'}
+```{r story_2, child = 'stories/travers.Rmd'}
 ```
 
-
-```{r story_4, child = 'stories/andrew_ab_power.Rmd'}
-```
-
-
-```{r story_2, child = 'stories/andrew_bitcoin.Rmd'}
+```{r story_5, child = 'stories/plastics.Rmd'}
 ```
 
 
@@ -1363,10 +1357,21 @@ aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
 aeso_fwds
 ```
 
-#
 
-&nbsp;
-<hr />
-  <p style="text-align: center;"><a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by CABREE, Andrew Leach, Tim Weis, and our FES Grids and Storage Research Team. Thanks to NRGStream for data accesss!</a></p>
+# Previous Weeks' Charts
+
+#### [May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
+#### [May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
+#### [May 6, 2022](https://leachandrew.github.io/weekly_charts/weekly_5-6-22.html)
+#### [April 28, 2022](https://leachandrew.github.io/weekly_charts/weekly_4_28-22.html)
+
+
+# Contact Information
+
+  <p style="text-align: center;">
+    <p style="text-align: center;">
+[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
+</p>
+<a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by CABREE, Andrew Leach, Tim Weis, and our FES Grids and Storage Research Team. Thanks to NRGStream for data accesss!</a></p>
   <p style="text-align: center;">cabree@ualberta.ca</p>
   

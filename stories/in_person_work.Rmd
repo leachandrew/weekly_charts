@@ -1,0 +1,70 @@
+## The True Cost of In-person Work
+
+#### <font size="+2">[Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+With the start of the recent transition from remote (working from home) employment, many companies are making the [shift back to in-person work](https://globalnews.ca/news/8802626/return-to-work-canada-analysis-covid-19/).
+
+This transition is taking place simultaneously with [record-high inflation levels](https://www150.statcan.gc.ca/n1/daily-quotidien/220316/dq220316a-eng.htm), with many costs skyrocketing in price. One of these affected costs is transportation, and at the current point in time, a very relevant one is the price of gas.
+
+<center>
+
+<font size="3">
+
+![Man working, image courtesy of Stocksnap/Pixabay](https://cdn.pixabay.com/photo/2017/08/01/00/38/man-2562325_960_720.jpg){width=600px}
+
+<br>
+
+<font size="4">
+
+</center>
+
+It could be interesting to determine the effective pay cut that the average Canadian receives when transitioning back from working from home to working at an office or firm in person.
+
+Based on the following information based on Canadian workers:
+
+* Average [hourly part and full-time hourly wage](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410006401) of $30.03
+
+* Average [commute distance](https://www150.statcan.gc.ca/n1/daily-quotidien/190225/dq190225a-eng.htm) of 8.7 kilometres (costing $0.0327/km [[maintenance](https://ama.ab.ca/auto/buying-selling/driving-cost-calculator)] + $1.951/litre [[gas](https://www.caa.ca/gas-prices/), using about [10 litres/100km](https://en.wikipedia.org/wiki/Fuel_economy_in_automobiles)])
+
+* Average [commute time](https://www150.statcan.gc.ca/n1/daily-quotidien/190225/dq190225a-eng.htm) of 24 minutes (opportunity cost based on average hourly wage)
+
+* Average [time worked per week](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410004301) of 37.5 hours (divided by five days worked, 7.5 hours per day)
+
+<br>
+<center>
+```{r, echo = FALSE, message = FALSE, results = 'hide'}
+
+df <- data.frame(
+  group = c("% Average hourly pay maintained", "% Average hourly pay cut (from driving costs)"),
+  x = c(93.79, 6.21)
+  )
+head(df)
+
+library(ggplot2)
+bp<- ggplot(df, aes(y="", x=x, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("x", start=0) + scale_fill_brewer(palette="Blues") + theme_minimal() + ggtitle("Average Canadian Effective Hourly Wage (Working in-person) Visualized")
+pie
+
+```
+</center>
+<br>
+
+We can determine that the average hourly pay decrease is about 6.21% per day worked (and commuted) upon returning to in-person work.
+
+Next week, however, we are going to be covering the opposite end of this topic, and we will be looking at things such as:
+
+* [Automobile allowance rates](https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/benefits-allowances/automobile/automobile-motor-vehicle-allowances/automobile-allowance-rates.html) that help to ‘mitigate’ this pay decrease
+* People who commute to work, but not through driving
+* Increased electricity bills and other costs associated with working from home
+
+<br>
+<center>
+
+[Image credits](https://pixabay.com/photos/man-writing-laptop-computer-write-2562325/)
+
+[Found this interesting? Connect with me on Linkedin!](https://ca.linkedin.com/in/marc-vermette)
+
+<br>
+</center>

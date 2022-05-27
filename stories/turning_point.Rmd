@@ -1,0 +1,18 @@
+## Deloitte's Global Turning Point Report 
+
+#### <font size="+2"> Debosree Mukherjee
+
+The effects of climate change have already started taking place around the world. A recent Deloitte survey done in [23 countries with over 23,000 respondents](https://www.weforum.org/agenda/2022/05/one-more-reason-for-rapid-climate-action-economics/) discovered that more than half experienced climate-related extreme weather events recently. A new [report from the Deloitte Economics Institute](https://www2.deloitte.com/global/en/pages/about-deloitte/articles/global-turning-point.html) argues that climate inaction could lead to the global average temperature rising by 3°C by the end of the century, well-above the goals set out in the Paris Agreement, and predicts major economic costs from such an outcome. 
+
+Deloitte's analysis discusses two bookend scenarios 
+
+* Scenario A - allow global greenhouse gas emissions to rise.
+* Scenario B - decarbonize our economy by mid-century. 
+
+In scenario A, unchecked climate change could create US$178 trillion in global economic losses (in present value terms) by 2070. In 2070 alone, global GDP could be 7.6% lower compared to a baseline that does not account for climate change. Highest economic loss would be seen in the Asia Pacific region (US$96T), followed by Americas (US$36T), Europe (US$10T), and the rest of the world (US$40T). To put things in perspective, Europe alone could see a loss of 110 million jobs by 2070. 
+
+![](stories/scenario.png)
+
+In scenario B, Deloitte finds that rapid efforts could lead to achieving global net zero emissions by 2050, limiting global warming to close to 1.5°C. If this is achieved, the global economy could see a gain of US$43 trillion by 2070. The report finds that there will be a period when investments in decarbonization would create temporary losses until the economy reaches a turning point where more rapid GDP growth will take hold. Different regions will reach the turning point at varying speed. However, all regions are expected to reach it before 2070. These economic benefits could also continue to grow beyond the modeled years.
+
+Read the full report [here](https://www2.deloitte.com/global/en/pages/about-deloitte/articles/global-turning-point.html)
