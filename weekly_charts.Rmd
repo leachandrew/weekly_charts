@@ -347,6 +347,9 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 ```
 
 
+```{r story_4, child = 'stories/boom.Rmd'}
+```
+
 # Oil
 
 ## Weekly Crude Prices {.tabset .tabset-fade}
