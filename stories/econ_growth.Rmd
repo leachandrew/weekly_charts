@@ -1,0 +1,15 @@
+## Slow Q1 growth
+#### Keshinee Moonian
+
+<!-- <center>![](stories/sec_1.png)</center> -->
+<!-- <br> -->
+According to [a StatCan report this week](https://globalnews.ca/news/8881877/canada-gdp-first-quarter/), the Canadian economy grew at an annualized rate of 3.1% in the first quarter, down from 6.6% in the fourth quarter of 2021.
+
+The chief North American economist at Capital Economics, Paul Ashworth, says that this growth was considerably below consensus estimates, but did not differ greatly from the Bank of Canada’s April monetary policy report which predicted an annualized growth rate of 3.0%. This reduction is mainly because of a downward revision of January data, which now shows a 0.2 % month-over-month decline. Omicron-related restrictions appear to have had a more significant impact than expected.
+
+The real economy “remains on a strong footing”, and so the Bank of Canada continued with increases in its key interest rate by half a percentage point this week. 
+
+Data from Statistics Canada show that household spending rose 0.8% in the first quarter, while spending on durable goods rose 2.6%. Residential construction grew by 4.3%, business investment in non-residential structures and engineering structures gained 2.9% and 3.5% respectively, while investment in machinery and equipment rose 0.9%. Statistics Canada also said compensation of employees rose 3.8% on a nominal basis for the quarter, which - besides the third quarter of 2020 -  was apparently the largest quarterly increase since the second quarter of 1981. The Canadian economy has seen substantial wage growth, including in professional and personal services, trade, manufacturing, health care and social assistance, and construction industries.
+
+[Canada’s economy grew 3.1% in the first quarter, slower than expected](https://globalnews.ca/news/8881877/canada-gdp-first-quarter/)
+

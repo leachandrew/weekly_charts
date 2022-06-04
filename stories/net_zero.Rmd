@@ -1,0 +1,11 @@
+## Net-Zero Electricity in Alberta?
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+We hope you all take note of the upcoming release of [AESO’s ‘Net-Zero by 2035 Report’](https://www.aeso.ca/market/net-zero-emissions-pathways/), which will give Albertans a much closer look at what aggressive action on climate change means for electricity in the province.
+
+Adding context to this report are pending federal [net zero electricity regulations](https://www.canada.ca/en/environment-climate-change/services/canadian-environmental-protection-act-registry/achieving-net-zero-emissions-electricity-generation-discussion-paper.html) restricting the use of fossil-fueled electricity sources which make up a lot of Alberta's electricity supply.
+
+<center>![](stories/gen_fuel.png)</center>
+
+Reaching net zero electricity will be challenging and will require coordinated efforts between all levels of government. Constitutionally, provinces and territories have jurisdiction over electricity while the federal government has (notional) jurisdiction over extra-provincial trade including power transmission. And, it will also require a lot of attention to regional markets, in particular in Alberta and Saskatchewan.

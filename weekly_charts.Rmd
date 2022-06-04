@@ -21,6 +21,29 @@ knit: (function(input_file, encoding) {
   
 ---
 
+```{r CACHE, include=FALSE,cache=FALSE}
+
+KEEP_CANSIM_CACHE<-TRUE
+KEEP_AESO_CACHE<-TRUE
+KEEP_NRGSTREAM_CACHE<-TRUE
+KEEP_EIA_CACHE<-TRUE
+KEEP_BB_CACHE<-TRUE
+KEEP_CER_CACHE<-TRUE
+KEEP_KALIBRATE_CACHE<-TRUE
+reset<-0
+if(reset==1){
+  KEEP_CANSIM_CACHE<-FALSE
+  KEEP_AESO_CACHE<-FALSE
+  KEEP_NRGSTREAM_CACHE<-FALSE
+  KEEP_EIA_CACHE<-FALSE
+  KEEP_BB_CACHE<-FALSE
+  KEEP_CER_CACHE<-FALSE
+  KEEP_KALIBRATE_CACHE<-FALSE
+  }
+nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
+```
+
+
 ```{css, echo=FALSE}
 h1, h4 {
   text-align: center;
@@ -54,28 +77,6 @@ knitr::opts_chunk$set(echo=FALSE)
     color: white
 }
 </style>
-
-```{r CACHE, include=FALSE,cache=FALSE}
-
-KEEP_CANSIM_CACHE<-TRUE
-KEEP_AESO_CACHE<-TRUE
-KEEP_NRGSTREAM_CACHE<-TRUE
-KEEP_EIA_CACHE<-FALSE
-KEEP_BB_CACHE<-TRUE
-KEEP_CER_CACHE<-TRUE
-KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
-if(reset==1){
-  KEEP_CANSIM_CACHE<-FALSE
-  KEEP_AESO_CACHE<-FALSE
-  KEEP_NRGSTREAM_CACHE<-FALSE
-  KEEP_EIA_CACHE<-FALSE
-  KEEP_BB_CACHE<-FALSE
-  KEEP_CER_CACHE<-FALSE
-  KEEP_KALIBRATE_CACHE<-FALSE
-  }
-nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
-```
 
 
 ```{r basics, cache=FALSE,warning=FALSE,message=FALSE}
@@ -337,17 +338,17 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r story_3, child = 'stories/turning_point.Rmd'}
+```{r story_3, child = 'stories/net_zero.Rmd'}
 ```
 
-```{r story_2, child = 'stories/travers.Rmd'}
+```{r story_2, child = 'stories/net_zero_2.Rmd'}
 ```
 
-```{r story_5, child = 'stories/plastics.Rmd'}
+```{r story_5, child = 'stories/econ_growth.Rmd'}
 ```
 
 
-```{r story_4, child = 'stories/boom.Rmd'}
+```{r story_4, child = 'stories/SDG7.Rmd'}
 ```
 
 # Oil
@@ -811,7 +812,7 @@ ref_runs$m12_avg<-as.numeric(rollapply(ref_runs$Runs,52,mean,fill=NA,align = c("
 ref_runs<- ref_runs %>% group_by(Region) %>%
   mutate(m12_avg=rollapplyr(Runs, 52, mean, partial=TRUE,align = c("right")))
 
-lims=c(min(ref_runs$Date),max(ref_runs$Date)+months(3))
+lims=c(max(ref_runs$Date)-years(3),max(ref_runs$Date)+months(3))
 breaks<-seq.Date(min(ref_runs$Date), max(ref_runs$Date)+months(3), by="1 year")
 
 ref_run_graph<-ggplot(ref_runs) +

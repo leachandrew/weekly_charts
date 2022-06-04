@@ -1,0 +1,18 @@
+## Tracking SDG 7
+#### Debosree Mukherjee
+
+[Tracking SDG7: The Energy Progress Report 2022](https://iea.blob.core.windows.net/assets/c9f4b20c-ba06-4a89-b7c6-4fd8344fec23/TrackingSDG7TheEnergyProgressReport%2C2022.pdf), a joint report from IEA, IRENA, UN Statistics Division, The World Bank, and the WHO, tracks progress toward meeting one of 17 Sustainable Development Goals established by the UN General Assembly. SDG7 [aims to ensure affordable and clean energy for all by 2030](https://www.unep.org/explore-topics/sustainable-development-goals/why-do-sustainable-development-goals-matter/goal-7). According to the new report, the world is not on track to achieve this goal
+
+Primary indicators of global progress toward the SDG 7 targets are:
+
+* Access to Electricity: To meet the 2030 target, the average number of new connections needs to reach 100 million a year, including 80 million in Africa where the rate of new connections needs to triple. At the current rate, only 92% of the population will have access to electricity by 2030. 
+
+* Clean Cooking Solutions:  In 2020, 69% of global population had access to clean cooking fuels and technologies. Without a coordinated effort, 2.1 billion people globally will lack access to clean cooking in 2030 and continue to rely on uses of biomass, kerosene, or coal.
+
+* Renewable Energy: Renewable energy accounted for more than 80% of all new generating capacity added in 2020. To achieve net-zero emission by 2050, renewable shares need to exceed 30% of total final energy consumption by 2030. This requires policy support and mobilizing private capital in the least-developed and developing countries. 
+
+* Energy Efficiency: To reach the target of a 2.6% annual rate of improvement in primary energy intensity in 2010-2030, the average annual rate of improvement in energy intensity must exceed 3.2% between now and the end of the decade. 
+
+* International Public Financial Flows: International public financial flows to developing countries for clean energy fell to USD 10.9 billion in 2019, a drop of more than 50% from USD 24.7 billion in 2017. This needs to be increased significantly to realize both SDG 7 and SDG 13 (climate action).
+
+Read more of Tracking SDG 7 [here.](https://www.iea.org/reports/tracking-sdg7-the-energy-progress-report-2022)
