@@ -1,0 +1,16 @@
+## ST-98 is out!
+
+#### Erica Beattie
+
+The Alberta Energy Regular released their [annual energy outlook for 2022](https://static.aer.ca/prd/documents/sts/ST98/2022/ST982022_ExecutiveSummary.pdf) last week, and there shall be much rejoicing (at least among those who like energy charts and data).
+
+[The Edmonton Journal reports](https://edmontonjournal.com/opinion/columnists/varcoe-higher-prices-rising-output-alberta-energy-resource-production-to-top-163b-this-year/wcm/03f9ca22-2ee8-4e1d-a3be-e1d941857b2c?utm_medium=Social&utm_source=Twitter#Echobox=1654607139) that energy output in Alberta is on the rise.
+
+The AER forecasts that Alberta will see an increase in the production of most energy sources through 2031. Domestic hydrogen production in particular is expected to increase by over a million tonnes in the next decade with [several projects](https://www.alberta.ca/hydrogen-roadmap.aspx) announced this past year in Alberta.
+
+Due to increases in global energy demand and strong prices, AER also forecasts higher capital expenditures by the oil and gas industry.
+
+<center>
+![](stories/aer.png){width=900}
+
+</center>

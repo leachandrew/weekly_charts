@@ -1,0 +1,10 @@
+## New Energy Modelling Centre
+
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+The University of Victoria, Polytechnique Montreal, and the University of Calgary received an investment of $5 million from Natural Resources Canada and have formed a national energy modelling hub.  This will allow energy researchers to create models and simulations that can give them insights concerning energy sources 20 to 50 years in the future, and will influence policy decisions regarding the decarbonization of Canada. It's hoped that the hub will become the central institution for all energy modelling in Canada moving forward. Each university will be playing a specific role, with the University of Victoria leading the technical aspects, Polytechnique Montreal acting as the central administrative hub, and the University of Calgary addressing the economic and political analysis. Despite the key roles of these institutions however, the project is open source, allowing their work to be available to anyone in the field. This marks another step towards reaching [net zero emissions by 2050](https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/net-zero-emissions-2050.html) in Canada, by informing policymakers about the environmental and economic impacts of their decisions before they happen.
+
+[More details about the project can be found here](https://www.uvic.ca/news/topics/2022+energy-transition-madeleine-mcpherson+news)
+<!-- <br> -->
+
+

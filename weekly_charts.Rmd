@@ -338,17 +338,20 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r story_3, child = 'stories/net_zero.Rmd'}
+```{r 3, child = 'stories/nz_oilsands.Rmd'}
 ```
 
-```{r story_2, child = 'stories/net_zero_2.Rmd'}
+```{r , child = 'stories/ab_energy.Rmd'}
 ```
 
-```{r story_5, child = 'stories/econ_growth.Rmd'}
+```{r , child = 'stories/energy_week.Rmd'}
 ```
 
 
-```{r story_4, child = 'stories/SDG7.Rmd'}
+```{r , child = 'stories/india.Rmd'}
+```
+
+```{r , child = 'stories/EMHUVic.Rmd'}
 ```
 
 # Oil
@@ -1364,6 +1367,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
 #### [May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
 #### [May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
 #### [May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
