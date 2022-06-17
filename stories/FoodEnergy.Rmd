@@ -1,0 +1,19 @@
+## Rising food prices
+
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+A report from the [IEA](https://www.iea.org/commentaries/how-the-energy-crisis-is-exacerbating-the-food-crisis) this week explains how the global energy crisis is a major factor in the rising price of food. 
+
+Russia's invasion of Ukraine is one of the major causes of said energy crisis, driving up the costs of energy and having spillover effects on food supply chains primarily through three channels: disruption of food exports, increasing natural gas prices, and increased fertilizer prices.
+
+The disruption and subsequent reduction of food exports from some of the [biggest global producers of wheat](https://worldpopulationreview.com/country-rankings/wheat-production-by-country) is a direct driver of rising food prices. Other factors are more subtle, but have equally profound effects. 
+
+Fertilizer is a major input cost ([roughly 15%](https://www.fb.org/market-intel/too-many-to-count-factors-driving-fertilizer-prices-higher-and-higher)) in the production of food. Natural gas accounts for 70%-80% of the cost of production of ammonia, the major precursor to nitrogen and urea fertilizers. As such, rising prices of energy in tandem with trade restrictions have nearly tripled fertilizer prices. 
+
+Furthermore, increased energy prices increase transportation costs which are in turn reflected in consumer prices. 
+
+Ultimately, these three factors in combination have lead to increasing food prices, a key driver of [inflation](https://www.statcan.gc.ca/en/subjects-start/prices_and_price_indexes/consumer_price_indexes) in Canada.
+
+For further reading on the topic, see the [article](https://www.iea.org/commentaries/how-the-energy-crisis-is-exacerbating-the-food-crisis)
+<!-- <br> -->
+
+

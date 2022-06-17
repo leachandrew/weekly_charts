@@ -1,0 +1,18 @@
+## Energy Data Alert!
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+
+The [Canadian Centre for Energy Information (CCEI)](https://energy-information.canada.ca/en), by [Statistics Canada](https://www.statcan.gc.ca/en/about/statcan?MM=1), has undergone a recent update to its [Energy and the Environment (E&E)](https://energy-information.canada.ca/en/subjects/energy-and-environment) section.
+
+This update enhances the already extensive portal that allows users to browse 750+ resources on many energy and environment topics.
+
+The new E&E section features [environmental indicators](https://energy-information.canada.ca/en/indicators), [numerous publications](https://energy-information.canada.ca/en/subjects/energy-and-environment?utm_source=stakeholders&utm_medium=email&utm_campaign=statcan_ccei-ccie_2022&utm_content=2022-06-13#pubs-panel) and [data sets](https://energy-information.canada.ca/en/subjects/energy-and-environment?utm_source=stakeholders&utm_medium=email&utm_campaign=statcan_ccei-ccie_2022&utm_content=2022-06-13#datasets-panel), and includes information on each data set.
+
+The [interactive charts and tables](https://energy-information.canada.ca/en/subjects/energy-and-environment?utm_source=stakeholders&utm_medium=email&utm_campaign=statcan_ccei-ccie_2022&utm_content=2022-06-13#tab-overview) allow users to visualise the data on demand. 
+
+<center>
+![Image showing example usage of the interactive chart, credits to the CCEI](https://i.imgur.com/pTiZwa9.png){width=600px}
+</center>
+
+This update is part of the CCEI’s initiative to continuously improve the accessibility of energy related data within Canada.Check it out [here](https://energy-information.canada.ca/en/subjects/energy-and-environment).

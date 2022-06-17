@@ -91,14 +91,15 @@ diffs_chart<-function(data_sent=data,names=c("LLS","Maya"),years=10,curr="USD",b
   #data_sent<-data
   data_sent<-data_sent%>% filter(Date>=max(Date)-years(years))%>%
     select(Date,USDCAD,all_of(names))%>%mutate(diff=eval(parse(text =names[1]))-eval(parse(text =names[2])))%>%
-    pivot_longer(-c(Date,USDCAD,diff),names_to="variable")
+    pivot_longer(-c(Date,USDCAD,diff),names_to="variable")%>%
+    mutate(variable=factor(variable,levels = names))
   if(curr=="USD")
     p <- ggplot(data_sent) +
     geom_ribbon(aes(Date,ymax=diff,ymin=0,fill="Differential"),size=1.25)+
     geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
     #geom_area(data=filter(df1,variable=="diff"),aes(Date,value,group = variable,fill=variable))+
     #geom_point(size=1) +
-    scale_colour_manual(NULL,values=colors_ua10(), labels=names)+
+    scale_colour_manual(NULL,values=colors_ua10())+
     scale_fill_manual(NULL,values=colors_ua10(),labels=paste(names[1],"Premium or\nDiscount to",names[2],sep=" "))+
     scale_x_date(name=NULL, date_labels =  "%b\n%Y",expand=c(0,0),breaks=pretty_breaks()) +
     scale_y_continuous(expand = c(0, 0)) +

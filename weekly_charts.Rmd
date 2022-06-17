@@ -29,7 +29,7 @@ KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
-KEEP_KALIBRATE_CACHE<-TRUE
+KEEP_KALIBRATE_CACHE<-FALSE
 reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
@@ -338,21 +338,20 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r 3, child = 'stories/nz_oilsands.Rmd'}
+```{r , child = 'stories/BP2.Rmd'}
 ```
 
-```{r , child = 'stories/ab_energy.Rmd'}
-```
-
-```{r , child = 'stories/energy_week.Rmd'}
+```{r , child = 'stories/BP1.Rmd'}
 ```
 
 
-```{r , child = 'stories/india.Rmd'}
+```{r , child = 'stories/CCEI.Rmd'}
 ```
 
-```{r , child = 'stories/EMHUVic.Rmd'}
+
+```{r , child = 'stories/FoodEnergy.Rmd'}
 ```
+
 
 # Oil
 
@@ -1367,6 +1366,8 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+
+#### [June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
 #### [June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
 #### [May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
 #### [May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
