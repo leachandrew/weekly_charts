@@ -371,6 +371,15 @@ names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitume
 levels_chart(data=data,names,5,curr="USD")
 ```
 
+### Alberta Crude (Short)
+
+```{r alberta_crude_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
+levels_chart(data=data,names,1,curr="USD")
+```
+
+
+
 ### US Crude
 
 
@@ -393,20 +402,27 @@ levels_chart(data=data,names,5,curr="USD")
 ## Oil Price Differentials {.tabset .tabset-fade}
 
 ### Brent-WTI
-```{r diffs_1, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r diffs_brent, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Brent","WTI")
 diffs_chart(data=data,names,5,curr="USD")
 ```
 
 ### WTI-WCS
-```{r diffs_2, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r diffs_wcs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("WTI","WCS")
 diffs_chart(data=data,names,5,curr="USD")
 ```
 
 
+### WTI-WCS (Short)
+```{r diffs_wcs_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+names<-c("WTI","WCS")
+diffs_chart(data=data,names,1,curr="USD")
+```
+
+
 ### Maya-WCS
-```{r diffs_3, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r diffs_maya, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Maya","WCS")
 diffs_chart(data=data,names,5,curr="USD")
 ```
