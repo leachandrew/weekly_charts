@@ -29,7 +29,7 @@ KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
-KEEP_KALIBRATE_CACHE<-FALSE
+KEEP_KALIBRATE_CACHE<-TRUE
 reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
@@ -338,20 +338,14 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/BP2.Rmd'}
+```{r , child = 'stories/F1.Rmd'}
 ```
 
-```{r , child = 'stories/BP1.Rmd'}
+```{r , child = 'stories/PowerHeatwave.Rmd'}
 ```
 
-
-```{r , child = 'stories/CCEI.Rmd'}
+```{r , child = 'stories/narwhal_cnrl.Rmd'}
 ```
-
-
-```{r , child = 'stories/FoodEnergy.Rmd'}
-```
-
 
 # Oil
 
@@ -772,6 +766,7 @@ EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10
 # Refined Products 
 
 ## Canadian Gasoline Prices  {.tabset .tabset-fade}
+
 ```{r kalibrate, echo = FALSE, warning=FALSE, message=FALSE,cache=KEEP_KALIBRATE_CACHE}
 read_chunk('../kalibrate/kalibrate_gas_data.R')
 ```
@@ -786,25 +781,36 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 # run the gas map and charts chunks and use the variables it creates
 <<gas_weekly>>
 <<gas_map>>
+<<bitcoin>>
 ```
-
 
 ### Map
 
 ```{r map, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+load("weekly_map.gph")
 weekly_map
 ```
 
 ### Historic Gasoline Prices
 
 ```{r gas_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+load("gas_plot.gph")
 weekly_gas_plot
 ```
+
+### Historic Gasoline Prices in BTC
+
+```{r gas_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+load("btc_plot.gph")
+btc_gas_plot
+```
+
 
 ### Historic Diesel Prices
 
 ```{r diesel_histories, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 #grid.arrange(daily_prices)
+load("diesel_plot.gph")
 weekly_diesel_plot
 ```
 
@@ -907,6 +913,13 @@ west_runs
 ### Feature Gas
 
 ```{r feature_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+names<-c("AECO NIT","Henry Hub","Dawn","Station 2")
+levels_chart_gas(data=data,names,5,"USD",break_set="6 months")
+```
+
+### Feature Gas (Short)
+
+```{r feature_gas_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("AECO NIT","Henry Hub","Dawn","Station 2")
 levels_chart_gas(data=data,names,1,"USD",break_set="2 months")
 ```
@@ -1382,7 +1395,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
-
+#### [June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
 #### [June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
 #### [June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
 #### [May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)

@@ -1,0 +1,16 @@
+## Power Demand Soars in Texas
+
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+<!-- <br> -->
+
+Heat waves have become more [intense, common, and last longer](https://www.epa.gov/climate-indicators/climate-change-indicators-heat-waves#:~:text=Heat%20waves%20are%20occurring%20more,2010s%20(see%20Figure%201).) in major cities across the United States. As a result, AC usage has risen in conjunction, and this has posed an issue for power grids across these cities. In Texas, a single megawatt can power 1000 homes under regular conditions, but in a heatwave, the number drops to a mere 200. As such, with temperatures reaching highs of 38°C, the demand for power has skyrocketed recently in Texas, shattering previous records for power use with a peak demand of [74,917 MW](https://www.ercot.com/gridinfo/load/load_hist). In spite of this, The Electric Reliability Council of Texas (ERCOT) maintains they have the resources to meet any foreseeable demand.
+
+
+<center>
+![Texas Yearly Peak Power Demand, Credit: Reuters](https://graphics.reuters.com/TEXAS-POWER/ERCOT/gkplgzymyvb/chart.png)
+</center>
+
+Simalarly, [provinces in China](https://news.rthk.hk/rthk/en/component/k2/1654223-20220622.htm) have been reporting similar upticks in power use due to heatwaves, and with summer just beginning, we will likely see this demand grow further there too. And, with China's reliance on coal power, more power demand means more emissions which, in turn, creates more climate-changing emissions.
+
+More information and statistics can be found on the [ERCOT website.](https://www.ercot.com/about)
