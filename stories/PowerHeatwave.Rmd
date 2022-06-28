@@ -11,6 +11,6 @@ Heat waves have become more [intense, common, and last longer](https://www.epa.g
 ![Texas Yearly Peak Power Demand, Credit: Reuters](https://graphics.reuters.com/TEXAS-POWER/ERCOT/gkplgzymyvb/chart.png)
 </center>
 
-Simalarly, [provinces in China](https://news.rthk.hk/rthk/en/component/k2/1654223-20220622.htm) have been reporting similar upticks in power use due to heatwaves, and with summer just beginning, we will likely see this demand grow further there too. And, with China's reliance on coal power, more power demand means more emissions which, in turn, creates more climate-changing emissions.
+Similarly, [provinces in China](https://news.rthk.hk/rthk/en/component/k2/1654223-20220622.htm) have been reporting similar upticks in power use due to heatwaves, and with summer just beginning, we will likely see this demand grow further there too. And, with China's reliance on coal power, more power demand means more emissions which, in turn, creates more climate-changing emissions.
 
 More information and statistics can be found on the [ERCOT website.](https://www.ercot.com/about)
