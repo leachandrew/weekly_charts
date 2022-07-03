@@ -1,0 +1,20 @@
+## How Russia's War Raises UK Gas Prices
+
+#### [Keshinee Moonian](https://www.linkedin.com/in/keshineemoonian/)
+
+<!-- <center>![](stories/sec_1.png)</center> -->
+<!-- <br> -->
+An EnergyNow [explainer](https://energynow.ca/2022/06/explainer-why-russia-drives-european-and-british-gas-prices/) published last week looks at how Russia can affect natural gas prices even in countries that use little Russian gas. Spoiler: it's supply and demand.
+
+For years, Europe has been relying on Russia for almost half of its natural gas, most of which is delivered through pipelines through Belarus, Poland, Germany and Ukraine. In fact, “a network of interconnecting pipelines links Europe’s internal gas markets.”
+
+A supply cut to countries who usually get a lot of gas from Russia creates a “knock-on effect” on the gas which is available for other countries, and this causes a more significant gas price volatility throughout Europe than we would expect.
+
+While the Russian state-owned gas monopoly Gazprom said it would fulfill all its long-term contracts, Moscow has already cut gas flows to Bulgaria, Poland, Finland, Danish supplier Orsted, Dutch firm Gasterra, and Shell (for its German contracts) this year. This happened after these companies rejected a Kremlin demand to switch to payments in rubles, although Russia said those supply reductions were needed because of the delayed return of equipment that had been sent for repair. Other companies such as Germany’s Uniper and RWE and Italy’s Eni, who agreed to make payments under Russia’s new scheme, continued to receive gas with no volume reductions.
+
+“Gas flows from Russia through the three main pipelines have plummeted 26% in June compared with May to an average of around 1,771 gigawatt hours a day (GWh/d)”, according to data from Refinitiv Eikon cited in the [EnergyNow explainer](https://energynow.ca/2022/06/explainer-why-russia-drives-european-and-british-gas-prices/). 
+
+In an attempt to look for alternatives to Russian fossil fuels, the European Union has started to increase the imports of global liquefied natural gas (LNG). Refinitiv data cited by EnergyNow showed that LNG imports rose almost 60% in the first five months of 2022 compared with 2021 levels, reflecting more capacity in the US and high prices in Europe attracting more cargoes. However, Europe has limited capacity to receive LNG and supply concerns deepened further after an explosion last week which delayed shipments to the continent.
+
+[Explainer: Why Russia Drives European and British Gas Prices](https://energynow.ca/2022/06/explainer-why-russia-drives-european-and-british-gas-prices/)
+

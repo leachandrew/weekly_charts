@@ -1,0 +1,20 @@
+## Lobbying for Methane Regulation Loopholes
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+Canadian investigative journalist, [Carl Meyer](https://twitter.com/ottawacarl) documented the impact of lobbying on a major energy policy decision in Alberta in a long article at The Narwhal we briefly mentioned last week.
+
+Meyer [finds](https://twitter.com/ottawacarl/status/1539603534953562113?cxt=HHwWgoC-vcDQ4t0qAAAA) that rather than imposing [strict limits on the pollution created](https://www.canada.ca/en/environment-climate-change/news/2022/03/government-of-canada-launches-next-steps-towards-deeper-methane-reductions-from-oil-and-gas.html) by the industry’s older, less efficient, and higher-emitting facilities, companies lobbied successfully to be allowed to meet emission targets based on the average emission levels of a select group of their facilities.
+
+This change allows companies to more easily meet methane emissions targets for heavy oil prooduction.
+
+The regulations were finalized in this way despite officials saying that it would likely encourage companies and individuals to “game” the system, making compliance harder to enforce.
+
+<center>
+
+![Canadian Oil Production Visualized, [graph credits to Carl Meyer](https://twitter.com/ottawacarl/status/1539610256162127872)](https://pbs.twimg.com/media/FV3KLB2WYAYCk0n?format=jpg){width=600px}
+</center>
+
+According to Meyer, the loophole was proposed by Canadian Natural Resources, a company that operates a majority (54%) of oil production within Canada and has consistently had among the highest [methane gas venting rates](https://www.edf.org/climate/methane-crucial-opportunity-climate-fight) in the industry.
+
+[Original Article](https://thenarwhal.ca/alberta-climate-methane-cnrl/)
