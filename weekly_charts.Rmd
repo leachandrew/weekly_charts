@@ -112,12 +112,9 @@ library(cansim)
 data_fetch<-function(key=KEY, cat=241335){
   #key<-KEY
   #cat=476336
-  url <-ifelse(cat==999999999,
-          paste("https://api.eia.gov/v1/category/?api_key=",
-                      key, "&out=xml", sep="" ),
-          paste("https://api.eia.gov/v1/category/?api_key=",
+  url <-paste("https://api.eia.gov/category/?api_key=",
                       key, "&category_id=", cat, "&out=xml", sep="" )
-  )
+  
   
   #http://api.eia.gov/category/?api_key=YOUR_API_KEY_HERE&category_id=476336
   #url <- paste("https://api.eia.gov/category?api_key=",
@@ -342,19 +339,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/TMX.Rmd'}
+```{r , child = 'stories/EV_demand.Rmd'}
 ```
 
-```{r , child = 'stories/G7.Rmd'}
+```{r , child = 'stories/EU_gas.Rmd'}
 ```
 
-```{r , child = 'stories/Russia.Rmd'}
-```
-
-```{r , child = 'stories/loopholes.Rmd'}
-```
-
-```{r , child = 'stories/ShellPh.Rmd'}
+```{r , child = 'stories/nuclear_net_zero.Rmd'}
 ```
 
 # Oil
@@ -562,7 +553,7 @@ rail_exports
 
 
 
-## US Oil (missing this week due to EIA API changes) {.tabset .tabset-fade}
+## US Oil {.tabset .tabset-fade}
 
 ```{r wpsr_setup, cache=TRUE,eval=FALSE}
 #first, build a list of series names we want to access
@@ -1012,7 +1003,7 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 gas_dpr
 ```  
 
-### Storage (missing this week due to EIA API changes)
+### Storage
 
 ```{r nat_gas_store,eval=FALSE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
@@ -1405,6 +1396,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
 #### [June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
 #### [June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
 #### [June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)

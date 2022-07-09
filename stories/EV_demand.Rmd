@@ -1,0 +1,12 @@
+## EV demand surge!
+#### Erica Beattie
+
+Drastic increases in the price of gas and changes in commuting schedules have led to a rise in electric vehicle sales in Canada.
+
+An [article in the Financial Post](https://financialpost.com/commodities/energy/electric-vehicles/im-just-trying-to-get-as-many-as-i-can-surging-gas-prices-stoke-demand-for-electric-cars) this week describes how electric vehicles accounted for 8.2% of new vehicle registrations in the first quarter of 2022. This number is up from 5% in the previous quarter. Changes to climate policies, limitations on fossil fuels, and sanctions against Russia are all key factors for this rise in demand for EVs. We still have a long way to go, however. Canada's federal government has pledged to require a minimum of 20% of all new passenger vehicles to be zero-emission by 2026, which is not so far away.
+
+<center>
+![Zero emission new vehicle registrations](https://smartcdn.gprod.postmedia.digital/financialpost/wp-content/uploads/2022/07/zero-emission-vehicles.jpeg?quality=90&strip=all&w=1128&type=webp){width=575}
+</center>
+
+It is looking more and more possible that electric vehicles could become the norm. Some obstacles remaining are a lack of [charging stations](https://www.roadto2035.ca/dashboard), and the high price of the vehicle itself, especially with rising interest rates.

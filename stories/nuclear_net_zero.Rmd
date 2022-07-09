@@ -1,0 +1,27 @@
+## Is nuclear key to net zero?
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+Is nuclear energy a net zero shortcut? The answer may be less certain than you think.
+
+The IEA foresees a key role for nuclear power production, arguing that it will need to double by 2050 on an optimal trajectory to meet emissions targets.
+
+<center>
+![ ](https://i.imgur.com/ZIWVWW8.png){width=600px}
+</center>
+
+According to the IEA, this increase in nuclear power would help to improve energy security by reducing governments dependence on imported fossil fuels.
+
+However, at this time, [almost 65%](https://www.energy.gov/ne/articles/whats-lifespan-nuclear-reactor-much-longer-you-might-think) of nuclear plants in the world are over 30 years old, with many nearing the end of their initially designated operation licences.
+
+On top of this, out of all the reactors that have begun construction since 2017, [nearly 90%](https://www.cnbc.com/2022/07/01/russian-and-chinese-designs-in-87percent-of-new-nuclear-reactors-iea-chief.html) are either of Russian or Chinese design.
+
+New nuclear plants have also been met with [delays](https://www.reuters.com/business/energy/edf-hopeful-end-sight-long-delayed-budget-busting-nuclear-plant-2022-06-16/), [cost over-runs](https://news.mit.edu/2020/reasons-nuclear-overruns-1118), and [negative public opinion](https://www.cnn.com/2021/12/19/energy/nuclear-energy-climate-cmd-intl/index.html).
+
+<center>
+![ ](https://i.imgur.com/QBWxSod.png){width=600px}
+</center>
+
+“A new era for nuclear power is by no means guaranteed [and governments need to] ensure safe and sustainable operation of nuclear plants for years to come [...] The nuclear industry must quickly address the issues of cost overruns and project delays.” - [Fatih Birol](https://www.iea.org/contributors/dr-fatih-birol), IEA Executive Director
+
+[Original Article](https://www.euronews.com/green/2022/06/30/global-nuclear-power-capacity-must-double-by-2050-if-we-want-to-ensure-energy-security)
