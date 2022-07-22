@@ -1,0 +1,11 @@
+## Nuclear's small footprint
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+A recent study published in the *Journal of Cleaner Production* detailed research into the environmental impact of nuclear energy. The study uses [total material requirement](https://www.un.org/esa/sustdev/sdissues/consumption/cpp1224m9.htm#:~:text=(b)%20Brief%20Definition%3A%20Total,processing%20waste%20and%20soil%20erosion.) (TMR) which is a comprehensive life cycle assessment to measure the impact of nuclear power. The study found that mining, uranium processing and plant construction had the biggest share in the total environmental impact of nuclear power. Moreover, the study found that mining method played a large role on total resources expended, but a small role in greenhouse gas emissions. Ultimately, researchers calculated that the TMR coefficient of nuclear power generation is 20% that of coal, 23% that of oil, and 35% of natural gas. This implies that nuclear power has a TMR comparable to renewable energy such as solar.
+
+![Comparison of Nuclear TMR to other sources](https://ars.els-cdn.com/content/image/1-s2.0-S095965262202131X-gr12_lrg.jpg)
+
+Nuclear energy has long been touted as [low carbon energy](https://www.iea.org/reports/nuclear-power-in-a-clean-energy-system) source, but this study lends further credence to its use, showcasing that it is a low resource energy source as well. Nuclear energy remains an important consideration in energy generation moving forward. 
+
+For in depth reading on the methods and data used please refer to the [original study](https://www.sciencedirect.com/science/article/pii/S095965262202131X)
+

@@ -1,0 +1,16 @@
+## more copper
+#### Debosree Mukherjee
+
+[A new S&P Global study](https://press.spglobal.com/2022-07-14-Looming-Copper-Supply-Shortfalls-Present-a-Challenge-to-Achieving-Net-Zero-2050-Goals,-S-P-Global-Study-Finds) shows that as the world is moving away from fossil fuels and towards an all-electric future, a copper supply shortage may hamper the 2050 net-zero emissions target. According to the study, [the energy transition will be much more dependent on copper](https://www.cnbc.com/2022/07/14/copper-is-key-to-electric-vehicles-wind-and-solar-power-were-short-supply.html) than the current energy system.
+
+* An EV needs 2.5 times more copper than an internal combustion engine vehicle
+* Solar and wind power needs two and five times more copper per MW of installed capacity than power generated using gas or coal
+* Copper-made cables, transistors, and inverters are crucial in the infrastructure that transports renewable energy 
+
+Forecasts show that the demand for copper will almost double to 50 million metric tons by 2035. The surge of demand will be caused by fast and large-scale developments of EV, charging infrastructure, solar and wind power, and batteries. The demand is predicted to be over 53 million metric tons in 2050. That’s more than all the copper consumed in the world between 1900 and 2021! 
+
+This will cause serious shortfalls since building new copper mines or expanding existing ones will take more time than available to increase supply and meet the demand surge. According to an IEA estimate, a new mine takes 16 years to be developed. Recycling and increasing capacity utilization of an existing mine are the main sources of additional supply.
+
+According to the Rocky Road Scenario, at the current recycling and capacity utilization rate, annual supply shortfalls will be almost 10 million metric tons in 2035.
+
+In the High Ambition Scenario, all-time high recycling levels and aggressive growth in mine capacity utilization will still see the deficit will be 1.6 million metric tons in 2035, higher than any previous shortage.

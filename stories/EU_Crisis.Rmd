@@ -1,0 +1,10 @@
+## Europe's Energy Crisis
+#### Debosree Mukherjee
+
+Europe is currently facing a record-setting heat wave that is straining its energy infrastructure. During soaring demand, [power plants are operating at below capacity](https://www.bloomberg.com/news/articles/2022-07-19/europe-s-heat-wave-starts-to-hamstring-its-energy-infrastructure#xj4y7vzkg) and pipelines are reducing flows to cope with the scorching heat. [Nuclear power plants have lowered outputs](https://www.ft.com/content/a3386b16-ea9f-413b-bfb6-b1f4284d45a9) due to the river water becoming too hot. Wind power and hydropower generation have also decreased because of the heat wave. With Russia reducing natural gas supply, the continent was already bracing for an energy crisis this winter. The heat wave accelerated this as demand for electricity to cool homes and offices soared. [IEA has urged European nations to take urgent and coordinated action](https://www.iea.org/commentaries/coordinated-actions-across-europe-are-essential-to-prevent-a-major-gas-crunch-here-are-5-immediate-measures) to prevent a disastrous natural gas supply crunch this winter if Russia cuts off supply. Five immediate measures have been proposed
+
+*	Introduce auction platforms to incentivize EU industrial gas users to reduce demand
+*	Minimize gas use in the power sector
+*	Enhance coordination among gas and electricity operators across Europe 
+*	Bring down household electricity demand by setting cooling standards and controls
+*	Harmonize emergency planning across the EU at the national and European level

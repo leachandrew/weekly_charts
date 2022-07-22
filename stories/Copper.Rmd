@@ -1,0 +1,11 @@
+## Copper and...
+#### Erica Beattie
+
+Earlier this week, energy analyst Daniel Yergin told [Financial Post](https://financialpost.com/commodities/the-basic-metal-of-electrification-why-famed-energy-analyst-daniel-yergin-sees-a-copper-crunch-looming) that copper is the "basic metal of electrification". The [International Energy Agency](https://www.iea.org/reports/the-role-of-critical-minerals-in-clean-energy-transitions/executive-summary) has more information on minerals and clean energy, as well as some great visuals proving Yergin's point.
+
+![Minerals used in clean energy production](https://pbs.twimg.com/media/E388kJ7UcAEPPe8?format=jpg&name=large){width=800}
+
+
+![Minerals used in EVs VS conventional cars](https://orders.newsfilecorp.com/files/4488/95955_87164078048c0a4b_002full.jpg){width=450}
+
+Unfortunately, Yergin also predicted a supply-demand gap in this critical mineral that could potentially impede global plans to achieve net zero emissions by 2050, along with other clean energy goals. Yergin and his team of analysts compiled a [122-page report](https://cdn.ihsmarkit.com/www/prot/pdf/0219/FULL%20Report_IHS%20Markit%20-%20EFI%20Report.pdf) that goes into the details of the copper market dynamics, geopolitics, and economic ramifications for copper in our society. Newer clean energy technologies, such as solar panels, wind turbines, EVs along with their batteries and charging stations, require a substantial amount of copper. The report estimates that copper supply will have to double by 2035 in order to meet this demand. This means going from the current 25 million metric tonnes per year to 50 million metric tonnes in the next 13 years. The dilemma will be how can we find a way to achieve this great increase in the supply of copper in such a short amount of time in order to satisfy the new demand? Yergin's report elaborates on this and outlines two possible scenarios he and his team have come up with. 

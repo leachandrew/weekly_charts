@@ -1,0 +1,33 @@
+## Cleaner Nova Scotia Power
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+
+In 2019, Nova Scotia's power generation grid relied primarily (over 50%) on coal.
+
+Later, in late 2021, the province passed the [Environmental Goals and Climate Change Reduction Act](https://novascotia.ca/news/release/?id=20211027005). The new act created many climate change goals spanning the following decade, one of which being a gradual withdrawal from coal-based electricity, which was to be fully eliminated by 2030.
+
+<center>
+
+![Electricity generation by source in Nova Scotia, 2019. Credits to [CER](https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/index.html)](https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/images/ns-fg02.png)
+</center>
+
+Yesterday, Prime Minister Justin Trudeau announced up to $255 million in new funding for clean energy in Nova Scotia.
+
+$125 million of the funds are to be used for new wind power projects, with the remaining $130 million going to four battery sites located across the province.
+
+The Canadian east coast has [some of the highest average wind speeds in Canada](https://www.cbc.ca/news/canada/nova-scotia/offshore-wind-farms-nova-scotia-exporting-region-1.6263164).
+
+<center>
+
+![Canada Wind Speed at 100-Meter above Surface Level. Credits to [NREL](https://www.nrel.gov/gis/wind.html).](https://www.nrel.gov/gis/assets/images/wtk-100m-can-2017-01.jpg){width=600px}
+</center>
+
+This new development is expected to provide [clean energy, jobs, and other benefits](https://pm.gc.ca/en/news/news-releases/2022/07/21/delivering-clean-air-and-good-jobs-nova-scotia) to both residents and local Indigenous communities.
+
+"This is an investment we're making in the future of Nova Scotia, by recognizing the work that has been done but needs to continue to be done on greening the grid here," said Prime Minister Trudeau.
+
+<center>
+
+[Original Article](https://www.cbc.ca/news/politics/pm-clean-energy-nova-scotia-announcement-1.6527350)
+

@@ -1,0 +1,21 @@
+## Oil and gas GHG cap
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+
+The federal government released more details on its planned oil and gas emissions cap. Ottawa proposed two designs to meet their goal of decreasing emissions in the oil and gas industry by 42% by 2030:
+
+* The first option is a cap-and-trade system, where emission allowances would be auctioned and/or distributed to emitting facilities. This would allow trades to be made between lower and higher emitting facilities. The overall allowance would decrease over time, enforcing the gradual decline in the emission cap.
+
+* The second option is to, through cooperation between Federal and Provincial Governments, increase the cost of emissions to oil and gas facilities. This would encourage the facilities to consider alternatives when it comes to production of oil and gas products.
+
+<center>
+![Oil and gas sector greenhouse gas emissions, Canada, 1990 to 2020. Credits to Canada.ca](https://www.canada.ca/content/canadasite/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions/_jcr_content/par/mwstabbed_interface_/summary-details1/mwsaccordion_html_76/accPar/mwsadaptiveimage/image.img.png/1649272982561.png)
+</center>
+
+
+“The cap will focus on emissions and will not be a cap on oil and gas production,” said Canadian Environment Minister Steven Guilbeault, "It will maximize opportunities to invest in decarbonizing the sector while accounting for evolving energy security considerations."
+
+The government is currently taking feedback from the industry, with plans to unveil the final design of the emissions cuts in early 2023.
+
+[Original Article](https://www.bloomberg.com/news/articles/2022-07-18/canada-lays-out-options-for-oil-and-gas-industry-emissions-cap)
