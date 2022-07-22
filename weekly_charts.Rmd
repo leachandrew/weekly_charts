@@ -1418,7 +1418,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
-#### [July 9, 2022](https://leachandrew.github.io/weekly_charts/2022_07_09.html)
+#### [July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
 #### [July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
 #### [June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
 #### [June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
