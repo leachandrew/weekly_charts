@@ -1,0 +1,31 @@
+## Energy Independance on PEI
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+PEI sources [approximately 60%](www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/provincial-territorial-energy-profiles-prince-edward-island.html) of its electricity from New Brunswick, primarily via an underwater cable.
+
+Summerside is a city of 16,000 on Prince Edward Island. For decades, they've relied on this imported electricity.
+
+<center>
+![](https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/images/pe-fg01.png) ![](https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/provincial-territorial-energy-profiles/images/pe-fg02.png)
+
+Electricity generation by source in PEI. A total of 0.65 TW.h of electricity was generated in 2019 (left) and end-use energy demand in PEI by sector (right). Total end-use energy demand was 25.6 PJ in 2018.
+</center>
+
+<br>
+However, PEI has abundant renewable energy available, primarily from wind and solar.A new project in Summerside is healping wean the island off imported electricity.
+
+<center>
+
+![The 'Summerside Sunbank' under construction. Image credits to Volatus Aerospace.](https://globalnews.ca/wp-content/uploads/2022/07/DJI_0704_W.jpg)
+
+</center>
+
+The 'Summerside Sunbank,' shown above, is expected to supply 25% of the city's electricity demand upon completion in late 2022.
+
+“When residents can see where the money has gone, it gives you a better social licence to continue to build.” says the mayor. “A municipality is no different than any other business. If you’re not moving ahead, you’re moving back.”
+
+<br>
+<center>
+
+Graphs from [CER](https://www.cer-rec.gc.ca/en/data-analysis/canada-energy-future/index.html). [Original Article](https://globalnews.ca/news/9016831/summerside-pei-energy-revolution-canada/)

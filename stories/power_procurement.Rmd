@@ -1,0 +1,18 @@
+## Impact of Company Procurement on Power Systems
+#### Erica Beattie
+
+More and more companies are setting clean electricity goals. An [IEA  article](https://www.iea.org/articles/methodology-to-assess-the-system-value-of-different-corporate-procurement-strategies-in-developing-economies) explains various methods to assess the system value of different company procurement strategies in developing economies, and its impact on power systems. 
+
+A key component according to the article is the time it takes for a company to procure clean power. Some recommendations for efficient corporate procurement outlined in the article were the following:
+
+- Establish streamlined and effective processes for companies wanting to obtain clean energy to gain access to the grid for new generators and meet other requirements
+
+- Banking and wheeling arrangements with longer periods of energy balancing should recognize any costs imposed on the rest of the system, then account for these costs accordingly
+
+- Make sure that tariff and wheeling arrangements reward flexible resources that provide higher system value
+
+- Establish clear policies for how all system costs will be covered by consumers to maximize long-term certainty for developers
+
+The article went on to explain a few options available to companies for procuring clean energy, along with their advantages and disadvantages. Behind-the-meter generation, common in Alberta, is recognized for ease of demonstrating incremental impacts and for high availability, although it is not the most simple procurement strategy. Power purchase agreements (PPA) may make it more difficult to show that new green power is additional to what would have otherwise been generated, and may be challenging due to the complex financial conditions involved. Energy attribute certificates, for example the RECs commonly used in the US, face some of the same additionality concerns, but are simpler and more attainable than a full PPA.
+
+Barriers still stand in the way of the procurement of clean energy for many companies. This article provides some great insight for companies looking to make an energy transition and establish a greener procurement strategy.

@@ -1,0 +1,7 @@
+## Air travel numbers
+#### [Andrew Leach](https://www.linkedin.com/in/leach-econ/)
+
+I took a quick look at air travel security data this week after a conversation with a friend, and I thought you might be interested in the results. According to [CATSA data](https://www.catsa-acsta.gc.ca/en/screened-passenger-data), air travel is still way down compared to the same week in the year before the COVID-19 pandemic. So, what's causing the travel delays we're all seeing? It's not because more people are travelling than were doing so before the pandemic. But, if you're looking for reasons, start with the fact that air travel volumes have more than tripled since February.
+
+<center>
+![](stories/catsa_data.jpg)

@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, 'index.html)'), output_format = "all")})
   
 ---
 
@@ -339,36 +339,17 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/Crypto.Rmd'}
+```{r , child = 'stories/catsa.Rmd'}
 ```
 
-```{r , child = 'stories/NS_Power.Rmd'}
+```{r , child = 'stories/PEI.Rmd'}
 ```
 
-```{r , child = 'stories/oil_cap.Rmd'}
+```{r , child = 'stories/south_asia.Rmd'}
 ```
 
-```{r , child = 'stories/EU_Crisis.Rmd'}
+```{r , child = 'stories/power_procurement.Rmd'}
 ```
-
-# Last Week's Stories {.tabset .tabset-fade}
-
-
-```{r , child = 'stories/copper.Rmd'}
-```
-
-```{r , child = 'stories/copper_2.Rmd'}
-```
-
-```{r , child = 'stories/inflation.Rmd'}
-```
-
-```{r , child = 'stories/irving.Rmd'}
-```
-
-```{r , child = 'stories/NuclearLowEnergy.Rmd'}
-```
-
 
 # Oil
 
@@ -1382,7 +1363,7 @@ dates<-c(today_date,today_date-years(1),today_date-years(2),today_date-years(3),
 dates<-c(today_date,today_date-years(1))
 dates<-c(today_date)
 
-aeso_fwds<-ggplot(subset(df1,Trade_Date %in% dates)) +
+aeso_fwds<-ggplot(df1 %>% filter(Trade_Date %in% dates, Inst_Date<=Trade_Date+years(3))) +
   geom_line(data=subset(df1,Trade_Date %in% dates & Type=="OFF_PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
   geom_line(data=subset(df1,Trade_Date %in% dates & Type=="FLAT"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
   geom_line(data=subset(df1,Trade_Date %in% dates & Type=="PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
@@ -1418,6 +1399,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
 #### [July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
 #### [July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
 #### [June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
