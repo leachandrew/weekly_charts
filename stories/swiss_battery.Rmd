@@ -1,0 +1,13 @@
+## The Giant Swiss Water Battery
+#### Debosree Mukherjee
+
+Nant de Drance, a “water battery” located in Switzerland began its operations in July and has [an energy storage capacity equivalent to 400,000 electric car batteries](https://www.cnn.com/2022/08/01/world/water-battery-switzerland-renewable-energy-climate-scn-hnk-spc-intl/index.html). It is a giant pumped storage hydroelectric facility and is expected to play a big role in Europe's transition to renewable energy. 
+
+Wind and solar power create inconsistent power supply. Variable-speed pump turbine-powered water batteries such as Nant de Drance can stabilize the electricity grid. The plant has reversible turbines and can quickly go from storing to providing electricity. 
+
+![https://www.reuters.com/business/sustainable-business/switzerlands-new-energy-asset-hydro-plant-with-capacity-charge-400000-car-2022-08-05/](https://www.reuters.com/resizer/MOmy1dckiBfjAaBapwl3u0Q2_YU=/1200x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/JBQUQ5B4FRPMFPRIN2TLPIQYRI.jpg)
+Image via [Reuters](https://www.reuters.com/business/sustainable-business/switzerlands-new-energy-asset-hydro-plant-with-capacity-charge-400000-car-2022-08-05/). 
+
+The cost to develop this plant was $2 billion and it took 14 years to complete. 17 kilometers of subterranean tunnels were excavated through the Alps. It has six turbines that are stored 600 meters below ground in a giant cavern. Two existing water reservoirs were re-purposed for this project, and they now hold more water than 6,500 Olympic-sized swimming pools! The plant can store 20 million kWh of potential energy, enough to power 900,000 homes. 
+
+Europe is hoping to become the first climate-neutral continent and aims for 45% of its total electricity supply to come from renewable sources by 2030.  High-capacity storage facilities like Nant de Drance are essential to meet this goal.
