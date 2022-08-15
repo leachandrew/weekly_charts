@@ -216,7 +216,7 @@ read_chunk('BB_Pull.R') #can run this from any google drive folder in case you'r
 ```
 
 
-```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=TRUE} 
+```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=TRUE,eval=FALSE} 
 #don't need to cache this long-term - it's daily data
 #GET EIA NYMEX SPOTS 
 subs<-data_fetch(KEY,cat=241335)
@@ -339,13 +339,16 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/swiss_battery.Rmd'}
+```{r , child = 'stories/rystad.Rmd'}
 ```
 
-```{r , child = 'stories/oilsands_ghgs.Rmd'}
+```{r , child = 'stories/ChicagoSolar.Rmd'}
 ```
 
-```{r , child = 'stories/offshore_wind.Rmd'}
+```{r , child = 'stories/four_day.Rmd'}
+```
+
+```{r , child = 'stories/Ford.Rmd'}
 ```
 
 # Oil
@@ -555,7 +558,7 @@ rail_exports
 
 ## US Oil {.tabset .tabset-fade}
 
-```{r wpsr_setup, cache=TRUE,eval=TRUE}
+```{r wpsr_setup, cache=TRUE,eval=TRUE,eval=FALSE}
 #first, build a list of series names we want to access
 #get the information from the EIA weekly supply API
 cat_store <- list()
@@ -675,7 +678,7 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 
 
 ### Production
-```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=FALSE}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
 EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -740,7 +743,7 @@ lto_dpr
 
 ### Net Imports
 
-```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
       title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -749,7 +752,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 
 ### Oil and Product Net Imports
 
-```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
+```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -758,7 +761,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
   
 ### Inventories
 
-```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
+```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
@@ -1005,7 +1008,7 @@ gas_dpr
 
 ### Storage
 
-```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H"}
+```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
 ```
 
@@ -1396,6 +1399,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
 #### [July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
 #### [July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
 #### [July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
