@@ -1,0 +1,23 @@
+## EIA bullish on renewables
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+Renewable electricity generation has been steadily growing over the past few years. In 2020, renewable electricity accounted for 20% of total US generation, and in 2021 it accounted for 21%. This trend has continued for 2022, with hydropower, wind and solar generation making up 22% of the total. Growth is expected to skyrocket in coming years however, with approved projects beginning construction. 
+
+![Data source: U.S. Energy Information Administration, Short-Term Energy Outlook (STEO)
+](https://www.eia.gov/todayinenergy/images/2022.08.16/main.svg)
+
+This prediction is taken from the EIA's Short Term Energy Outlook report, which covered 11 electricity markets. Analysis noted how environmental factors (such as drought-constrained hydropower) limited generation. Despite these limitations, overall generation still increased, a promising sign for future years, when some of these environmental factors may not have such deleterious effects.
+
+The report also analyzes how each region has grown their renewable generation. Texas's ERCOT is particularly noteworthy -- in 2013, they were at a below average 10%, and have since jumped to a significantly above average 32% in 2022. With growing concerns about the power grid in Texas, this is promising news. 
+
+![Data source: U.S. Energy Information Administration, Short-Term Energy Outlook (STEO)
+](https://www.eia.gov/todayinenergy/images/2022.08.16/chart2.svg)
+
+The EIA predicts that, in 2023, renewables will grow to 24% of total generation as coal and other fossil fuel plants are retired in favor of more sustainable ones. You can read the full STEO report [here](https://www.eia.gov/outlooks/steo/). 
+
+As you'll read in Marc's article this week, with the IAA in place, these numbers may need a substantial update!
+
+<!-- <br> -->
+
+
+

@@ -1,0 +1,21 @@
+## The Renewable Acceleration Act?
+#### Marc Vermette
+
+On August 17, US President Joe Biden signed the [Inflation Reduction Act (IRA) of 2022](https://www.congress.gov/bill/117th-congress/house-bill/5376/text) into law.
+
+This act includes the largest climate/energy spending package in U.S. history. Of the $600 billion in spending, over 60% is dedicated to supporting renewable energy and climate resilience.
+
+The IRA is expected to contribute to a nationwide reduction of carbon emissions by roughly 40% in 2030.
+
+It is estimated that the IRA will lead to the installation of 950 million solar panels, 120,000 wind turbines, and 2,300 grid-scale battery plants.
+
+The policy package is also aimed at creating energy savings for Americans.
+
+7.5 million more families are expected to be able install solar in their homes with the new 30% tax credit, which could save families approximately $9,000 over the life of a system (at least $300 per year).
+
+![Historical capacity additions and projections under the Act, in GW.
+Image: Princeton](https://l0dl1j3lc42iebd82042pgl2-wpengine.netdna-ssl.com/wp-content/uploads/sites/2/2022/08/REPEAT.jpg)
+
+As a result of the new IRA, researchers noted in the [REPEAT](https://repeatproject.org/about) project find that solar deployment may accelerate from rates of 10 GW of capacity added per year in 2020 to nearly five times as much by 2024, adding a massive 49 GW of utility-scale solar each year. The researchers also noted that solar deployment may be well over 100 GW per year by 2030.
+
+[Original article](https://pv-magazine-usa.com/2022/08/16/the-largest-climate-and-energy-package-in-u-s-history-becomes-law/)
