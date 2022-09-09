@@ -1,0 +1,8 @@
+## Japan's Power Shift
+#### Erica Beattie
+
+Japan has recently announced that the country will be pivoting back to nuclear power following the Fukushima disaster, and the IEA welcomes their plan. The prime minister [announced this big shift](https://www.cnbc.com/2022/08/24/japan-just-signaled-a-big-shift-in-its-post-fukushima-future.html) late in August, stating that they would restart more idled nuclear plants and discover the possibility of developing next-gen reactors. Some reasoning for this change is the uncertainty in today's energy market given the situation with Russia and Ukraine. Many big importers, such as Japan, are reconsidering their energy supply strategies and seeking out more security of supply.
+
+In the [original article](https://www.cnbc.com/2022/08/26/japan-is-pivoting-to-more-nuclear-power-the-iea-says-its-good-news.html), the director of the IEA's office for energy markets and security believes that this change will be beneficial in terms of both energy supply security and climate change mitigation given the high amounts of fossil fuels Japan has been burning. 
+
+On the other hand, the refocusing to nuclear is not favoured by all. There are safety concerns among the population, as well as financial concerns given the high cost and complexity of nuclear power.

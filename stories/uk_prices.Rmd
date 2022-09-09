@@ -1,0 +1,15 @@
+## UK Energy Prices
+
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+To [limit the impact of high natural gas costs on electricity](https://www.gov.uk/government/news/biggest-renewables-auction-accelerates-move-away-from-fossil-fuels), PM Liz Truss says that the UK is looking at a way of fixing prices for renewable and nuclear power generators using a bid system.
+
+“Renewable and nuclear generators will move onto contracts for difference to end the situation where electricity prices are set by the marginal price of gas,” said Truss, “This will mean generators are receiving a fair price, reflecting their cost of production.”
+
+“If properly structured and priced, [this system] will add visibility to future revenue streams for renewable and nuclear operators where investors are currently unable to give credit for exceptionally high forward prices,” John Musk, an analyst at RBC Capital Markets, said.
+
+Truss has previously expressed that the core of the government’s energy strategy revolves around delivering “clean, cheap power for billpayers as fast as possible”, said Dan McGrail, CEO of [RenewableUK](https://www.renewableuk.com). “We’re [...] working closely with [...] our member companies on proposals to break the link between the [...] cost of gas and the price of electricity.”
+
+Hard to manage prices if you're not talking about one of supply or demand though...
+
+[Original Article](https://www.bloomberg.com/news/articles/2022-09-08/uk-plans-shift-in-renewables-pricing-to-help-combat-gas-costs?leadSource=uverify%20wall)

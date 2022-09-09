@@ -1,0 +1,9 @@
+## Solar Shipments Soar!
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+The annual photovoltaic module shipments report this week revealed that 2021 saw a record breaking number of solar panel shipments in the United States. Shipments include exports of, imports of and domestically produced and shipped solar panels. In 2021, 80% of the shipments were imports, of those imports, most were from Asia. These shipments will allow US solar capacity to rise from a peak of 21.8 million kW to a peak of 28.8 million kW. This increase of 7 million kW is mainly driven by the continued demand for solar energy in the United States, as well as the world. In 2021, the top 5 states for solar panel shipments were California, Texas, Florida, Georgia and Illinois respectively. These 5 states combined account for a staggering 46% of all US solar shipments.
+
+<center>
+![Source: Annual Solar Photovoltaic Module Shipments Report](https://www.eia.gov/todayinenergy/images/2022.09.01/main.svg)
+</center>
+For a more in depth read, check out the report [here](https://www.eia.gov/renewable/annual/solar_photo/)

@@ -1,0 +1,17 @@
+## Barriers to Geothermal
+
+####[Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+The [Biden administration hopes to cut the costs of geothermal energy](https://thehill.com/policy/energy-environment/3634606-biden-administration-aims-to-make-geothermal-energy-widespread/) generation in the US by 90% by 2035.
+
+“The United States has a vast, geothermal energy resource lying right beneath our feet, and this program will make it economical to bring that power to American households and businesses,” Energy Secretary Jennifer Granholm said.
+
+![Levelized cost of energy based on different studies. Sources: IRENA 2020, Lazard, IAEA.](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/3-Learning-curves-for-electricity-prices.png/1920px-3-Learning-curves-for-electricity-prices.png)
+
+Costs of geothermal generators are heavily weighted toward early startup expenses, rather than fuel to keep them running or regular maintenance expenses.
+
+Part of the issue starts with the fact that a [well must first be drilled](https://esmap.org/sites/default/files/esmap-files/Flovenz%20Day%201%20-WB-2-phases-final.pdf), an expensive process, only after which resource analysis and research of the well is done with no 100% guarantee that the well will be viable for a geothermal generator.
+
+The initial cost for the well and power plants currently sits at around $2500/kW in the US, and up to double this for smaller plants. However, the operating costs range from about 0.01 to 0.03, which is similar to that of natural gas.
+
+[Original Article](https://www.energy.gov/eere/geothermal/geothermal-faqs#cost_to_develop_geothermal_power_plant)

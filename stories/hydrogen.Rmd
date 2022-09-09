@@ -1,0 +1,7 @@
+## Hydrogen From Air
+#### [Debosree Mukherjee](https://www.linkedin.com/in/debosree-mukherjee/)
+
+Researchers in Australia have created a prototype that produces hydrogen fuel with greater than 99% purity directly from moisture in the air. It can work in air that is as dry as 4% relative humidity. Hydrogen is a zero-carbon fuel that when consumed in a fuel cell, produces only water. Pure hydrogen does not exist in nature on its own.  Large-scale production using traditional methods require extracting it from freshwater and normally involves fossil fuels. Due to limited supply of drinking water, it is challenging to produce hydrogen using current methods. 
+[This new device can be powered by solar or wind energy and produce hydrogen from air.](https://www.theguardian.com/environment/2022/sep/07/out-of-thin-air-new-solar-powered-invention-creates-hydrogen-fuel-from-the-atmosphere) It would allow hydrogen to be produced without carbon emissions even in regions with freshwater scarcity. In a monitored trial, a prototype produced hydrogen for more than 12 consecutive days. One of the prototypes ran by itself for eight months. It produces up to 93 litres of hydrogen a square metre an hour. Ten square meters of the unit can power a whole house. Hydrogen fuel has the potential to replace diesel and could be useful to bring down emissions in the transportation industry. 
+
+We'll wait to see information on costs...

@@ -339,14 +339,21 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/ira.Rmd'}
+```{r , child = 'stories/uk_prices.Rmd'}
 ```
 
-```{r , child = 'stories/eurosolar.Rmd'}
+```{r , child = 'stories/hydrogen.Rmd'}
 ```
 
-```{r , child = 'stories/22renewable.Rmd'}
+```{r , child = 'stories/Japan_shift.Rmd'}
 ```
+
+```{r , child = 'stories/nunatsiavut.Rmd'}
+```
+
+```{r , child = 'stories/solarshipments.Rmd'}
+```
+
 
 # Oil
 
@@ -1396,6 +1403,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
 #### [August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
 #### [August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
 #### [July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
