@@ -111,7 +111,7 @@ library(cansim)
 #get multiple series listing from the EIA API
 data_fetch<-function(key=KEY, cat=241335){
   #key<-KEY
-  #cat=476336
+  #cat=235081
   url <-paste("https://api.eia.gov/category/?api_key=",
                       key, "&category_id=", cat, "&out=xml", sep="" )
   
@@ -339,19 +339,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/uk_prices.Rmd'}
+```{r , child = 'stories/record_prices.Rmd'}
 ```
 
-```{r , child = 'stories/hydrogen.Rmd'}
+```{r , child = 'stories/true_costs.Rmd'}
 ```
 
-```{r , child = 'stories/Japan_shift.Rmd'}
-```
-
-```{r , child = 'stories/nunatsiavut.Rmd'}
-```
-
-```{r , child = 'stories/solarshipments.Rmd'}
+```{r , child = 'stories/crude_imports.Rmd'}
 ```
 
 
@@ -562,7 +556,7 @@ rail_exports
 
 ## US Oil {.tabset .tabset-fade}
 
-```{r wpsr_setup, cache=TRUE,eval=TRUE,eval=TRUE}
+```{r wpsr_setup, cache=TRUE,eval=TRUE}
 #first, build a list of series names we want to access
 #get the information from the EIA weekly supply API
 cat_store <- list()
@@ -1268,8 +1262,6 @@ g_legend<-function(a.gplot){
   legend <- tmp$grobs[[leg]]
   return(legend)}
 
-
-
 mylegend<-g_legend(top_panel)
 
 ```
@@ -1347,6 +1339,8 @@ new_forwards<-function(){
   peak_forwards<-proc_forwards(paste(nrg_folder,"peak_forwards.csv",sep="/"),"PEAK")
   ext_peak_forwards<-proc_forwards(paste(nrg_folder,"ext_peak_forwards.csv",sep="/"),"EXT_PEAK")
   off_peaks<-proc_forwards(paste(nrg_folder,"off_peak_forwards.csv",sep="/"),"OFF_PEAK")
+  #rro<-proc_forwards(paste(nrg_folder,"rro_forwards.csv",sep="/"),"RRO")
+  
   #stack new ones
   new_forwards<-rbind(forwards,peak_forwards,ext_peak_forwards,off_peaks)
   new_forwards<-arrange(new_forwards,Trade_Date,Inst_Date,Type)
@@ -1403,6 +1397,8 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
+#### [September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
 #### [August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
 #### [August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
 #### [August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)

@@ -1,0 +1,11 @@
+## Expensive AESO Power
+
+#### [Andrew Leach](https://www.linkedin.com/in/leach-econ/)
+
+It was a high-priced week for Alberta electricity and, on Wednesday, the average price for the 24 hour day topped $760/MWh. 
+
+![Source: AESO](aeso_spikes.png)
+And, while much of this Summer and Fall has seen higher prices than we've seen in a long while, this week as a whole is looking to be exceptional.
+
+![Source: AESO](docs/index_files/figure-html/aeso_prices_plot-1.png)
+And, there's more bad news to come for power consumers. As of this writing, Alberta's regulated rate option for October, the default power price for those not on a contract, looks set to clock in at close to $200/MWh (20 cents per kWh), the highest prices so far this year.

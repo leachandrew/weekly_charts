@@ -1,0 +1,23 @@
+## The True Cost of Clean Energy?
+
+#### [Marc Vermette](https://ca.linkedin.com/in/marc-vermette)
+
+As we transition to cleaner energy sources, a common perspective is that environmental progress is expensive. [A new report](https://www.cell.com/joule/fulltext/S2542-4351(22)00410-X) claims that these views are pessimistic and wrong.
+
+The report looks at historic prices for renewables and fossil fuels and then bases its findings on models of how they are likely to change in the future.
+
+The data used for fossil fuels goes back 100 years and shows that, after accounting for inflation and market volatility, the price hasn't decreased as many may believe.
+
+<br>
+<center>
+![](https://cdn.pixabay.com/photo/2021/01/09/20/14/solar-5903373_960_720.jpg){width=600px}
+</center>
+<br>
+
+The costs of solar and wind power, on the other hand, have fallen dramatically, at a rate of nearly 10% a year.
+
+The lead author of the report, [Dr Rupert Way](https://www.inet.ox.ac.uk/people/rupert-way/), says, "our latest research shows scaling-up key green technologies will continue to drive their costs down, and the faster we go, the more we will save." 
+
+In terms of new energy projects, wind and solar are already the least expensive options available, but the question remains, how can we store power and balance the grid when changes in the weather, the time of day, or seasonal changes lead to decreases in renewable output?
+
+[Original article](https://www.bbc.com/news/science-environment-62892013)

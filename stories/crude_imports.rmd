@@ -1,0 +1,16 @@
+## Who is importing Saudi crude?
+
+#### [Andrew Leach](https://www.linkedin.com/in/leach-econ/)
+
+I poked my head back into the Twitter machine today to see that political figures in Canada were once again talking about crude oil imports, and raising the possibility of a crude oil import ban on certain, overseas countries with lamentable human rights records. So, I thought it was worth revisiting, courtesy of the [Canadian Energy Regulator](https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/market-snapshots/2022/market-snapshot-crude-oil-imports-declined-in-2021-while-refined-petroleum-product-imports-rose-modestly.html), the supply and disposition of Canadian crude oil imports.
+
+![Source: CER](cdn_imports.png)
+
+Canadian crude oil imports have been on a downward trend, thanks mostly to more capacity on the Enbridge mainline into Sarnia and through to Montreal. But, the sources of the crude we import have changed dramatically too. Since the US lifted its crude oil export ban, and coincident with their rapid increase in domestic production, the US has taken over about 2/3 of our import market share.
+
+![Source: CER](cdn_imports_prov.png)
+
+And, if you're interested in Saudi Arabian crude oil specifically (I'm looking at you, Pierre Poilievre), there's only one refinery that's been running Saudi crude at all in the last few years, and that the Irving Refinery in Saint John. And, even their slate has changed, to include less Saudi crude than used to be the case. 
+
+But, I guess someone has to keep watch on what goes through the refinery gate.
+
