@@ -1,0 +1,13 @@
+## RBC on Net-Zero Power
+#### Erica Beattie
+
+
+Canada is expecting a 50% surge in electricity consumption over the next decade, but according to [RBC's new report](https://thoughtleadership.rbc.com/the-price-of-power-how-to-cut-canadas-net-zero-electricity-bill/), the country is unlikely to meet this challenge alongside its commitment to net zero electricity by 2035.
+
+The situation is most dire in Ontario, the country's (other?) economic engine, which could be facing energy shortages as soon as 2026. Ontario, like other provinces later on, will have to make tough, expensive decisions regarding energy sources.
+
+![Ontario Demand](https://thoughtleadership.rbc.com/wp-content/uploads/03-Higher-demand-means-rising-costs-for-additional-energy.png)
+
+Economist Colin Guldimann states in the report that it is not enough for Canada to merely keep up -- "it needs to accelerate the expansion of its electricity system or risk falling behind in a renewed Net Zero grid race." Russia's invasion of Ukraine has many other countries reconsidering their energy sources, making it an opportune time for Canada to step up in the global market.
+
+The report by RBC goes on to list various options for Canada to address demand, as well as the pros and cons to each. One major challenge it describes is the trade-off between cheap versus reliable clean energy. An [article by Bloomberg](https://www.bloomberg.com/news/articles/2022-09-20/rbc-says-canada-s-economic-engine-may-soon-face-energy-shortages?leadSource=uverify%20wall) summarizes the short and long term outlooks of the conclusions provided by RBC.
