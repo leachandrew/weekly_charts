@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, '2022-09-30.html'), output_format = "all")})
   
 ---
 
@@ -1614,6 +1614,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
 #### [September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
 #### [September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
 #### [August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
