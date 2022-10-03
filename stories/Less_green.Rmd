@@ -1,0 +1,22 @@
+## (Less than) Green Energy?
+
+#### Marc Vermette
+
+
+[Drax](https://www.drax.com/about-us/), a company that has received £6bn GBP ($9.2bn CAD) in renewable energy subsidies from UK taxpayers, is cutting down important forests in Canada.
+
+The company runs the UK’s largest power station. It burns millions of tonnes of imported wood pellets, which is [considered to be a form of renewable energy](https://www.theguardian.com/environment/2022/aug/11/burning-imported-wood-in-drax-power-plant-doesnt-make-sense-says-kwarteng).
+
+The BBC has discovered some of these wood pellets come from [primary forests](https://www2.gov.bc.ca/gov/content/industry/forestry/managing-our-forest-resources/old-growth-forests) in Canada, despite the company's claims that it only uses sawdust and waste wood.
+
+<center>
+![Satellite images show forests cut down in British Columbia. Image credits to Planet Labs PBC.](https://ichef.bbci.co.uk/news/976/cpsprodpb/1D4D/production/_126910570_a0126a99-8923-4ede-ac13-586377992286.jpg.webp){width=600px}
+</center>
+
+Through the analysis of satellite images, logging licenses, drone footage, and truck routes, reporter Joe Crowley verified that Drax was logging entire trees from forests that have taken thousands of years to grow.
+
+"It's really a shame that British taxpayers are funding this destruction with their money. Logging natural forests and converting them into pellets to be burned for electricity, that is absolutely insane," Ecologist Michelle Connolly said.
+
+The Drax power station in Yorkshire is an ex-coal-burning plant, which produces 12% of the UK's renewable energy, despite wood burning’s controversial status as a renewable energy source among environmentalists.
+
+[Original Article](https://www.bbc.com/news/science-environment-63089348)
