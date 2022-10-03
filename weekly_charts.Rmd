@@ -24,7 +24,7 @@ knit: (function(input_file, encoding) {
 ```{r CACHE, include=FALSE,cache=FALSE}
 
 KEEP_CANSIM_CACHE<-TRUE
-KEEP_AESO_CACHE<-TRUE
+KEEP_AESO_CACHE<-FALSE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
@@ -1239,7 +1239,7 @@ assign_peaks<-function(data_orig,time_var=time){
   #data_mod<-data_orig %>% mutate_(temp_time=`time_var`) %>% select(temp_time)
   temp_time<- enquo(time_var)
   data_mod<-data_orig%>% select(!!!temp_time)
-  #first, figure out the holidays
+  #first, the holidays
   #Holidays:
   #xNew Year's Day  January 1
   #xAlberta Family Day   Third Monday in February
@@ -1427,7 +1427,7 @@ wind_fcast_plot<-ggplot(wind_fcast) +
 
 
 ```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=KEEP_AESO_CACHE}
-
+#graph of prices and loads from aeso
 period_start<-max(price_ail$start_date)-weeks(1)
 end_date<-max(price_ail$start_date)
 
