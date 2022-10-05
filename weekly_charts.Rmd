@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
+reset<-1
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -1574,22 +1574,19 @@ today_date<-max(test$Trade_Date)
 df1$Inst_Year<-factor(df1$Inst_Year,levels = sort(unique(df1$Inst_Year)))
 
 
-dates<-c(today_date,today_date-years(1),today_date-years(2),today_date-years(3),today_date-years(4))
-dates<-c(today_date,today_date-years(1))
-dates<-c(today_date)
+dates<-c(today_date,today_date-months(1),today_date-months(6),today_date-months(12))
+#dates<-c(today_date,today_date-years(1))
+#dates<-c(today_date)
 
-aeso_fwds<-ggplot(df1 %>% filter(Trade_Date %in% dates, Inst_Date<=Trade_Date+years(3))) +
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="OFF_PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="FLAT"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
-  geom_line(data=subset(df1,Trade_Date %in% dates & Type=="PEAK"),aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype=Type),size=1.25)+
-  #geom_line(aes(Inst_Year,Peak_Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date),linetype="dashed"),size=2)+
+aeso_fwds<-ggplot(df1 %>% filter(Trade_Date %in% dates,Type=="FLAT") %>% filter(Inst_Date<=Trade_Date+years(3))) +
+  geom_line(aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date)),size=1.05)+
   scale_y_continuous(breaks=pretty_breaks())+
   expand_limits(y=0)+
-  scale_color_manual("Trade Date",values=colors_ua10(),guide=guide_legend(nrow=1,order=1))+
-  scale_linetype("Contract",guide=guide_legend(nrow=3,order=1))+ # Change linetypes
+  scale_color_manual("",values=colors_ua10(),guide=guide_legend(nrow=1,order=1))+
+  #scale_linetype("Contract",guide=guide_legend(nrow=3,order=1))+ # Change linetypes
   theme_minimal()+theme(    
     legend.position = "bottom",
-    legend.key.width=unit(3,"line"),
+    legend.key.width=unit(1,"line"),
     legend.margin=margin(c(0,0,0,0),unit="cm"),
     legend.text = element_text(colour="black", size = 16, face = "bold"),
     plot.caption = element_text(size = 14, face = "italic"),
