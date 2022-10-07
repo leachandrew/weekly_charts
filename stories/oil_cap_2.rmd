@@ -1,0 +1,8 @@
+## Oil and Gas Emissions in Canada
+
+#### [Andrew Leach](https://ca.linkedin.com/in/leach-econ)
+
+I've spent a lot of time this week thinking about the oil and gas cap that is part of the federal government's climate change plans. We know that oil and gas is both Canada's largest and fastest-growing source of GHG emissions. We also know that oil sands are a big part of that growth. However, sometimes, a picture is worth a thousand words.
+
+![Andrew Leach](https://leachandrew.github.io/NIR/images/nir_oil_prov.png){width=1400,height=700}
+With a new Premier in Alberta, you can bet that the oil and gas cap will be under an increasing level of scrutiny. It will be interesting to see where the major players land on this, in particular those who are part of the oil sands Pathways initiative which have a joint net zero goal.

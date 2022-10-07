@@ -24,13 +24,13 @@ knit: (function(input_file, encoding) {
 ```{r CACHE, include=FALSE,cache=FALSE}
 
 KEEP_CANSIM_CACHE<-TRUE
-KEEP_AESO_CACHE<-FALSE
+KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-1
+reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -519,14 +519,10 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/EU_Power.Rmd'}
+```{r , child = 'stories/oil_cap_2.Rmd'}
 ```
 
-```{r , child = 'stories/Forever.Rmd'}
-```
-
-
-```{r , child = 'stories/Less_green.Rmd'}
+```{r , child = 'stories/aeso_solar.Rmd'}
 ```
 
 # Oil
@@ -1566,19 +1562,19 @@ new_forwards<-function(){
 }
 
 test<-new_forwards()
-df1 <- test %>% group_by(Trade_Date,Inst_Date,Inst_Year,Type) %>% summarise(Settle = mean(Settle))
 
 today_date<-max(test$Trade_Date)
 #today_date<-max(test$Trade_Date)
 
-df1$Inst_Year<-factor(df1$Inst_Year,levels = sort(unique(df1$Inst_Year)))
+dates<-c(today_date,today_date-days(7),today_date-months(6),today_date-months(12))
 
+df1 <- test %>% filter(Trade_Date %in% dates) %>% 
+  group_by(Trade_Date,Inst_Date,Inst_Year,Type) %>% summarise(Settle = mean(Settle))
 
-dates<-c(today_date,today_date-months(1),today_date-months(6),today_date-months(12))
 #dates<-c(today_date,today_date-years(1))
 #dates<-c(today_date)
 
-aeso_fwds<-ggplot(df1 %>% filter(Trade_Date %in% dates,Type=="FLAT") %>% filter(Inst_Date<=Trade_Date+years(3))) +
+aeso_fwds<-ggplot(df1 %>% filter(Type=="FLAT",Inst_Date<=Trade_Date+years(3))) +
   geom_line(aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date)),size=1.05)+
   scale_y_continuous(breaks=pretty_breaks())+
   expand_limits(y=0)+
@@ -1611,6 +1607,7 @@ aeso_fwds
 
 # Previous Weeks' Charts
 
+#### [September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
 #### [September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
 #### [September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
 #### [September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)

@@ -1,0 +1,9 @@
+## Alberta Solar
+
+#### [Andrew Leach](https://ca.linkedin.com/in/leach-econ)
+
+I was struck this week by the rapid growth in Alberta's solar generation that has followed the installation of the Travers project. 
+![Graph: Andrew Leach](solar.png){width=1400,height=700}
+It's going to be a very interesting Spring in the province when all of this new solar (1088MW of it) is generating to its full potential!
+
+![Graph: Andrew Leach](ab_solar.png){width=1400,height=700}
