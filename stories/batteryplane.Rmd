@@ -1,0 +1,11 @@
+## Battery powered planes?
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+It's a Bird! It's a plane! It's a battery powered plane?
+
+You've likely heard about the massive carbon emissions of planes, and may even have heard environmentalists denounce them in favor of more green alternatives. While it's true that aviation is a large contributor to greenhouse gases (GHG), accounting for nearly [2.5%](https://ourworldindata.org/co2-emissions-from-aviation) of CO2 emissions globally, flight is also one of the quickest and most convenient methods of travel. Rather than replace it entirely, some companies are hoping to replace traditional petroleum-based aircraft with electric ones. This might have sounded ludicrous a decade ago, but advances in technology have made it plausible, at least for domestic flights. [Air Canada recently announced plans to purchase 30](https://www.reuters.com/business/aerospace-defense/air-canada-buy-30-electric-planes-heart-aerospace-2022-09-15/) battery-powered regional aircraft from Heart Aerospace, subject to a number of conditions.
+
+![A Rendering of Heart Aerospaces Battery Powered Plane](https://heartaerospace.com/wp-content/uploads/2022/09/Heart-ES-30-Hero-Image.jpg)
+
+Heart Aerospace, based in Sweden, has been working on electric planes for regional transport since [2018](https://heartaerospace.com/), and is showing a lot of promise. Alongside Air Canada, United Airlines and Sounds Air have also signed agreements to purchase of Heart aircraft. Each of these battery powered planes will generate zero direct emissions and be capable of carrying 30 passengers. They are expected to come into service by 2028. Perhaps, in the coming years, you may find yourself flying in a battery powered aircraft!
+

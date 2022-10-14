@@ -27,7 +27,7 @@ KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
-KEEP_BB_CACHE<-TRUE
+KEEP_BB_CACHE<-FALSE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
 reset<-0
@@ -517,6 +517,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 
 # Featured Stories {.tabset .tabset-fade}
+
+```{r , child = 'stories/renewable_inv.Rmd'}
+```
+
+
+```{r , child = 'stories/batteryplane.Rmd'}
+```
 
 
 ```{r , child = 'stories/oil_cap_2.Rmd'}
