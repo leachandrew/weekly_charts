@@ -1615,68 +1615,70 @@ aeso_fwds
 <table style="width:100%">
 <tr>
 <td>
-[September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
-</td>
-<td>
-[September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
-</td>
-<td>
-[September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
-</td>
-<td>
-[September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
-</td>
-<td>
-[August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
-</tr>
-<tr>
-<td>
-[August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
-</td>
-<td>
-[August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
-</td>
-<td>
-[July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
-</td>
-<td>
-[July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
-</td>
-<td>
-[July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
-</td>
-</tr>
-<tr>
-<td>[July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
-</td>
-<td>
-[June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
-</td>
-<td>
-[June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
-</td>
-<td>
-[June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
-</td>
-<td>
-[June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
-</td>
-</tr>
-<tr>
-<td>
-[May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
-</td>
-<td>
-[May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
-</td>
-<td>
-[May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
+[April 28, 2022](https://leachandrew.github.io/weekly_charts/weekly_4_28-22.html)
 </td>
 <td>
 [May 6, 2022](https://leachandrew.github.io/weekly_charts/weekly_5-6-22.html)
 </td>
 <td>
-[April 28, 2022](https://leachandrew.github.io/weekly_charts/weekly_4_28-22.html)
+[May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
+</td>
+<td>
+[May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
+</td>
+<td>
+[May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
+</td>
+</tr>
+<tr>
+<td>
+[June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
+</td>
+<td>
+[June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
+</td>
+<td>
+[June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
+</td>
+<td>
+[June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
+</td>
+<td>
+[July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
+</td>
+</tr>
+<tr>
+<td>
+[July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
+</td>
+<td>
+[July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
+</td>
+<td>
+[July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
+</td>
+<td>
+[August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
+</td>
+<td>
+[August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
+</td>
+</tr>
+<tr>
+<td>
+[August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
+</td>
+<td>
+[September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
+</td>
+<td>
+[September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
+</td>
+<td>
+[September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
+</td>
+<td>
+[September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
 </td>
 </tr>
 </table> 
