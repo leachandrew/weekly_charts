@@ -27,7 +27,7 @@ KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
-KEEP_BB_CACHE<-FALSE
+KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
 reset<-0
@@ -510,15 +510,9 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   p
 }
 ```
-
   <p style="text-align: center;">
-  
-<iframe src="https://leach.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>  
-  
-  
-[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
-</p>
-
+  Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no"></iframe></p>
 
 # Featured Stories {.tabset .tabset-fade}
 
@@ -1641,11 +1635,10 @@ aeso_fwds
 
 
 # Contact Information
-
-  <p style="text-align: center;">
-    <p style="text-align: center;">
-[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
+<p style="text-align: center;">
+  Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no"></iframe><br>  
+Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. 
+<br>
+Thanks to [NRGStream](https://www.nrgstream.com) for data accesss!<br>
 </p>
-<a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by Andrew Leach and our FES Grids and Storage Research Team. Thanks to NRGStream for data accesss!</a></p>
-  <p style="text-align: center;">aleach@ualberta.ca</p>
-  
