@@ -513,7 +513,7 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   
 <p style="text-align: center;">
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
-<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no"></iframe></p>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe></p>
 
 # Featured Stories {.tabset .tabset-fade}
 
@@ -1687,8 +1687,7 @@ aeso_fwds
 # Contact Information
 <p style="text-align: center;">
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
-<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no"></iframe><br>  
-Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. 
-<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe><br>  
+Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. <br>
 Thanks to [NRGStream](https://www.nrgstream.com) for data accesss!<br>
 </p>
