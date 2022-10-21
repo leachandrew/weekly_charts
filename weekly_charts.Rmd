@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
+reset<-1
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -517,18 +517,15 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/renewable_inv.Rmd'}
+```{r , child = 'stories/winter_rro.Rmd'}
 ```
 
 
-```{r , child = 'stories/batteryplane.Rmd'}
+```{r , child = 'stories/energy_policy.Rmd'}
 ```
 
 
-```{r , child = 'stories/oil_cap_2.Rmd'}
-```
-
-```{r , child = 'stories/aeso_solar.Rmd'}
+```{r , child = 'stories/steo_oct.Rmd'}
 ```
 
 # Oil
@@ -1679,6 +1676,11 @@ aeso_fwds
 </td>
 <td>
 [September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
+</td>
+</tr>
+<tr>
+<td>
+[October 14, 2022](https://leachandrew.github.io/weekly_charts/2022-10-14.html)
 </td>
 </tr>
 </table> 
