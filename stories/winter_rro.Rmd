@@ -4,7 +4,7 @@
 
 This winter is going to see record power prices for Albertans not on fixed rates. In a graph published yesterday on Twitter, University of Calgary economist Blake Shaffer [explains in a great Twitter thread](https://twitter.com/bcshaffer/status/1583302049701466114) that the futures market currently suggests prices over 24c/kWh for regulated rates. 
 
-![Graph: Andrew Leach](stories/blake_rro.jpg){width=1400,height=700}
+![Graph: Andrew Leach](stories/blake.png){width=1400,height=700}
 It's going to be a very expensive winter no matter what, but Shaffer reminds Albertans than they can still save by fixing to a fixed-price contract. 
 
 For more information, you can always check the [Alberta Utilities Consumer Advocate](https://ucahelps.alberta.ca/) or check out charts subscribers [Solution 105](https://twitter.com/Solution105) for their view on the best fixed-price options available right now. Sign-up for their mailing list to get monthly contract recommendations.

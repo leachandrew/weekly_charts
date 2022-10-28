@@ -517,15 +517,18 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/winter_rro.Rmd'}
+```{r , child = 'stories/tariffs.Rmd'}
 ```
 
 
-```{r , child = 'stories/energy_policy.Rmd'}
+```{r , child = 'stories/trillion.Rmd'}
 ```
 
 
-```{r , child = 'stories/steo_oct.Rmd'}
+```{r , child = 'stories/offshore.Rmd'}
+```
+
+```{r , child = 'stories/solar.Rmd'}
 ```
 
 # Oil
@@ -1681,6 +1684,9 @@ aeso_fwds
 <tr>
 <td>
 [October 14, 2022](https://leachandrew.github.io/weekly_charts/2022-10-14.html)
+</td>
+<td>
+[October 21, 2022](https://leachandrew.github.io/weekly_charts/2022_10_21.html)
 </td>
 </tr>
 </table> 

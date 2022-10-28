@@ -1,8 +1,8 @@
-## Alberta's Cheap Wind Power
+## Alberta's cheap wind power
 
 #### [Andrew Leach](https://ca.linkedin.com/in/leach-econ)
 
-A little personal bragging this week as my [new paper](https://www.sciencedirect.com/science/article/abs/pii/S0301421522004852?via%3Dihub) with Sara Hastings-Simon, Blake Shaffer, and Tim Weis is out at Energy Policy. In this paper, we look the Renewable Energy Program (REP) introduced under the Notley government, and show how the procurement continues to generate large energy revenues for the government. 
+A little personal bragging this week as my [new paper](https://www.sciencedirect.com/science/article/abs/pii/S0301421522004852?via%3Dihub) with Sara Hastings-Simon, Blake Shaffer, and Tim Weis is out at Energy Policy. In this paper, we look at the Renewable Energy Program (REP) introduced under the Notley government, and show how the procurement continues to generate large energy revenues for the government. 
 
 ![Graph: Andrew Leach](stories/rep_capture.jpg){width=1400,height=700}
 
