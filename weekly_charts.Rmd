@@ -517,15 +517,15 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/nwr_wow.Rmd'}
+```{r , child = 'stories/transition1.Rmd'}
 ```
 
 
-```{r , child = 'stories/fossilfuelspeaking.Rmd'}
+```{r , child = 'stories/transition2.Rmd'}
 ```
 
 
-```{r , child = 'stories/no_coal.Rmd'}
+```{r , child = 'stories/COP27.Rmd'}
 ```
 
 # Oil
@@ -709,13 +709,13 @@ cdn_crude_imports<-crude_disp_new %>% filter(geo=='Canada',supply_and_dispositio
 ```
 
 
-### Production
-```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+### Canadian Production
+```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.height=6.5,fig.pos="H"}
 cdn_crude_production
 ```
 
 ### Alberta Production
-```{r ab_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r ab_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10,fig.height=6.5, fig.pos="H"}
 load("st3_prod.gph")
 all_crude_weekly
 ```
@@ -731,7 +731,7 @@ cdn_crude_exports
 ```
 
 
-### Rail Exports
+### Exports by Rail
 ```{r cbr_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 rail_exports
 ```
@@ -1699,6 +1699,9 @@ aeso_fwds
 </td>
 <td>
 [October 28, 2022](https://leachandrew.github.io/weekly_charts/2022_10_28.html)
+</td>
+<td>
+[Nov 4, 2022](https://leachandrew.github.io/weekly_charts/2022_11_04.html)
 </td>
 
 </tr>
