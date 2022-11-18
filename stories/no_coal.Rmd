@@ -1,0 +1,14 @@
+## We're not off coal (yet)!
+#### [Andrew Leach](https://ca.linkedin.com/in/leach-econ)
+
+Earlier this week, there was a noticeable zero on the AESO's supply and demand page: a zero beside the word coal. That's right, at one point 
+on November 2nd, it looked like the day we'd all been waiting for had finally come: a coal-free hour. Sadly, I think we'll have to wait a bit longer. 
+
+When I saw a few people tweeting about it, I rushed to the computer thinking that a special issue of our mailer might be in order, but this is what I found:
+
+![AB Generation Mix](no_coal.png){width=1400,height=700}
+That looks more like a data outage than anything that could happen without a blackout in the province, so I went and took a more detailed look, thanks to our partners at NRGStream.
+
+![AB Generation Mix](gn1.png){width=1400,height=700}
+
+I think it's safe to say that was a data blip, not a short-term plant shutdown. Regardless, we still haven't had a coal-free hour in Alberta, and I don't think we've had a coal-free minute either. But, let's look on the bright side: for most of the day on November 2, 2022, there was only 1 coal plant operating in the province, with fewer than 400MW of supply onto the grid coming from coal. What a change from only a few years ago!

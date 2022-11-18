@@ -1,0 +1,6 @@
+## Transparent Solar Panels
+#### Debosree Mukherjee
+
+A team of scientists at École Polytechnique Fédérale de Lausanne have been able to increase the efficiency for dye-sensitized solar cells (DSC). The new efficiency levels mean that [DSCs could potentially be used to produce transparent solar panels](https://www.independent.co.uk/tech/solar-panel-world-record-window-b2211057.html) at a larger scale. Specially designed photosensitizer dye molecules that can harvest light from the entire visible light spectrum were used to achieve the breakthrough. This advancement makes DSCs excellent candidates for making electricity-generating windows, greenhouses, and even screens of low-powered electronic devices. They are comparatively low-cost and can be produced using conventional techniques, making the commercial use of the material a viable option. 
+
+The full study can be found [here](https://www.nature.com/articles/s41586-022-05460-z).

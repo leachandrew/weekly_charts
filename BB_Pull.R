@@ -455,7 +455,7 @@ names(data)[grep("ANS West Coast",names(data))]<-"Alaska North Slope"
 #measures<-grep(paste(c("Brent","WTI","WTI_Brent_diff"),collapse="|"), 
 #               names(data), value=TRUE)
 
-#data$`NWR_margin`<--data$WCS+.5*data$`ULSD`+.35*data$`Edmonton Condensate`+.02*data$EdmontonButane/100*168+.02*data$`Edmoton Propane`/100*168
+#data$`NWR_margin`<-data$WCS+.5*data$`ULSD`+.35*data$`Edmonton Condensate`+.02*data$EdmontonButane/100*168+.02*data$`Edmoton Propane`/100*168
 
 ## @knitr ref_margins
 
@@ -1295,39 +1295,43 @@ data<-data %>% mutate(
 
 
 
-ggplot(data%>%select(Date,nwr_maya_7ma,nwr_wcs_7ma,wcs_maya_7ma,wcs_wti_7ma)%>% filter (Date>ymd("2015-09-01"))) +
-  #geom_area(position = "stack")+
+ggplot(data%>%filter(Date>ymd("2015-09-01"))%>%
+          select(Date,NWR_bitumen,NWR_maya,wcs_maya,wcs_wti)%>%
+           mutate(
+           nwr_wcs_7ma=roll::roll_mean(NWR_bitumen,30),
+           nwr_maya_7ma=roll::roll_mean(NWR_maya,30),
+           wcs_maya_7ma=roll::roll_mean(wcs_maya,30),
+           wcs_wti_7ma=roll::roll_mean(wcs_wti,30)))+
   geom_line(aes(Date,nwr_wcs_7ma,color="Hypothetical NWR gross margin"),size=1.5)+
   geom_line(aes(Date,wcs_wti_7ma,color="WTI-WCS differential"),size=1.5)+
   #geom_line(aes(Date,73.059,color="2018 NWSR Toll Estimate"),size=1.5,linetype="dashed")+
   #geom_line(aes(Date,39.67,color="2012 NWSR Toll Estimate"),size=1.5,linetype="dashed")+
   geom_line(aes(Date,73.059),size=1.5,linetype="dashed",color="black")+
   geom_line(aes(Date,39.67),size=1.5,linetype="dashed",color="black")+
+  annotate("text",x = ymd("2015-09-05"), y=73+5,label = "2018 NWSR Toll Estimate, $73.06/bbl",size=rel(2.5),hjust=0,vjust=.5)+
+
+  annotate("text",x = ymd("2015-09-05"), y=39.67+5,label = " 2012 NWSR Toll Estimate, $39.67/bbl ",size=rel(2.5),hjust=0,vjust=.5)+
   
-  geom_label(aes(x = ymd("2015-09-05"), y=73.059), label = " 2018 NWSR Toll Estimate, $73.06/bbl ",size=rel(2.5),hjust=0,vjust=.5)+
-  
-  geom_label(aes(x = ymd("2015-09-05"), y=39.67),label = " 2012 NWSR Toll Estimate, $39.67/bbl ",size=rel(2.5),hjust=0,vjust=.5)+
-  
-  blake_theme()+
+  theme_minimal()+weekly_graphs()+
   scale_x_date(date_labels = "%b\n%Y",date_breaks = "12 months",expand=c(0,0) )+
-  expand_limits(x = as.Date(c("2015-09-01", "2020-10-01")))+
-  expand_limits(y = c(0,140))+
-  scale_y_continuous(expand = c(0,0),breaks=pretty_breaks())+
+  #expand_limits(x = as.Date(c("2015-09-01", "2020-10-01")))+
+  expand_limits(y = c(0,180))+
+  scale_y_continuous(expand = c(0,0),breaks=pretty_breaks(8))+
   #scale_shape_manual("",values=c(16,16))+
   #scale_fill_manual("",values=colors_tableau10())+
   scale_color_manual("",values=c(colors_ua10()[c(1,3)]))+
   guides(colour=guide_legend(),shape="none")+
-  theme(axis.text = element_text(size=rel(.6)),
+  theme(axis.text.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0)),
+        axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
         legend.position = "bottom",
         legend.key.width = unit(2,"cm"))+
   labs(x="",y="Margin or spread (CA$ per barrel)",
        #title="Coal and Gas Generation and Carbon Prices (MW, 2007-2015)",
        #title="Adjusted Drops in Generation by Plant Type (MW, 2020)",
-       caption=str_wrap("Source: Prices via Bloomberg, contract details via Alberta Energy Annual Reports, 2013-2014 and 2019-2020, calculations by Andrew Leach. Margins and spreads shown at 30 day moving averages.",
-                        width=120),
+       caption="Source: Prices via Bloomberg, contract details via Alberta Energy Annual Reports, 2013-2014 and 2019-2020, calculations by Andrew Leach. Margins and spreads shown at 30 day moving averages.",
        NULL)+
   NULL  
-ggsave("nwr.png",width = 8, height=5,dpi=600)
+ggsave("nwr.png",width = 14, height=7,dpi=600,bg="white")
 
 
 

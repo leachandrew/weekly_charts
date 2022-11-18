@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, '2022-11-18.html'), output_format = "all")})
   
 ---
 
@@ -27,7 +27,7 @@ KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
-KEEP_BB_CACHE<-FALSE
+KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
 reset<-0
@@ -510,30 +510,22 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   p
 }
 ```
-
-  <p style="text-align: center;">
   
-<iframe src="https://leach.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>  
-  
-  
-[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
-</p>
-
+<p style="text-align: center;">
+  Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe></p>
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/renewable_inv.Rmd'}
+```{r , child = 'stories/transition1.Rmd'}
 ```
 
 
-```{r , child = 'stories/batteryplane.Rmd'}
+```{r , child = 'stories/transition2.Rmd'}
 ```
 
 
-```{r , child = 'stories/oil_cap_2.Rmd'}
-```
-
-```{r , child = 'stories/aeso_solar.Rmd'}
+```{r , child = 'stories/COP27.Rmd'}
 ```
 
 # Oil
@@ -544,21 +536,21 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 ```{r feature_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Brent","WTI","WCS")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ### Alberta Crude
 
 ```{r alberta_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ### Alberta Crude (Short)
 
 ```{r alberta_crude_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,1,curr="USD",break_set="2 months")
+levels_chart(data=data,names,1,curr="USD",break_set="2 months",title_sent="")
 ```
 
 
@@ -570,7 +562,7 @@ levels_chart(data=data,names,1,curr="USD",break_set="2 months")
 names(data)[grep("ANS",names(data))]<-"Alaska North Slope"
 names(data)[grep("Clearbrook",names(data))]<-"Bakken"
 names<-c("Brent","WTI","LLS","Bakken","Alaska North Slope")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 
@@ -579,7 +571,7 @@ levels_chart(data=data,names,5,curr="USD")
 
 ```{r global_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Brent","WTI","Tapis","Dubai Fateh")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ## Oil Price Differentials {.tabset .tabset-fade}
@@ -717,13 +709,13 @@ cdn_crude_imports<-crude_disp_new %>% filter(geo=='Canada',supply_and_dispositio
 ```
 
 
-### Production
-```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+### Canadian Production
+```{r cdn_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.height=6.5,fig.pos="H"}
 cdn_crude_production
 ```
 
 ### Alberta Production
-```{r ab_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+```{r ab_prod_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10,fig.height=6.5, fig.pos="H"}
 load("st3_prod.gph")
 all_crude_weekly
 ```
@@ -739,7 +731,7 @@ cdn_crude_exports
 ```
 
 
-### Rail Exports
+### Exports by Rail
 ```{r cbr_graph, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 rail_exports
 ```
@@ -1024,7 +1016,7 @@ load("gas_plot.gph")
 weekly_gas_plot
 ```
 
-### Historic Gasoline Prices in BTC
+### Gasoline Prices in BTC
 
 ```{r gas_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 load("btc_plot.gph")
@@ -1039,6 +1031,14 @@ btc_gas_plot
 load("diesel_plot.gph")
 weekly_diesel_plot
 ```
+
+### Diesel Prices in BTC
+
+```{r diesel_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+load("btc_diesel_plot.gph")
+btc_diesel_plot
+```
+
 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
 
@@ -1411,6 +1411,18 @@ gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
        title="Hourly Supply Mix, Past 30 Days",
        caption="Source: AESO Data, accessed via NRGStream")
 #gen_mix_plot
+gen_mix_plot_short<-ggplot(gen_mix%>%filter(date(date)==today()),aes(date,gen, group=Source, fill = Source)) +
+  geom_area(position="stack")+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
+  guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
+  #theme(legend.position = "none")+
+  labs(x="Year",y="Average Hourly Supply (MW)",
+       title="Alberta Hourly Supply Mix",
+       caption="Source: AESO Data, accessed via NRGStream")
+
 
 
 wind_fcast_plot<-ggplot(wind_fcast) +
@@ -1617,35 +1629,101 @@ aeso_fwds
 
 
 # Previous Weeks' Charts
+<table style="width:100%">
+<tr>
+<td>
+[April 28, 2022](https://leachandrew.github.io/weekly_charts/weekly_4_28-22.html)
+</td>
+<td>
+[May 6, 2022](https://leachandrew.github.io/weekly_charts/weekly_5-6-22.html)
+</td>
+<td>
+[May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
+</td>
+<td>
+[May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
+</td>
+<td>
+[May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
+</td>
+</tr>
+<tr>
+<td>
+[June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
+</td>
+<td>
+[June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
+</td>
+<td>
+[June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
+</td>
+<td>
+[June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
+</td>
+<td>
+[July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
+</td>
+</tr>
+<tr>
+<td>
+[July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
+</td>
+<td>
+[July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
+</td>
+<td>
+[July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
+</td>
+<td>
+[August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
+</td>
+<td>
+[August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
+</td>
+</tr>
+<tr>
+<td>
+[August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
+</td>
+<td>
+[September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
+</td>
+<td>
+[September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
+</td>
+<td>
+[September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
+</td>
+<td>
+[September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
+</td>
+</tr>
+<tr>
+<td>
+[October 14, 2022](https://leachandrew.github.io/weekly_charts/2022-10-14.html)
+</td>
+<td>
+[October 21, 2022](https://leachandrew.github.io/weekly_charts/2022_10_21.html)
+</td>
+<td>
+[October 28, 2022](https://leachandrew.github.io/weekly_charts/2022_10_28.html)
+</td>
+<td>
+[Nov 4, 2022](https://leachandrew.github.io/weekly_charts/2022_11_04.html)
+</td>
 
-#### [September 30, 2022](https://leachandrew.github.io/weekly_charts/2022_09_30.html)
-#### [September 25, 2022](https://leachandrew.github.io/weekly_charts/2022_09_25.html)
-#### [September 15, 2022](https://leachandrew.github.io/weekly_charts/2022_09_15.html)
-#### [September 9, 2022](https://leachandrew.github.io/weekly_charts/2022_09_09.html)
-#### [August 19, 2022](https://leachandrew.github.io/weekly_charts/2022_08_19.html)
-#### [August 15, 2022](https://leachandrew.github.io/weekly_charts/2022_08_15.html)
-#### [August 5, 2022](https://leachandrew.github.io/weekly_charts/2022_08_05.html)
-#### [July 29, 2022](https://leachandrew.github.io/weekly_charts/2022_07_29.html)
-#### [July 22, 2022](https://leachandrew.github.io/weekly_charts/2022_07_22.html)
-#### [July 8, 2022](https://leachandrew.github.io/weekly_charts/2022_07_08.html)
-#### [July 2, 2022](https://leachandrew.github.io/weekly_charts/2022_07_02.html)
-#### [June 24, 2022](https://leachandrew.github.io/weekly_charts/2022_06_24.html)
-#### [June 17, 2022](https://leachandrew.github.io/weekly_charts/2022_06_17.html)
-#### [June 10, 2022](https://leachandrew.github.io/weekly_charts/2022_06_10.html)
-#### [June 3, 2022](https://leachandrew.github.io/weekly_charts/2022_06_03.html)
-#### [May 27, 2022](https://leachandrew.github.io/weekly_charts/2022_05_27.html)
-#### [May 20, 2022](https://leachandrew.github.io/weekly_charts/2022_05_20.html)
-#### [May 13, 2022](https://leachandrew.github.io/weekly_charts/5_13_22.html)
-#### [May 6, 2022](https://leachandrew.github.io/weekly_charts/weekly_5-6-22.html)
-#### [April 28, 2022](https://leachandrew.github.io/weekly_charts/weekly_4_28-22.html)
+<td>
+[Nov 11, 2022](https://leachandrew.github.io/weekly_charts/2022_11_11.html)
+</td>
+
+</tr>
+</table> 
 
 
 # Contact Information
-
-  <p style="text-align: center;">
-    <p style="text-align: center;">
-[Sign up here to get on our email list](https://docs.google.com/forms/d/e/1FAIpQLSckqeGjUvIlhveVyjmkXe913tzQRLANqPNQzEZTUQD2hQxH8g/viewform?usp=pp_url)
+<p style="text-align: center;">
+  Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe><br>  
+Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. <br>
+Thanks to [NRGStream](https://www.nrgstream.com) for data accesss!<br>
 </p>
-<a href="https://www.ualberta.ca/energy-systems/research.html">Brought to you by Andrew Leach and our FES Grids and Storage Research Team. Thanks to NRGStream for data accesss!</a></p>
-  <p style="text-align: center;">aleach@ualberta.ca</p>
-  

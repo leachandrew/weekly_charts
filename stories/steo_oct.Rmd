@@ -1,0 +1,8 @@
+## Oil demand remains weak
+
+#### [Andrew Leach](https://ca.linkedin.com/in/leach-econ)
+
+One of the graphs I've been tracking for a few years now is the evolution of EIA oil demand forecasts. It's been even more interesting since the pandemic, and this month is no exception.
+
+![Graph: Andrew Leach](stories/demand.png){width=1400,height=700}
+Once again, demand forecasts have been scaled-back relative to previous forecasts, as the combined lingering effects of the pandemic, the war in Ulraine, and (in-part related) higher prices cut against global consumption. 
