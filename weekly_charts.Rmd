@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, '2022-11-18.html'), output_format = "all")})
   
 ---
 
@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-1
+reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -536,21 +536,21 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 ```{r feature_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Brent","WTI","WCS")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ### Alberta Crude
 
 ```{r alberta_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ### Alberta Crude (Short)
 
 ```{r alberta_crude_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,1,curr="USD",break_set="2 months")
+levels_chart(data=data,names,1,curr="USD",break_set="2 months",title_sent="")
 ```
 
 
@@ -562,7 +562,7 @@ levels_chart(data=data,names,1,curr="USD",break_set="2 months")
 names(data)[grep("ANS",names(data))]<-"Alaska North Slope"
 names(data)[grep("Clearbrook",names(data))]<-"Bakken"
 names<-c("Brent","WTI","LLS","Bakken","Alaska North Slope")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 
@@ -571,7 +571,7 @@ levels_chart(data=data,names,5,curr="USD")
 
 ```{r global_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Brent","WTI","Tapis","Dubai Fateh")
-levels_chart(data=data,names,5,curr="USD")
+levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
 ## Oil Price Differentials {.tabset .tabset-fade}
@@ -1016,7 +1016,7 @@ load("gas_plot.gph")
 weekly_gas_plot
 ```
 
-### Historic Gasoline Prices in BTC
+### Gasoline Prices in BTC
 
 ```{r gas_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
 load("btc_plot.gph")
@@ -1031,6 +1031,14 @@ btc_gas_plot
 load("diesel_plot.gph")
 weekly_diesel_plot
 ```
+
+### Diesel Prices in BTC
+
+```{r diesel_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
+load("btc_diesel_plot.gph")
+btc_diesel_plot
+```
+
 
 ## Canadian Refinery Runs {.tabset .tabset-fade}
 
@@ -1702,6 +1710,10 @@ aeso_fwds
 </td>
 <td>
 [Nov 4, 2022](https://leachandrew.github.io/weekly_charts/2022_11_04.html)
+</td>
+
+<td>
+[Nov 11, 2022](https://leachandrew.github.io/weekly_charts/2022_11_11.html)
 </td>
 
 </tr>
