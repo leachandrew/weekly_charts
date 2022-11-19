@@ -1,11 +1,13 @@
-## Oil's bad week
+## Oil's no good very bad week
 
-#### Andrew Leach
+#### [Andrew Leach](https://linkedin.com/leach-econ)
 
-<center>![](https://leachandrew.github.io/EIA-STEO/images/demand.png)</center>
+<center>![](stories/bad_week.png)</center>
 <br>
-The US [Energy Information Administration (EIA)](https://www.eia.gov/) releases a monthly [short-term energy outlook](https://www.eia.gov/outlooks/steo/) with outlooks for most energy commodities. I maintain an updated graph pack for these outlooks at my [STEO data page](https://leachandrew.github.io/EIA-STEO/). I hope you enjoy it.
+One of the best parts of Friday charting is that, being in the mountain timezone, I can wait until Rory Johnston's [Commodity Context](https://www.commoditycontext.com/p/ocw-46w22) comes out and (usually) still not be too late posting my charts. This week, with oil having its worst week since August, with both WTI and Brench down over $8 on the week was no exception to Rory's quality content. Most importantly, the front-end of the WTI forward curve is back in contango, which lets me use my favorite word in energy markets in conversation this week.
 
-<center>![](https://leachandrew.github.io/EIA-STEO/images/opec_non_opec_supply.png)</center>
+Want to impress your friends? Sound smart to your profs? Or just learn the oil market lingo? Subscribe to Rory's [Substack](https://www.commoditycontext.com/p/ocw-46w22) and get his weekly summaries in your inbox.
+
+<center>![](stories/rory_2.png)</center>
 
 

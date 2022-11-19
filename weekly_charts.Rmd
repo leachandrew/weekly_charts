@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, '2022-11-18.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
   
 ---
 
@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-1
+reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -1419,7 +1419,7 @@ gen_mix_plot_short<-ggplot(gen_mix%>%filter(date(date)==today()),aes(date,gen, g
   scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
   guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
   #theme(legend.position = "none")+
-  labs(x="Year",y="Average Hourly Supply (MW)",
+  labs(x="",y="Average Hourly Supply (MW)",
        title="Alberta Hourly Supply Mix",
        caption="Source: AESO Data, accessed via NRGStream")
 
@@ -1435,7 +1435,7 @@ wind_fcast_plot<-ggplot(wind_fcast) +
   scale_fill_manual("",labels=c("Range of Potential Wind Generation"),values=alpha("#007C41",.3))+
   guides(fill = guide_legend(nrow = 1))+
   #theme(legend.position = "none")+
-  labs(x="Year",y="Average Hourly Generation (MW)",
+  labs(x="",y="Average Hourly Generation (MW)",
        title="Wind Generation Forecast",
        caption="Source: AESO Data")
 
