@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
+reset<-1
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -53,7 +53,7 @@ h1, h4 {
 background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png;
 background: url("https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png?v=9c558ec15d8a"),url("https://www.nrgstream.com/img/logo.png");
 -->
-<style>
+<style>                          
 #TOC {
   background: url("https://www.ualberta.ca/media-library/ualberta/homepage/university-of-alberta-logo.jpg"),url("https://www.nrgstream.com/img/logo.png");
   padding-top: 85px !important;
@@ -517,15 +517,15 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/transition1.Rmd'}
+```{r , child = 'stories/vanadiumchina.Rmd'}
 ```
 
 
-```{r , child = 'stories/transition2.Rmd'}
+```{r , child = 'stories/opec_iea.Rmd'}
 ```
 
 
-```{r , child = 'stories/COP27.Rmd'}
+```{r , child = 'stories/oil_bad_week.Rmd'}
 ```
 
 # Oil
