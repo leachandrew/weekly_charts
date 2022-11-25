@@ -1,0 +1,24 @@
+## UK Tidal Power
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+Unlike [traditional tidal energy generation](https://www.eia.gov/energyexplained/hydropower/tidal-power.php) through barrages, where turbines are mounted in walls, tidal stream turbines are directly lowered into strong tides within specific sea locations.
+
+<center>
+![Global marine power capacity breakdown, 2020 (MW). Credits: ENERGYMONITOR.](https://i.imgur.com/LpXWvli.png){width=800px}
+</center>
+
+The cost of tidal stream power generation has fallen 40% since 2018.
+
+Because of this, we see increasing potential in this energy source that generates power from something very predictable and omnipresent: the changing of the tides.
+
+[Offshore Renewable Energy Catapult](https://ore.catapult.org.uk/about/), a government research centre, forecasts that prices of tidal stream energy [may drop below those of nuclear power](https://ore.catapult.org.uk/?orecatapultreports=cost-reduction-pathway-of-tidal-stream-energy-in-the-uk-and-france) by 2035.
+
+Simon Cheeseman, a researcher, stresses the importance of facilitating the research and development of tidal energy.
+
+<center>
+![Active tidal power plants, sized by capacity (MW). Credits: ENERGYMONITOR.](https://i.imgur.com/XBvhR2b.png){width=600px}
+</center>
+
+He compares its potential development to the successful history of offshore wind power generation, which has gone from [generating energy for 4% to 33%](https://www.thecrownestate.co.uk/en-gb/media-and-insights/news/the-crown-estate-s-2021-offshore-wind-report-reveals-uk-industry-united-in-race-to-net-zero/) of UK homes in only 11 years.
+
+[Original Article](https://www.theguardian.com/environment/2022/nov/23/tidal-stream-energy-costs-ebb-reliability-flows)

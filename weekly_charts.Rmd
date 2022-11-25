@@ -24,13 +24,13 @@ knit: (function(input_file, encoding) {
 ```{r CACHE, include=FALSE,cache=FALSE}
 
 KEEP_CANSIM_CACHE<-TRUE
-KEEP_AESO_CACHE<-FALSE
+KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
 KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
+reset<-1
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -517,16 +517,30 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/vanadiumchina.Rmd'}
+
+```{r , child = 'stories/clp.Rmd'}
 ```
 
 
-```{r , child = 'stories/opec_iea.Rmd'}
+```{r , child = 'stories/differentials.Rmd'}
 ```
 
 
-```{r , child = 'stories/oil_bad_week.Rmd'}
+```{r , child = 'stories/tidal_uk.Rmd'}
 ```
+
+
+```{r , child = 'stories/india_solar.Rmd'}
+```
+
+
+```{r , child = 'stories/industry.Rmd'}
+```
+
+
+```{r , child = 'stories/francewindfarm.Rmd'}
+```
+
 
 # Oil
 

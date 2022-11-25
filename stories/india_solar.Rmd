@@ -1,0 +1,16 @@
+## Solar Power in India
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+In 2021, India's prime minister Narendra Modi pledged that they would hit net zero by 2070, ([20+ years after many of the Western countries](https://www.bloomberg.com/news/articles/2021-11-01/india-will-reach-net-zero-emissions-by-2070-modi-tells-cop26)).
+
+The largest solar farm in the world (as of 2019), [Bhadla Solar Park](https://www.nsenergybusiness.com/projects/bhadla-solar-park-rajasthan/), located in India’s northeast, has grown to cover a 5,700 ha desert.
+
+<center>
+![Solar energy capacity in India from 2009 to 2021 (in megawatts). Chart credits: Statista.](https://i.imgur.com/NEWFXf2.png){width=600px}
+</center>
+
+This solar farm currently generates enough electricity to power 4.5 million homes, and has contributed to the ~44% YoY growth of the country’s solar energy generation.
+
+[Mohua Mukherjee](https://www.oxfordenergy.org/authors/mohua-mukherjee/), an economist at the Oxford Institute for Energy Studies, discusses the project’s success despite India’s lack of “experience” and “regulations” at the time of construction: "solar panels were commercially viable in 2013 in a lot of places, it was just that the cost of generation was not competitive [compared to coal] in places like India." According to Mukherjee, “the [cost of technology has come down so much](https://www.theguardian.com/environment/2021/jun/23/most-new-wind-solar-projects-cheaper-than-coal-report) that it's [now] incredibly viable."
+
+[Original Article](https://www.businessinsider.com/india-harnessing-renewable-energy-through-worlds-biggest-solar-farm-2022-11)

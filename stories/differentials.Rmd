@@ -1,0 +1,10 @@
+## Dividing the pipeline pie
+#### [Kayla Layden](https://www.linkedin.com/in/kaylalayden/)
+
+Enbridge announced [increased apportionment](https://www.reuters.com/business/energy/rising-enbridge-pipeline-apportionment-may-spell-pain-canadian-oil-patch-2022-11-22/) along the mainline this week, which is likely to leave more oil in Alberta and have negative impacts on the already discounted price of Canadian heavy oil. The new apportionment levels are the highest since [November last year.](https://energynow.ca/2022/11/more-pipeline-problems-for-canada-as-enbridge-rations-space-on-its-mainline-system/) 
+
+<center>![](docs\index_files\figure-html\diffs_wcs_short-1.png){width=70%}</center>
+
+Apportionment is typically higher in the winter when Canadian production is at its highest, and higher proportions of diluent have to be added, increasing volume. The current levels are still well below historical peaks, but they come at a time when Canadian heavy oil is already trading at a significant discount. The differential [grew significantly in October](https://globalnews.ca/news/9217982/western-canada-select-oil-price-differential-spread-2023/), and some experts do not expect it to improve until late 2023 when the Trans Mountain pipeline expansion comes online. Canadian heavy crude prices have been impacted by unplanned refinery outages in the U.S. Midwest, concerns around shipment on the too-dry Mississippi River, high natural gas prices, and releases from the U.S. Strategic Petroleum Reserve, which have been putting negative pressure on WCS prices for months. The differential was almost US$30 this week, close to its [largest since 2018.](https://energynow.ca/2022/11/more-pipeline-problems-for-canada-as-enbridge-rations-space-on-its-mainline-system/)
+
+
