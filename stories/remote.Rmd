@@ -1,0 +1,23 @@
+## Remote Community Diesel
+
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+Many communities in Nunavut and other remote regions in Canada remain completely dependent on diesel for electricity and heating.
+
+This results in energy systems that are expensive, unreliable, and a major source of pollution. For example, the pollution rate from electricity generation within Nunavut is [8 times higher](https://www.qec.nu.ca/power-nunavut/renewable-energy) than the national average.
+
+The Canadian government plans on [eliminating diesel-powered generation](https://www.pembina.org/blog/tracking-diesel-reduction-progress-remote-communities) in these remote communities by 2030.
+
+However, many experts claim this goal is out of reach given the current progress towards the infrastructure needed to accomplish it.
+
+There are 200+ remote communities in Canada that aren’t connected to the electricity grid.
+
+<br>
+<center>
+![](https://i.imgur.com/rT549yv.png){width=600px}
+</center>
+<br>
+
+Power producers and residents have reservations about a switch to renewable energy. This has to change, says [Ian Gates](https://www.researchgate.net/publication/357418934_Why_is_it_so_difficult_to_replace_diesel_in_Nunavut_Canada), an expert in the field.
+
+[Original Article](https://www.iea.org/news/renewable-power-s-growth-is-being-turbocharged-as-countries-seek-to-strengthen-energy-security)

@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
+reset<-1
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -217,7 +217,7 @@ read_chunk('BB_Pull.R') #can run this from any google drive folder in case you'r
 ```
 
 
-```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=TRUE} 
+```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=FALSE} 
 #don't need to cache this long-term - it's daily data
 #GET EIA NYMEX SPOTS 
 subs<-data_fetch(KEY,cat=241335)
@@ -515,31 +515,22 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
 <iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe></p>
 
-<!-- # Featured Stories {.tabset .tabset-fade} -->
+# Featured Stories {.tabset .tabset-fade}
 
 
-<!-- ```{r , child = 'stories/clp.Rmd'} -->
-<!-- ``` -->
+```{r , child = 'stories/keystone.Rmd'}
+```
+
+```{r , child = 'stories/remote.Rmd'}
+```
 
 
-<!-- ```{r , child = 'stories/differentials.Rmd'} -->
-<!-- ``` -->
+```{r , child = 'stories/cenovus.Rmd'}
+```
 
 
-<!-- ```{r , child = 'stories/tidal_uk.Rmd'} -->
-<!-- ``` -->
-
-
-<!-- ```{r , child = 'stories/india_solar.Rmd'} -->
-<!-- ``` -->
-
-
-<!-- ```{r , child = 'stories/industry.Rmd'} -->
-<!-- ``` -->
-
-
-<!-- ```{r , child = 'stories/francewindfarm.Rmd'} -->
-<!-- ``` -->
+```{r , child = 'stories/crisis.Rmd'}
+```
 
 
 # Oil
@@ -754,7 +745,7 @@ rail_exports
 
 ## US Oil {.tabset .tabset-fade}
 
-```{r wpsr_setup, cache=TRUE,eval=TRUE}
+```{r wpsr_setup, cache=TRUE,eval=FALSE}
 #first, build a list of series names we want to access
 #get the information from the EIA weekly supply API
 cat_store <- list()
@@ -874,7 +865,7 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 
 
 ### Production
-```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=TRUE}
+```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=FALSE}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
 EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -938,7 +929,7 @@ lto_dpr
 
 ### Net Imports
 
-```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=TRUE}
+```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
       title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -947,7 +938,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 
 ### Oil and Product Net Imports
 
-```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
+```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -956,7 +947,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
   
 ### Inventories
 
-```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
+```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
@@ -1076,8 +1067,8 @@ ref_runs$m12_avg<-as.numeric(rollapply(ref_runs$Runs,52,mean,fill=NA,align = c("
 ref_runs<- ref_runs %>% group_by(Region) %>%
   mutate(m12_avg=rollapplyr(Runs, 52, mean, partial=TRUE,align = c("right")))
 
-lims=c(max(ref_runs$Date)-years(3),max(ref_runs$Date)+months(3))
-breaks<-seq.Date(min(ref_runs$Date), max(ref_runs$Date)+months(3), by="1 year")
+#lims=c(max(ref_runs$Date)-years(3),max(ref_runs$Date)+months(3))
+#breaks<-seq.Date(min(ref_runs$Date), max(ref_runs$Date)+months(3), by="1 year")
 
 ref_run_graph<-ggplot(ref_runs) +
   geom_area(aes(Date,Runs*6.2929,fill=Region),position="stack") +
@@ -1088,7 +1079,7 @@ ref_run_graph<-ggplot(ref_runs) +
   #scale_color_viridis("",discrete=TRUE,option="D",labels="Expected Export Demand")+
   #scale_colour_manual("",labels=c("Expected Export Demand"),values=c("Black"))+
   #scale_fill_viridis("",discrete=TRUE,option="D")+
-  scale_x_date(name=NULL,breaks=breaks, limits=lims,date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_x_date(name=NULL,breaks=pretty_breaks(),date_labels =  "%b\n%Y",expand=c(0,0)) +
   scale_fill_manual("",values = colors_ua10(),guide = "legend")+
   guides(colour = guide_legend(order = 1), 
          fill = guide_legend(order = 2))+
@@ -1110,7 +1101,7 @@ west_runs<-ggplot(filter(ref_runs,Region=="Western Canada")) +
   scale_colour_manual("",labels=c("52 Week Average"),values=colors_ua10()[3])+
   #scale_fill_manual("",labels=c("Weekly Throughput"),values=c("Red"))+
   #scale_fill_viridis("",discrete=TRUE,option="D")+
-  scale_x_date(name=NULL,date_breaks = "1 year", limits=lims,date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_x_date(name=NULL,breaks = pretty_breaks(),date_labels =  "%b\n%Y",expand=c(0,0)) +
   scale_fill_manual("",values = colors_ua10(),guide = "legend",labels="Weekly Runs")+
   guides(colour = guide_legend(order = 1), 
          fill = guide_legend(order = 2))+
@@ -1181,6 +1172,8 @@ names<-c("PGE Citygate","Empress","Station 2","Chicago Citygate","Algonquin City
 levels_chart_gas(data=data,names,1,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
 ```
 
+
+
 ```{r NGX_forwards,cache=KEEP_BB_CACHE}
 <<NGX_forwards>>
 ```
@@ -1244,7 +1237,7 @@ gas_dpr
 
 ### Storage
 
-```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
+```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
 ```
 
@@ -1729,8 +1722,20 @@ aeso_fwds
 <td>
 [Nov 11, 2022](https://leachandrew.github.io/weekly_charts/2022_11_11.html)
 </td>
-
 </tr>
+<tr>
+<td>
+[Nov 18, 2022](https://leachandrew.github.io/weekly_charts/2022_11_18.html)
+</td>
+
+<td>
+[Nov 25, 2022](https://leachandrew.github.io/weekly_charts/2022_11_25.html)
+</td>
+<td>
+[Dec 2, 2022](https://leachandrew.github.io/weekly_charts/2022_12_02.html)
+</td>
+</tr>
+
 </table> 
 
 
