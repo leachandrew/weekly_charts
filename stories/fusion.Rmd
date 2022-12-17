@@ -1,0 +1,17 @@
+## Fusion Achieved!?
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+Hold onto your hats folks because this one is going to be a bit longer than normal. 
+
+Why? This week saw a major breakthrough in nuclear fusion. 
+
+Research into fusion began in the 1940s but, this week, after nearly 80 years of work, scientists were able to create a fusion reaction in a laboratory setting that produced more energy than it took to start the reaction. Think of this as creating, at a very small scale, a star. This marks the first time that this threshold, known as ignition, has been reached in a laboratory setting. 
+
+Fusion is the process by which hydrogen atoms are combined into helium, producing sunlight and warmth in stars. If it can be harnessed on a large scale, fusion could provide a virtually limitless and clean energy source, with no pollution or greenhouse gases produced, and no dangerous, long-lived radioactive waste. 
+
+The experiment at the National Ignition Facility used 192 giant lasers to blast a small cylinder containing hydrogen encased in diamond, generating an inward onslaught of X-rays that compressed a fuel pellet made of deuterium and tritium. The reaction produced 2.05 megajoules of energy, roughly the equivalent of a pound of TNT, and released a flood of neutron particles, the product of fusion. This achievement is a significant step towards the practical application of fusion energy. However, while it is a major step forward, we still have a great deal of issues regarding fusion, especially storage considering the high energy particles and heat released. Nevertheless, this is a monumental event that will encourage more funding into the field, potentially allowing solutions to these problems. 
+
+This is a very exciting event, and we are definitely living in an interesting time for energy.
+
+You can read more about this achievement [here](https://www.energy.gov/articles/doe-national-laboratory-makes-history-achieving-fusion-ignition) and [here](https://www.cnn.com/us/live-news/nuclear-fusion-reaction-us-announcement-12-13-22/index.html)
+

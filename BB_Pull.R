@@ -431,6 +431,9 @@ names(data)<-gsub("USD.CAD","USDCAD",names(data))
 names(data)<-gsub("\\."," ",names(data))
 names(data)<-gsub("  "," ",names(data))
 names(data)<-trimws(names(data))
+names(data)<-gsub("So Cal Gas Co CityGate","SoCal Citygate",names(data))
+
+
 
 #fix Edmonton condensate
 

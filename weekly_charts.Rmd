@@ -212,12 +212,13 @@ read_chunk('BB_Pull.R') #can run this from any google drive folder in case you'r
 <<prelims>>
 
 <<forwards_prelims>>
+bb_data<<-data
 
 #head(data.frame(x,y))
 ```
 
 
-```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=FALSE} 
+```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=TRUE} 
 #don't need to cache this long-term - it's daily data
 #GET EIA NYMEX SPOTS 
 subs<-data_fetch(KEY,cat=241335)
@@ -518,20 +519,11 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/keystone.Rmd'}
+```{r , child = 'stories/fusion.Rmd'}
 ```
 
-```{r , child = 'stories/remote.Rmd'}
+```{r , child = 'stories/vietnam.Rmd'}
 ```
-
-
-```{r , child = 'stories/cenovus.Rmd'}
-```
-
-
-```{r , child = 'stories/crisis.Rmd'}
-```
-
 
 # Oil
 
@@ -745,7 +737,7 @@ rail_exports
 
 ## US Oil {.tabset .tabset-fade}
 
-```{r wpsr_setup, cache=TRUE,eval=FALSE}
+```{r wpsr_setup, cache=TRUE,eval=TRUE}
 #first, build a list of series names we want to access
 #get the information from the EIA weekly supply API
 cat_store <- list()
@@ -865,7 +857,7 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 
 
 ### Production
-```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=FALSE}
+```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=TRUE}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
 EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -929,7 +921,7 @@ lto_dpr
 
 ### Net Imports
 
-```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=FALSE}
+```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=TRUE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
       title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -938,7 +930,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 
 ### Oil and Product Net Imports
 
-```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
+```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -947,7 +939,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
   
 ### Inventories
 
-```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
+```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
@@ -1168,7 +1160,8 @@ levels_chart_gas(data=data,names,5,"USD")
 ### North American Gas Hubs
 
 ```{r na_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
-names<-c("PGE Citygate","Empress","Station 2","Chicago Citygate","Algonquin Citygate")
+names(data)<-gsub("So Cal Gas Co CityGate","SoCal Citygate",names(data))
+names<-c("PGE Citygate","Empress","AECO NIT","Chicago Citygate","Algonquin Citygate","SoCal Citygate")
 levels_chart_gas(data=data,names,1,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
 ```
 
@@ -1237,7 +1230,7 @@ gas_dpr
 
 ### Storage
 
-```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=FALSE}
+```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
 ```
 
@@ -1733,6 +1726,9 @@ aeso_fwds
 </td>
 <td>
 [Dec 2, 2022](https://leachandrew.github.io/weekly_charts/2022_12_02.html)
+</td>
+<td>
+[Dec 9, 2022](https://leachandrew.github.io/weekly_charts/2022_12_09.html)
 </td>
 </tr>
 
