@@ -1,0 +1,6 @@
+## Keystone pipeline restart delayed
+#### [Erica Beattie](https://www.linkedin.com/in/erica-beattie-594b471a1)
+
+Earlier this month, TC Energy shut its Keystone pipeline after more than 14,000 barrels of crude oil spilt into a river in Kansas. This was one of the largest crude spills in the United States in over a decade. The company had anticipated a full return on December 20th, but this has now been pushed back to December 28th, according to an article by the [Financial Post](https://financialpost.com/commodities/energy/oil-gas/tc-energy-delays-full-keystone-pipeline-restart). The specific reasons for this delay have not been released, nor has an estimate for the cost of the full return. TC did previously mention that the cold weather could prolong the clean-up of the spill, but no other explanations were mentioned. What is for certain is that this spill has agitated oil markets, resulting in supply shortages at some key storage hubs and delivery points. 
+
+![Cleanup of the Pipeline](https://smartcdn.gprod.postmedia.digital/financialpost/wp-content/uploads/2022/12/keystone-vw1221.jpg?quality=90&strip=all&w=1128&h=846&type=webp){width=550}

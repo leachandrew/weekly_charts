@@ -377,7 +377,7 @@ levels_chart<-function(data_sent,names,years,curr="USD",title_sent="Benchmark Oi
   p
 }
 
-levels_chart_gas<-function(data_sent,names,years,curr="USD",title_sent="Benchmark Natural Gas Prices",break_set="12 months")
+levels_chart_gas<-function(data_sent,names,months=12,curr="USD",title_sent="Benchmark Natural Gas Prices",break_set="12 months")
 {
   #send a data set and two variable names
   #build differentials
@@ -388,12 +388,12 @@ levels_chart_gas<-function(data_sent,names,years,curr="USD",title_sent="Benchmar
   #years<-5
   #curr<-"CAD"
   rows_legend<-max(1,round(sum(nchar(names))/50))
-  data_sent<-filter(data_sent,Date>=max(Date)-years(years))
+  data_sent<-filter(data_sent,Date>=max(Date)-months(months))
   df1<-reshape2::melt(data_sent,id=c("Date","USDCAD"),measure.vars = names)
   df1<-na.omit(df1)
   #trim the data
-  df1<-df1 %>% filter(Date>=max(df1$Date)-years(years))
-  lims<-c(max(df1$Date)-years(years),max(df1$Date)+months(1))
+  df1<-df1 %>% filter(Date>=max(df1$Date)-months(months))
+  lims<-c(max(df1$Date)-months(months),max(df1$Date)+months(1))
   lims_y<-c(min(0,min(df1$value)),max(df1$value)*1.1)
   if(curr=="CAD")
     lims_y<-c(min(0,min(df1$value*df1$USDCAD)),max(df1$value*df1$USDCAD)+10)
@@ -424,6 +424,8 @@ levels_chart_gas<-function(data_sent,names,years,curr="USD",title_sent="Benchmar
     weekly_graphs()
   return(p)
 }
+
+
 
 
 data<-load_bb_daily()
@@ -610,7 +612,7 @@ dev.off()
 
 names<-c("Henry Hub","Dawn","Station 2")
 
-names<-c("AECO NIT","PGE Citygate","Empress","Station 2","Chicago Citygate","Algonquin Citygate")
+names<-c("AECO NIT","PGE Citygate","Chicago Citygate","Algonquin Citygate")
 
 set_png("regional_gas.png")
 levels_chart_gas(data=data,names,5,"USD",break_set="6 months")

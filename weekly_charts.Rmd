@@ -518,11 +518,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-
-```{r , child = 'stories/fusion.Rmd'}
+```{r , child = 'stories/keystone_ret.Rmd'}
 ```
 
-```{r , child = 'stories/vietnam.Rmd'}
+```{r , child = 'stories/germany.Rmd'}
+```
+
+```{r , child = 'stories/bio.Rmd'}
 ```
 
 # Oil
@@ -1137,14 +1139,14 @@ west_runs
 
 ```{r feature_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("AECO NIT","Henry Hub","Dawn","Station 2")
-levels_chart_gas(data=data,names,5,"USD",break_set="6 months")
+levels_chart_gas(data=data,names,60,"USD",break_set="6 months")
 ```
 
 ### Feature Gas (Short)
 
 ```{r feature_gas_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("AECO NIT","Henry Hub","Dawn","Station 2")
-levels_chart_gas(data=data,names,1,"USD",break_set="2 months")
+levels_chart_gas(data=data,names,6,"USD",break_set="1 month")
 ```
 
 
@@ -1153,7 +1155,7 @@ levels_chart_gas(data=data,names,1,"USD",break_set="2 months")
 ```{r global_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 data<-data %>% mutate(`NBP UK`=`NBP Gas`*`GBP USD`/10)
 names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
-levels_chart_gas(data=data,names,5,"USD")
+levels_chart_gas(data=data,names,60,"USD")
 ```
 
 
@@ -1161,8 +1163,8 @@ levels_chart_gas(data=data,names,5,"USD")
 
 ```{r na_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H"}
 names(data)<-gsub("So Cal Gas Co CityGate","SoCal Citygate",names(data))
-names<-c("PGE Citygate","Empress","AECO NIT","Chicago Citygate","Algonquin Citygate","SoCal Citygate")
-levels_chart_gas(data=data,names,1,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
+names<-c("Dawn","PGE Citygate","AECO NIT","Chicago Citygate","Algonquin Citygate","SoCal Citygate")
+levels_chart_gas(data=data,names,12,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
 ```
 
 
@@ -1729,6 +1731,9 @@ aeso_fwds
 </td>
 <td>
 [Dec 9, 2022](https://leachandrew.github.io/weekly_charts/2022_12_09.html)
+</td>
+<td>
+[Dec 16, 2022](https://leachandrew.github.io/weekly_charts/2022_12_16.html)
 </td>
 </tr>
 
