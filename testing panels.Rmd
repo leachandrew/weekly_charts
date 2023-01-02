@@ -1,0 +1,27 @@
+---
+title: "ECON 366: Energy Economics"
+subtitle: "Topic 2.1: Oil and Gas Markets"
+author: 'Andrew Leach, Professor of Economics and Law'
+date: '<a href="mailto:aleach@ualberta.ca"><i class="fa fa-envelope fa-fw"></i> aleach@ualberta.ca</a> <br> <a href="https://github.com/leachandrew"><i class="fa fa-github fa-fw"></i> leachandrew</a><br><a href="https://twitter.com/andrew_leach"><i class="fa fa-twitter twitter"></i> @andrew_leach</a><br>'
+output:
+  xaringan::moon_reader:
+    nature:
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+```{r xaringanExtra, echo=FALSE}
+library(xaringan)
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons"))
+xaringanExtra::use_panelset()
+```
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r oplot, fig.show='hide'}
+# ... r code ...
+```
+]
+.panel[.panel-name[Plot]
+![](`r knitr::fig_chunk("oplot", ".png")`)
+]
+]

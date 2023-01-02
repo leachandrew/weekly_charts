@@ -203,7 +203,7 @@ cad_net_back_area_chart<-function(data_sent,years=10,break_set="12 months",bw=F)
                    "Bitumen value at site") 
   p <- ggplot(df1) +
     #geom_line(data=filter(df1,variable!="diff"),aes(Date,value,group = variable,colour=variable),size=1.7) +
-    geom_line(aes(Date,Brent*USDCAD,colour = "Global Light Oil"),size=1.25)+
+    #geom_line(aes(Date,Brent*USDCAD)colour="black",size=1.25)+
     geom_area(aes(Date,Brent*USDCAD,fill="A"))+
     geom_area(aes(Date,Maya*USDCAD,fill="B"))+  
     geom_area(aes(Date,(Maya*USDCAD-toll),fill="C"))+  
@@ -211,7 +211,7 @@ cad_net_back_area_chart<-function(data_sent,years=10,break_set="12 months",bw=F)
     geom_area(aes(Date,bit_site,fill="E"))+  
     #guide = guide_legend(reverse = TRUE)+
     #geom_point(size=1) +
-    scale_colour_manual(NULL,values=c("black"))+
+    #scale_colour_manual(NULL,values=c("black"))+
     #scale_fill_manual(NULL,values=colors_ua10())+
     scale_x_date(name=NULL,breaks = break_set, date_labels =  "%b %d\n%Y",expand=c(0,0)) +
     #scale_y_continuous(expand = c(0, 0),breaks=c(-5,seq(0,lims_y[2],10))) +
@@ -478,8 +478,7 @@ dev.off()
 top_panel<-cad_net_back_area_chart(data = data,years = 12,bw=F)+theme(legend.text = element_text(colour="black", size = 10, face = "bold"))
 bottom_panel<-ab_constraint_area_chart(data = data,years = 12,bw=T)
 mylegend<-arrangeGrob(g_legend(top_panel))
-set_png("cdn_bitumen_net.png")
-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",title="Decomposed Brent Crude to Implied Athabasca Bitumen Value Differential") +
+bit_margin<-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",title="Decomposed Brent Crude to Implied Athabasca Bitumen Value Differential") +
                            theme(legend.position="none",
                                  legend.margin=margin(c(0,0,0,0),unit="cm"),
                                  legend.text = element_text(colour="black", size = 14, face = "bold"),
@@ -513,16 +512,15 @@ grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",t
              #)
              
 )
+ggsave(bit_margin,filename="cdn_bitumen_net.png",dpi=300,bg="white",width = 14,height=9)
 
-dev.off()
 
-
+## @knitr bitumen_netback short
 
 top_panel<-cad_net_back_area_chart(data = data,years = 1,bw=F,break_set = "2 months")+theme(legend.text = element_text(colour="black", size = 10, face = "bold"))
 bottom_panel<-ab_constraint_area_chart(data = data,years = 1,bw=T,break_set = "2 months")
 mylegend<-arrangeGrob(g_legend(top_panel))
-set_png("cdn_bitumen_net_short.png")
-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",title="Decomposed Brent Crude to Implied Athabasca Bitumen Value Differential") +
+bit_margin_short<-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",title="Decomposed Brent Crude to Implied Athabasca Bitumen Value Differential") +
                            theme(legend.position="none",
                                  legend.margin=margin(c(0,0,0,0),unit="cm"),
                                  legend.text = element_text(colour="black", size = 14, face = "bold"),
@@ -556,85 +554,60 @@ grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices ($CAD/bbl)",t
              #)
              
 )
-
-dev.off()
-
+ggsave(bit_margin_short,filename="cdn_bitumen_net_short.png",dpi=300,bg="white",width = 14,height=9)
 
 ## @knitr oil_gas_graphs
+gg_save<-function(graph_object,w_sent=14,h_sent=7,dpi_sent=300,bg_sent="white",filename=NA,ext_sent="png"){
+  if(is.na(filename))
+     filename<-deparse(substitute(graph_object))
+ggsave(graph_object,filename=paste(filename,".",ext_sent,sep = ""),width=w_sent,height=h_sent,dpi=dpi_sent,bg=bg_sent)
+}
+gg_save(bit_margin_short)
+gg_save(bit_margin_short,ext_sent = "pdf")
 
 
 names<-c("WTI")
-test<-levels_chart(data=data,names,15,"USD")
-set_png("wti_long.png")
-print(test)
-dev.off()
+wti_long<-levels_chart(data=data,names,15,"USD")
+wti_long
+gg_save(wti_long)
 
 
 names<-c("Brent","WTI","Maya","WCS")
-test<-levels_chart(data=data,names,5,"USD")
-set_png("global_crude.png")
-print(test)
-dev.off()
+global_crude<-levels_chart(data=data,names,5,"USD")
+gg_save(global_crude)
 
 names<-c("Syncrude Sweet Synthetic","WTI","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-test<-levels_chart(data=data,names,5,"USD")
-set_png("cdn_crude.png")
-print(test)
-dev.off()
+ab_crude<-levels_chart(data=data,names,5,"USD")
+gg_save(ab_crude)
 
 names<-c("Syncrude Sweet Synthetic","WTI","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-test<-levels_chart(data=data,names,5,"CAD")
-set_png("cdn_crude_cad.png")
-print(test)
-dev.off()
+ab_crude_cad<-levels_chart(data=data,names,5,"CAD")
+gg_save(ab_crude_cad)
 
 names<-c("Syncrude Sweet Synthetic","WTI","LLS","WTI Midland","Bakken Clearbrook","Alaska North Slope")
-test<-levels_chart(data=data,names,12,"USD")
-set_png("na_light_crude_usd.png")
-print(test)
-dev.off()
-
-
-names<-c("Brent","WTI","LLS","Bakken Clearbrook")
-test<-levels_chart(data=data,names,10,"USD")
-set_png("na_light_crude2_usd.png")
-print(test)
-dev.off()
+na_light_crude_usd<-levels_chart(data=data,names,12,"USD")
+gg_save(na_light_crude_usd)
 
 data<-data %>% mutate(`NBP UK`=`NBP Gas`*`GBP USD`/10)
 
 names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
-test<-levels_chart_gas(data=data,names,15,"USD")
-set_png("global_gas.png")
-print(test)
-dev.off()
+global_gas<-levels_chart_gas(data=data,names,15,"USD")
+gg_save(global_gas)
 
+global_gas_short<-levels_chart_gas(data=data,names,5,"USD")
+gg_save(global_gas_short)
 
-names<-c("Henry Hub","Dawn","Station 2")
 
 names<-c("AECO NIT","PGE Citygate","Chicago Citygate","Algonquin Citygate")
+regional_gas<-levels_chart_gas(data=data,names,5,"USD",break_set="6 months")
+gg_save(regional_gas)
 
-set_png("regional_gas.png")
-levels_chart_gas(data=data,names,5,"USD",break_set="6 months")
-dev.off()
-
-set_png("regional_gas_short.png")
-levels_chart_gas(data=data,names,2,"USD",break_set="3 months")
-dev.off()
-
-
+regional_gas_short<-levels_chart_gas(data=data,names,2,"USD",break_set="3 months")
+gg_save(regional_gas_short)
 
 names<-c("Dawn","AECO NIT","Station 2")
-test<-levels_chart_gas(data=data,names,5,"USD")
-set_png("cdn_gas.png")
-print(test)
-dev.off()
-
-names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
-test<-levels_chart_gas(data=data,names,5,"USD")
-set_png("global_gas.png")
-print(test)
-dev.off()
+cdn_gas<-levels_chart_gas(data=data,names,5,"USD")
+gg_save(cdn_gas)
 
 data<-data %>% mutate(`Edmonton Wholesale Refined Products`=`ULSD Edmonton`/3+2*`Mid Grd Gas Edm`/3,
                       `Edmonton Retail Refined Products ex Tax`=`Diesel Retail Excl Tax Edmton`/3+
@@ -645,88 +618,48 @@ data<-data %>% mutate(`Edmonton Wholesale Refined Products`=`ULSD Edmonton`/3+2*
 
 names<-c("Edmonton Wholesale Refined Products","Edmonton Mixed Sweet",
          "Implied Bitumen","AECO/NIT Natural Gas (BOE)") 
-test<-levels_chart(data=data,names,10,"CAD",title_sent="Edmonton Oil and Natural Gas Prices")
-set_png("oil_vs_gas.png")
-print(test)
-dev.off()
+oil_v_gas<-levels_chart(data=data,names,5,"CAD",title_sent="Edmonton Oil and Natural Gas Prices")
+gg_save(oil_v_gas)
 
+oil_v_gas_short<-levels_chart(data=data,names,1,"CAD",title_sent="Edmonton Oil and Natural Gas Prices")
+gg_save(oil_v_gas_short)
 
-
+oil_v_gas_long<-levels_chart(data=data,names,15,"CAD",title_sent="Edmonton Oil and Natural Gas Prices")
+gg_save(oil_v_gas_long)
 
 names<-c("Edmonton Mixed Sweet","Edmonton Wholesale Refined Products",
          "Edmonton Retail Refined Products ex Tax","Edmonton Retail Refined Products incl Tax") 
-test<-levels_chart(data=data,names,5,"CAD",title_sent="Edmonton Oil and Refined Product Prices")
-set_png("edm_ref.png")
-print(test)
-dev.off()
+edm_ref<-levels_chart(data=data,names,5,"CAD",title_sent="Edmonton Oil and Refined Product Prices")
+gg_save(edm_ref)
 
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("maya_wcs.png")
 names<-c("Maya","WCS")
-test<-diffs_chart(data=data,names,10,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+maya_wcs<-diffs_chart(data=data,names,10,"USD")
+gg_save(maya_wcs)
 
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("wti_maya.png")
+
 names<-c("WTI","Maya")
-test<-diffs_chart(data=data,names,10,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+wti_maya<-diffs_chart(data=data,names,10,"USD")
+gg_save(wti_maya)
 
-
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("lls_maya.png")
 names<-c("LLS","Maya")
-test<-diffs_chart(data=data,names,5,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+lls_maya<-diffs_chart(data=data,names,5,"USD")
+gg_save(lls_maya)
 
-
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("wti_wcs.png")
 names<-c("WTI","WCS")
-test<-diffs_chart(data=data,names,10,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+wti_wcs<-diffs_chart(data=data,names,10,"USD")
+gg_save(wti_wcs)
 
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("brent_wcs.png")
 names<-c("Brent","WCS")
-test<-diffs_chart(data=data,names,12,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+brent_wcs<-diffs_chart(data=data,names,12,"USD")
+gg_save(brent_wcs)
 
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("brent_maya.png")
 names<-c("Brent","Maya")
-test<-diffs_chart(data=data,names,10)
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
+brent_maya<-diffs_chart(data=data,names,10)
+gg_save(brent_maya)
 
-
-
-png<-1
-if(png==1)#set these to only turn on if you're making PNG graphs
-  set_png("Brent_WTI.png")
 names<-c("Brent","WTI")
-test<-diffs_chart(data=data,names,5,"USD")
-print(test)
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
-
+brent_wti<-diffs_chart(data=data,names,5,"USD")
+gg_save(brent_wti)
 
 #getting some diff data to work with
 diffs_data<-filter(data,Date>=max(Date)-years(20))
@@ -844,18 +777,14 @@ data<-data %>%left_join(ngl_fractions(),by="Date")
 names<-c("Mont Belvieu Ethane","Mont Belvieu Propane",
          "Mont Belvieu Butane","Mont Belvieu Natural Gasoline")
 labels<-names
-test<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Mt Belvieu NGL Prices")
-set_png("mbv_ngl.png")
-print(test)
-dev.off()
+mbv_ngl<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Mt Belvieu NGL Prices")
+gg_save(mbv_ngl)
 
 names<-c("Edmonton Propane",
          "Edmonton Butane","Edmonton Condensate")
 labels<-names
-test<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"))
-set_png("edm_ngl.png")
-print(test)
-dev.off()
+edm_ngl<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"))
+gg_save(edm_ngl)
 
 
 #montney frac spread graph
@@ -899,8 +828,7 @@ ngl_spread_chart<-function(data_sent,names,labels_sent,years,curr="USD",title_se
   
   #grid_arrange_shared_legend(top_panel,gridExtra::arrangeGrob(bottom_panel, ncol=1), ncol=1, nrow=2)
   
-  set_png(file=paste(file_name,sep=""))
-  grid.arrange(arrangeGrob(top_panel + theme(legend.position="none",
+  spread_chart<-grid.arrange(arrangeGrob(top_panel + theme(legend.position="none",
                                              legend.margin=margin(c(0,0,0,0),unit="cm"),
                                              legend.text = element_text(colour="black", size = 14, face = "bold"),
                                              plot.caption = element_blank(),
@@ -933,21 +861,27 @@ ngl_spread_chart<-function(data_sent,names,labels_sent,years,curr="USD",title_se
   )
   
   )
-  dev.off()  
+  gg_save(spread_chart,filename = file_name)
   
 }
+
+
+
+
 
 
 names<-c("Edmonton Propane",
          "Edmonton Butane","Edmonton Condensate")
 labels<-names
-ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"),spread_name = "can_spread",file_name = "can_ngls.png")
+#ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"),
+#                 spread_name = "can_spread",file_name = "can_ngls")
 
 
 names<-c("Mont Belvieu Ethane","Mont Belvieu Propane",
          "Mont Belvieu Butane","Mont Belvieu Natural Gasoline")
 labels<-names
-ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Mont Belvieu NGL Prices",exempt_set = c("Edmonton Condensate"),spread_name = "us_spread",file_name = "us_ngls.png")
+#ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Mont Belvieu NGL Prices",exempt_set = c("Edmonton Condensate"),
+#                 spread_name = "us_spread",file_name = "us_ngls")
 
 
 
