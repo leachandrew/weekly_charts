@@ -21,6 +21,13 @@ bb_file<-"C:/Users/aleach/Google Drive/BB Stuff/Leach_BB_R.xlsx"
 nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
 
 
+gg_save<-function(graph_object,w_sent=14,h_sent=7,dpi_sent=300,bg_sent="white",filename=NA,ext_sent="png"){
+  if(is.na(filename))
+    filename<-deparse(substitute(graph_object))
+  ggsave(graph_object,filename=paste(filename,".",ext_sent,sep = ""),width=w_sent,height=h_sent,dpi=dpi_sent,bg=bg_sent)
+}
+
+
 ## Make breaks from a starting date at a given hour, occuring by interval,
 ## length.out is days
 
@@ -515,7 +522,7 @@ bit_margin<-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen prices (
 ggsave(bit_margin,filename="cdn_bitumen_net.png",dpi=300,bg="white",width = 14,height=9)
 
 
-## @knitr bitumen_netback short
+## @knitr bitumen_netback_short
 
 top_panel<-cad_net_back_area_chart(data = data,years = 1,bw=F,break_set = "2 months")+theme(legend.text = element_text(colour="black", size = 10, face = "bold"))
 bottom_panel<-ab_constraint_area_chart(data = data,years = 1,bw=T,break_set = "2 months")
@@ -557,11 +564,6 @@ bit_margin_short<-grid.arrange(arrangeGrob(top_panel + labs(y="Oil or bitumen pr
 ggsave(bit_margin_short,filename="cdn_bitumen_net_short.png",dpi=300,bg="white",width = 14,height=9)
 
 ## @knitr oil_gas_graphs
-gg_save<-function(graph_object,w_sent=14,h_sent=7,dpi_sent=300,bg_sent="white",filename=NA,ext_sent="png"){
-  if(is.na(filename))
-     filename<-deparse(substitute(graph_object))
-ggsave(graph_object,filename=paste(filename,".",ext_sent,sep = ""),width=w_sent,height=h_sent,dpi=dpi_sent,bg=bg_sent)
-}
 gg_save(bit_margin_short)
 gg_save(bit_margin_short,ext_sent = "pdf")
 

@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, '2023_01_06.html'), output_format = "all")})
   
 ---
 
@@ -272,6 +272,9 @@ steo_date<-release_table %>% clean_names()%>%
   filter(released==TRUE)%>%
   summarize(max(release_date))
 steo_date<-ymd(steo_date[[1]])
+#it will be an NA in january before release
+if(is.na(steo_date))
+  steo_date<-ymd(paste(year(Sys.Date())-1,12,31,sep="-"))
 
 steo_data_fetch<-function(date_sent){
 #for any month and year, get the STEO Price outlook
@@ -1734,6 +1737,11 @@ aeso_fwds
 </td>
 <td>
 [Dec 16, 2022](https://leachandrew.github.io/weekly_charts/2022_12_16.html)
+</td>
+</tr>
+<tr>
+<td>
+[Dec 23, 2022](https://leachandrew.github.io/weekly_charts/2022_12_23.html)
 </td>
 </tr>
 
