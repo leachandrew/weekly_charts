@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, '2023_01_06.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
   
 ---
 
@@ -30,7 +30,7 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-1
+reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -521,14 +521,19 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/keystone_ret.Rmd'}
+```{r , child = 'stories/commitcoal.Rmd'}
 ```
 
-```{r , child = 'stories/germany.Rmd'}
+```{r , child = 'stories/ab_jobs.Rmd'}
 ```
 
-```{r , child = 'stories/bio.Rmd'}
+```{r , child = 'stories/tesla_lithium.Rmd'}
 ```
+
+
+```{r , child = 'stories/coalincrease.Rmd'}
+```
+
 
 # Oil
 

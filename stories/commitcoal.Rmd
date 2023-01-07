@@ -1,9 +1,9 @@
 ## Commit to coal, says “reliable” source
 #### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
 
-Fix and modernize South Africa’s existing coal power plants as a cheap and easy way to achieve a reasonable price of electricity, says [Andrey Melnichenko](https://www.aa.com.tr/en/energy/coal/russian-billionaire-resigns-from-biggest-coal-company-after-eu-sanctions-/34824), a sanctioned Russian billionaire in the coal power industry.
+Fix and modernize South Africa’s existing coal power plants as a cheap and easy way to achieve a reasonable price of electricity, says [Andrey Melnichenko](https://www.aa.com.tr/en/energy/coal/russian-billionaire-resigns-from-biggest-coal-company-after-eu-sanctions-/34824), a sanctioned Russian coal industry billionaire.
 
-Currently, [the country uses coal](https://www.energy.gov.za/files/coal_frame.html#:~:text=South%20Africa%27s%20indigenous%20energy%20resource,needs%20are%20provided%20by%20coal.) to generate 80% of its electricity.
+Currently, [South Africa uses coal](https://www.energy.gov.za/files/coal_frame.html#:~:text=South%20Africa%27s%20indigenous%20energy%20resource,needs%20are%20provided%20by%20coal.) to generate 80% of its electricity.
 
 <center>
 Energy generation of South Africa’s primary and state power utility, Eskom
@@ -14,6 +14,6 @@ South Africa has experienced more than [200 days of power cuts this year](https:
 
 The state power utility claims they require $4.2 billion USD over the next 5 years to be able to expand their power grid, with additional funding needed for clean energy capacity.
 
-With the falling costs of renewables, it is my hope that a more [obvious solution](https://theconversation.com/south-africa-could-produce-a-lot-more-renewable-energy-heres-what-it-needs-185897) than [committing to coal](https://www.bbc.com/news/world-africa-63513278) will be proposed among the South Africa’s decision makers.
+With the falling costs of renewables, it is my hope that a more [obvious solution](https://theconversation.com/south-africa-could-produce-a-lot-more-renewable-energy-heres-what-it-needs-185897) than [committing to coal](https://www.bbc.com/news/world-africa-63513278) will be adopted by South Africa’s decision makers.
 
 [Original Article](https://www.bloomberg.com/news/articles/2022-12-30/south-africa-s-power-grid-is-too-weak-for-green-energy-billionaire-says)
