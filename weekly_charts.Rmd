@@ -18,7 +18,7 @@ knit: (function(input_file, encoding) {
   rmarkdown::render(input_file,
  encoding=encoding,
  output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
-  
+editor: source 
 ---
 
 ```{r CACHE, include=FALSE,cache=FALSE}
@@ -521,17 +521,13 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/commitcoal.Rmd'}
+```{r , child = 'stories/japan_lng.Rmd'}
 ```
 
-```{r , child = 'stories/ab_jobs.Rmd'}
+```{r , child = 'stories/rare_earths.Rmd'}
 ```
 
-```{r , child = 'stories/tesla_lithium.Rmd'}
-```
-
-
-```{r , child = 'stories/coalincrease.Rmd'}
+```{r , child = 'stories/IEA2022.Rmd'}
 ```
 
 
@@ -560,8 +556,6 @@ names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitume
 levels_chart(data=data,names,1,curr="USD",break_set="2 months",title_sent="")
 ```
 
-
-
 ### US Crude
 
 
@@ -577,7 +571,7 @@ levels_chart(data=data,names,5,curr="USD",title_sent="")
 
 
 ```{r global_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-names<-c("Brent","WTI","Tapis","Dubai Fateh")
+names<-c("Brent","WTI","Tapis","Dubai Fateh","Urals")
 levels_chart(data=data,names,5,curr="USD",title_sent="")
 ```
 
@@ -1748,10 +1742,13 @@ aeso_fwds
 <td>
 [Dec 23, 2022](https://leachandrew.github.io/weekly_charts/2022_12_23.html)
 </td>
+<td>
+Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
+</td>
+
 </tr>
 
 </table> 
-
 
 # Contact Information
 <p style="text-align: center;">

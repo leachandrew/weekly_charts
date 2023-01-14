@@ -1,0 +1,12 @@
+## IEA Predicting Large Jump in Renewables
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+The International Energy Agency's (IEA) latest "Renewables 2022" report has some exciting news for the future of clean energy. The IEA has revised its predictions upward and now expects renewables - primarily solar and wind - to grow about 30% more than initially forecast. This is the largest upward adjustment the IEA has ever made. The report also predicts that renewables will account for over 90% of new global electricity capacity growth between now and 2027.
+
+One of the main drivers behind this increase is energy security concerns, as countries that are dependent on Russian gas are looking to rapidly replace it with clean energy alternatives. However, the report also cites the impact of existing policies and regulatory and market reforms, as well as new ones that are being implemented more quickly than expected, in countries such as China, the European Union, the United States, and India.
+
+The report predicts that solar energy production will nearly triple in the next five years, and that by 2027, it will surpass coal as the number one source of power capacity. Wind-generated energy is also expected to almost double in the next five years.
+
+The IEA notes that the growth of renewable power capacity could even be faster than forecast with a few key changes, one of the most notable being quicker permitting of energy projects and transmission lines. This is an issue in the United States and Europe, where it can take an average of four and a half years to complete the environmental impact statements needed to permit major energy projects. With responsible permitting reform, the clean energy economy could receive a boost that will have positive effects for generations to come.
+
+The full IEA report can be found [here](https://www.iea.org/reports/renewables-2022) and I strongly encourage anyone with an interest in renewable energy to at least skim it over. It's full of interesting takeaways.
