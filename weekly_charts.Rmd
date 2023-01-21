@@ -515,21 +515,19 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 }
 ```
   
-<p style="text-align: center;">
+<center>
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
-<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe></p>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe>
+</center>
+
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/japan_lng.Rmd'}
+```{r , child = 'stories/blueberry.Rmd'}
 ```
 
-```{r , child = 'stories/rare_earths.Rmd'}
+```{r , child = 'stories/hydrogen_23.Rmd'}
 ```
-
-```{r , child = 'stories/IEA2022.Rmd'}
-```
-
 
 # Oil
 
@@ -1000,7 +998,6 @@ read_chunk('../kalibrate/kalibrate_gas_data.R')
 # run the gas map and charts chunks and use the variables it creates
 <<gas_weekly>>
 <<gas_map>>
-<<bitcoin>>
 ```
 
 ### Map
@@ -1017,13 +1014,6 @@ load("gas_plot.gph")
 weekly_gas_plot
 ```
 
-### Gasoline Prices in BTC
-
-```{r gas_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-load("btc_plot.gph")
-btc_gas_plot
-```
-
 
 ### Historic Diesel Prices
 
@@ -1031,13 +1021,6 @@ btc_gas_plot
 #grid.arrange(daily_prices)
 load("diesel_plot.gph")
 weekly_diesel_plot
-```
-
-### Diesel Prices in BTC
-
-```{r diesel_histories_btc, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_KALIBRATE_CACHE, fig.width=10,fig.height=7, fig.pos="H"}
-load("btc_diesel_plot.gph")
-btc_diesel_plot
 ```
 
 
@@ -1743,7 +1726,7 @@ aeso_fwds
 [Dec 23, 2022](https://leachandrew.github.io/weekly_charts/2022_12_23.html)
 </td>
 <td>
-Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
+[Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
 </td>
 
 </tr>
@@ -1751,9 +1734,10 @@ Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
 </table> 
 
 # Contact Information
-<p style="text-align: center;">
+<center>
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
-<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe><br>  
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe>
+</center>
 Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. <br>
 Thanks to [NRGStream](https://www.nrgstream.com) for data accesss!<br>
 </p>
