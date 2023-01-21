@@ -1728,6 +1728,12 @@ aeso_fwds
 <td>
 [Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
 </td>
+<td>
+[Jan 13, 2022](https://leachandrew.github.io/weekly_charts/2023_01_13.html)
+</td>
+<td>
+[Jan 20, 2022](https://leachandrew.github.io/weekly_charts/2023_01_20.html)
+</td>
 
 </tr>
 
