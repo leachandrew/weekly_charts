@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, '2023_01_27.html'), output_format = "all")})
 editor: source 
 ---
 
@@ -1726,15 +1726,17 @@ aeso_fwds
 [Dec 23, 2022](https://leachandrew.github.io/weekly_charts/2022_12_23.html)
 </td>
 <td>
-[Jan 6, 2022](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
+[Jan 6, 2023](https://leachandrew.github.io/weekly_charts/2023_01_06.html)
 </td>
 <td>
-[Jan 13, 2022](https://leachandrew.github.io/weekly_charts/2023_01_13.html)
+[Jan 13, 2023](https://leachandrew.github.io/weekly_charts/2023_01_13.html)
 </td>
 <td>
-[Jan 20, 2022](https://leachandrew.github.io/weekly_charts/2023_01_20.html)
+[Jan 20, 2023](https://leachandrew.github.io/weekly_charts/2023_01_20.html)
 </td>
-
+<td>
+[Jan 27, 2023](https://leachandrew.github.io/weekly_charts/2023_01_27.html)
+</td>
 </tr>
 
 </table> 
