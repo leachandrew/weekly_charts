@@ -1,0 +1,47 @@
+## Solar vs Coal in Alberta
+#### Andrew Leach
+
+Did you ever think you'd see solar supply more electricity than coal in Alberta? In January?
+
+```{r, dpi=220,fig.align='center',fig.width=9}
+nrg_folder<-"C:/Users/aleach/Google Drive/NRGStream"
+gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
+names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other (incl. biomass)","Solar","Wind")
+gen_mix<-gen_mix%>%mutate(Trade=-1*Trade)
+gen_mix<-gen_mix%>%pivot_longer(-date,names_to="Source",values_to="gen")%>%
+  mutate(date=dmy_hms(date),
+#change factor order to sort by avg gen
+        Source=factor(Source, levels=c("Wind","Solar","Hydro","Other (incl. biomass)","Natural Gas","Coal","Trade")))
+
+
+ggplot(gen_mix%>%filter(Source %in% c("Solar","Coal"),date>ymd_hm("2023-01-23 23:00"),date<ymd_hm("2023-01-25 1:00")),
+       aes(date,gen, group=Source, color = Source)) +
+  geom_line(linewidth=1.5)+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),date_breaks="2 hours",date_labels = "%H:00")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_color_manual("",values=c(colors_ua10()[2],"black"))+
+  guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
+  #theme(legend.position = "none")+
+  theme(legend.position = "bottom", legend.box = "vertical",
+        legend.margin=margin(t = 0,b=0, unit='cm'))+
+  labs(x="",y="Electricity Supply (MW)",
+       title="Alberta Electricity Supply from Solar and Coal, January 24, 2023",
+       caption="Source: AESO Data, accessed via NRGStream")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

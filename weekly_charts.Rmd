@@ -17,7 +17,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, '2023_01_27.html'), output_format = "all")})
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'), output_format = "all")})
 editor: source 
 ---
 
@@ -522,6 +522,10 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 
 # Featured Stories {.tabset .tabset-fade}
+
+
+```{r , child = 'stories/solar_coal.Rmd'}
+```
 
 ```{r , child = 'stories/rbc_finance.Rmd'}
 ```
