@@ -1,0 +1,12 @@
+## Africa nears gigawatt capacity
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+According to data compiled by the African Solar Industry Association (AFSIA), solar installations across Africa reached 949 MW in 2022, bringing cumulative capacity past the 1 GW mark. This indicates that countries within the continent are making significant strides towards realizing Africa's potential for photovoltaic (PV) energy generation. Angola emerged as the leading installer, commissioning two large-scale projects with a total capacity of 284 MW, overtaking traditional leaders South Africa and Egypt who placed second and third, respectively.
+
+The AFSIA's Annual Report 2022, published this week, also highlights that every country on the continent has plans to construct new solar projects in the near future, with 29 countries currently working on at least 100 MW of new installations. AFSIA notes that while these figures may appear small compared to other regions of similar size and population, there are numerous opportunities for the growth of the solar industry in Africa.
+
+The report identifies the commercial and industrial segment as a significant opportunity for solar energy in Africa. Unlike in other regions where companies prioritize cheaper electricity as the primary motivation for investing in C&I solar, companies in Africa are driven by the need for a secure power supply. Across the continent, the C&I market grew by over 60% in 2022, representing 28% of all installations.
+
+Additionally, the report also predicts that green hydrogen projects will drive significant demand for new PV, with 52 GW of new PV in development for projects exclusively using the power to produce hydrogen. Furthermore, the growing trend for electric vehicles is also expected to drive new solar installations across Africa, as many countries will need to double or even triple their electricity generation capacity to meet the demand for EV charging, and solar energy is seen as the most cost-effective and cleanest way to achieve this.
+
+You can learn more about solar power in Africa from the AFSIA website, which can be found [here](http://afsiasolar.com/data-center/reports/). I'd reccommend taking a look at the current reports, as well as the 2023 outlook. Africa is ripe for solar investment, and we will likely see major growth there in coming years.

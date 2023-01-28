@@ -523,10 +523,16 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/blueberry.Rmd'}
+```{r , child = 'stories/rbc_finance.Rmd'}
 ```
 
-```{r , child = 'stories/hydrogen_23.Rmd'}
+```{r , child = 'stories/imperial.Rmd'}
+```
+
+```{r , child = 'stories/spending.Rmd'}
+```
+
+```{r , child = 'stories/africasolar.Rmd'}
 ```
 
 # Oil
@@ -594,18 +600,19 @@ names<-c("WTI","WCS")
 diffs_chart(data=data,names,1,curr="USD")
 ```
 
-
 ### Maya-WCS
 ```{r diffs_maya, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
 names<-c("Maya","WCS")
 diffs_chart(data=data,names,5,curr="USD")
 ```
 
-### WTI Cushing vs MEH
-```{r diffs_4, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
-names<-c("MEH","WTI")
+### Brent-Urals
+
+```{r diffs_5, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H"}
+names<-c("Brent","Urals")
 diffs_chart(data=data,names,5,curr="USD")
 ```
+
 
 ## Forward Curves {.tabset .tabset-fade}
 
