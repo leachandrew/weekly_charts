@@ -1,14 +1,11 @@
 ## Imperial's Renewable Diesel
 #### Kayla Layden
 
-<!-- <center>![](stories/sec_1.png)</center> -->
-<!-- <br> -->
 On Thursday, Imperial Oil announced it had approved $720 million for a new renewable diesel facility at its Strathcona refinery near Edmonton. The project, first announced in August of 2021, will be the largest facility of its kind in Canada. Site preparation and initial construction are currently underway, with production expected to begin in 2025.
 
 Imperial plans to produce 20,000 barrels per day of renewable diesel (more than 1 billion litres per year) from locally sourced vegetable oils, mainly canola and soybean. To create a low-emission fuel, the new facility will also use low-carbon hydrogen obtained via pipeline from [Air Products' net-zero hydrogen plant](https://www.cbc.ca/news/canada/calgary/bakx-hydrogen-ira-2023-cp-1.6713038) currently under construction in northeast Edmonton. A significant portion of the production will be supplied to British Columbia to support the province's efforts to lower carbon emissions. Imperial also plans to use some of the renewable diesel in its own operations. 
 
 On top of the environmental benefits, Imperial claims that the project will create roughly 600 direct construction jobs.
-
 
 [Original Article](https://www.cbc.ca/news/canada/calgary/imperial-diesel-renewable-edmonton-1.6726962)
 
