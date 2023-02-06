@@ -573,6 +573,70 @@ wti_long<-levels_chart(data=data,names,15,"USD")
 wti_long
 gg_save(wti_long)
 
+names<-c("Brent","WTI","WCS")
+
+global_crude_15<-
+  data %>%filter(Date>ymd("2000-01-01")&Date<ymd("2020-01-01"))%>%
+  select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  filter(!is.na(value))%>%
+  mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  ggplot() +
+  geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
+  #geom_point(size=1) +
+  scale_colour_manual(NULL,values=colors_ua10())+
+  scale_x_date(name=NULL,date_breaks = "2 years", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
+  expand_limits(x=ymd("2020-03-01"))+
+  expand_limits(y=c(0,150))+
+  guides(colour=guide_legend(nrow=1))+
+  labs(y="Spot Prices ($US/bbl)",x="Year",
+       #title=title_sent,
+       caption="Data via Bloomberg")+
+  weekly_graphs()
+gg_save(global_crude_15)
+
+global_crude_covid<-
+  data %>%filter(Date>ymd("2018-01-01")&Date<ymd("2023-04-01"))%>%
+  select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  filter(!is.na(value))%>%
+  mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  ggplot() +
+  geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
+  #geom_point(size=1) +
+  scale_colour_manual(NULL,values=colors_ua10())+
+  scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
+  expand_limits(x=ymd("2020-03-01"))+
+  expand_limits(y=c(0,150))+
+  guides(colour=guide_legend(nrow=1))+
+  labs(y="Spot Prices ($US/bbl)",x="Year",
+       #title=title_sent,
+       caption="Data via Bloomberg")+
+  weekly_graphs()
+gg_save(global_crude_covid)
+
+
+names<-c("Urals","WTI","WCS")
+global_crude_russia<-
+  data %>%filter(Date>ymd("2021-01-01")&Date<ymd("2023-04-01"))%>%
+  select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  filter(!is.na(value))%>%
+  mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  ggplot() +
+  geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
+  #geom_point(size=1) +
+  scale_colour_manual(NULL,values=colors_ua10())+
+  scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
+  #expand_limits(x=ymd("2020-12-01"))+
+  expand_limits(y=c(0,130))+
+  guides(colour=guide_legend(nrow=1))+
+  labs(y="Spot Prices ($US/bbl)",x="Year",
+       #title=title_sent,
+       caption="Data via Bloomberg")+
+  weekly_graphs()
+gg_save(global_crude_russia)
+
 
 names<-c("Brent","WTI","Maya","WCS")
 global_crude<-levels_chart(data=data,names,5,"USD")
