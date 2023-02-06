@@ -1,0 +1,20 @@
+## Orphaned Renewable Equipment, is it possible?
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+Many of Alberta’s rural municipalities were left in the dust when the oil price crashed last decade, resulting in [billions of dollars of equipment being left behind](https://www.cbc.ca/news/canada/calgary/orphaned-wells-liability-alberta-1.6326942) by bankrupt fuel companies.
+
+Because of this, many rural Albertans are not optimistic when they see massive developments of wind and solar energy: they fear a repeat of the province’s orphan well crisis.
+
+<center>
+![Map of all the orphan wells in Alberta, 2017. Credits: [BOE Report](https://boereport.com/2017/02/17/heres-a-map-of-all-the-orphan-wells-in-alberta/).](https://boereport.com/wp-content/uploads/2017/02/alberta-orphan-wells.jpg){width=600px}
+</center>
+
+Renewable energy companies are required to provide an overview of how they plan to cover decommissioning and reclamation costs before they can proceed with their project. 
+
+And, unlike oil and gas leases, there is no split title in the case of renewables. The government will not force access. For landowners, entering into a wind or solar lease is entirely voluntary.
+
+This differs from a resource lease where property (or *surface rights*) owners [are not allowed to refuse access](https://www.cbc.ca/news/business/trident-exploration-alberta-oilpatch-rma-surface-leases-1.5121507) to companies that plan to develop fossil fuels under the surface of their land. And, once a well has been drilling, landowners have limited standing to ensure its timely reclamation. In the case of a renewable energy development, landowners would not be required to cede their property rights, although they may choose to do so.
+
+Might the recent burst in renewable energy development cause a repeat of past events? If so, it certainly won't be for the same reasons.
+
+[Original Article](https://www.cbc.ca/news/canada/calgary/alberta-vulcan-county-orphan-wells-jason-schneider-1.6730467)

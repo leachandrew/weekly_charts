@@ -22,7 +22,7 @@ editor: source
 ---
 
 ```{r CACHE, include=FALSE,cache=FALSE}
-
+reset<-0
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
@@ -30,7 +30,6 @@ KEEP_EIA_CACHE<-TRUE
 KEEP_BB_CACHE<-TRUE
 KEEP_CER_CACHE<-TRUE
 KEEP_KALIBRATE_CACHE<-TRUE
-reset<-0
 if(reset==1){
   KEEP_CANSIM_CACHE<-FALSE
   KEEP_AESO_CACHE<-FALSE
@@ -516,27 +515,19 @@ EIA_levels_chart<-function(data_sent,names,name_labels,years,title_sent="Benchma
 ```
   
 <center>
-  Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
-<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe>
+Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
+<iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1">
+</iframe>
 </center>
 
 
 # Featured Stories {.tabset .tabset-fade}
 
 
-```{r , child = 'stories/solar_coal.Rmd'}
+```{r , child = 'stories/orphan_wind.Rmd'}
 ```
 
-```{r , child = 'stories/rbc_finance.Rmd'}
-```
-
-```{r , child = 'stories/imperial.Rmd'}
-```
-
-```{r , child = 'stories/spending.Rmd'}
-```
-
-```{r , child = 'stories/africasolar.Rmd'}
+```{r , child = 'stories/indiainvestment.Rmd'}
 ```
 
 # Oil
@@ -906,6 +897,7 @@ dpr_data<-dpr_data%>%na.omit()%>%
 
 lto_dpr<-ggplot(dpr_data,aes(Month,Total_oil_prod/1000,group = Play,fill=Play)) +
   geom_area(position = "stack",color="black",size=0.5) +
+  scale_x_date(date_breaks = "1 year",expand=c(0,0),date_labels = "%Y")+
   #geom_point(size=1) +
   #scale_color_viridis("",discrete=TRUE,option="D")+
   #scale_fill_viridis("",discrete=TRUE,option="D")+   
@@ -916,6 +908,7 @@ lto_dpr<-ggplot(dpr_data,aes(Month,Total_oil_prod/1000,group = Play,fill=Play)) 
               caption="Source: EIA Drilling Productivity Report.")
 gas_dpr<-ggplot(dpr_data,aes(Month,Total_gas_prod/10^6,group = Play,fill=Play)) +
   geom_area(position = "stack",color="black",size=0.5) +
+  scale_x_date(date_breaks = "1 year",expand=c(0,0),date_labels = "%Y")+
   #geom_point(size=1) +
   #scale_color_viridis("",discrete=TRUE,option="D")+
   #scale_fill_viridis("",discrete=TRUE,option="D")+   
@@ -1747,6 +1740,11 @@ aeso_fwds
 </td>
 <td>
 [Jan 27, 2023](https://leachandrew.github.io/weekly_charts/2023_01_27.html)
+</td>
+</tr>
+<tr>
+<td>
+[Feb 6, 2023](https://leachandrew.github.io/weekly_charts/2023_02_06.html)
 </td>
 </tr>
 
