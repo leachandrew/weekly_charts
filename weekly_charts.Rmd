@@ -21,8 +21,8 @@ knit: (function(input_file, encoding) {
 editor: source 
 ---
 
-```{r CACHE, include=FALSE,cache=FALSE}
-reset<-0
+```{r CaCHE, include=FALSE,cache=FALSE}
+reset<-1
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
@@ -523,11 +523,13 @@ Sign up to receive our email updates via [Substack](https://leach.substack.com/)
 
 # Featured Stories {.tabset .tabset-fade}
 
-
-```{r , child = 'stories/orphan_wind.Rmd'}
+```{r , child = 'stories/keystone_spill.Rmd'}
 ```
 
-```{r , child = 'stories/indiainvestment.Rmd'}
+```{r , child = 'stories/b2ustorage.Rmd'}
+```
+
+```{r , child = 'stories/IRA_Europe.Rmd'}
 ```
 
 # Oil
@@ -1541,6 +1543,7 @@ wind_fcast_plot
 ```{r ngx_forwards_aeso,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE}
 
 
+
 proc_forwards<-function(file_sent,type){
   forwards<-read.csv(file=file_sent,header = TRUE, stringsAsFactors=FALSE,skip=1)
   formats<-unique(guess_formats(forwards[,1],"mdY"))
@@ -1616,6 +1619,7 @@ aeso_fwds<-ggplot(df1 %>% filter(Type=="FLAT",Inst_Date<=Trade_Date+years(3))) +
 
 ```{r aeso_fwd_prices, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE, fig.width=10, fig.pos="H"}
 aeso_fwds
+
 ```
 
 
@@ -1746,6 +1750,10 @@ aeso_fwds
 <td>
 [Feb 6, 2023](https://leachandrew.github.io/weekly_charts/2023_02_06.html)
 </td>
+<td>
+[Feb 17, 2023](https://leachandrew.github.io/weekly_charts/2023_02_17.html)
+</td>
+
 </tr>
 
 </table> 
