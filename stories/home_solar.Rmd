@@ -1,0 +1,12 @@
+## At-Home Solar Uptake
+#### Kayla Layden
+
+Conversations around alternative energy continue to hold a significant place in the public discourse in Alberta and around the world. One topic of interest is the uptake of small-scale solar units in residential homes. 
+
+Communities are keen to encourage the uptake of solar in homes as part of increased green energy usage. Applications opened this year for the City of Calgary's clean energy improvement program (CEIP). Alberta Municipalities, which administers the program with funding from the Federation of Canadian Municipalities, has already implemented CEIP in Edmonton, Canmore, and Lethbridge. The program encourages residents to make their homes more energy efficient by providing low-interest loans of up to $50,000. Adding solar panels is one of a list of eligible projects. 
+
+Companies are also trying to increase the appeal of solar as an investment by implementing systems that allow individuals to sell power back to the grid. This is currently possible through credits earned for excess power produced, but households are paid the regulated monthly rate approved by the utilities commission. As of last week, however, Solartility Inc., a Calgary company, is including a bi-directional interval meter when Albertans sign on to lease a rooftop solar system that also includes complete battery storage and an EV charger system. The interval meter, combined with the company's cloud-based system, will allow households to sell power back to the grid at peak times while buying energy when prices are low, thus maximizing household returns. This is expected to help boost demand for this type of small-scale solar system.
+
+[CEIP Article](https://www.cbc.ca/news/canada/calgary/clean-energy-improvement-program-calgary-applications-1.6732764)
+
+[Solartility Article](https://www.cbc.ca/news/canada/calgary/alberta-rooftop-solar-canada-1.6761157)

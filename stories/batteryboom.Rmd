@@ -1,0 +1,12 @@
+## USA's Battery Boom
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+The United States is experiencing a battery boom, with almost as much capacity added to the power grid in 2022 as in all previous years combined, according to the U.S. Energy Information Administration. In 2022, the United States installed 4 gigawatts of battery capacity, with California and Texas accounting for 90% of installations. The battery surge is reshaping America's regional electric grids, with analysts crediting a wave of new battery installations with sparing California from electric blackouts last summer.
+
+![Saticoy Battery Storage Plant](https://eepower.com/uploads/articles/saticoy-battery-storage-plant-fig1.jpg)
+
+
+The growth is largely due to the strength of solar in California and Texas, which are the first- and second-largest solar markets in the United States. Batteries are well-placed to profit from the large swings in electricity prices in these states, where prices tend to fall during the day when solar is producing and surge in the evening when demand rises and solar production falls off. Lithium-ion batteries, which account for the vast majority of utility-scale energy storage installations, can charge quickly using surplus solar generation during the daytime hours and dispatch power over a four-hour interval in the evening. The battery boom is likely to continue, with developers planning to install 22 GW of battery capacity between now and 2026, according to EIA figures. Of that, 16 GW is slated for Texas and California. The Inflation Reduction Act, a sweeping climate law enacted last year, makes it easier for battery developers to claim an investment tax credit, paving the way for any battery connected to the grid to qualify.
+
+More information on the growth and how policy changes have effected it can be found [here](https://www.scientificamerican.com/article/u-s-battery-installations-soared-in-2022-reshaping-power-grids/)
+

@@ -1,0 +1,22 @@
+## Albertan Hydroelectricity
+#### [Marc Vermette](https://www.linkedin.com/in/marc-vermette/)
+
+When we think about renewable energy in the prairies, your mind likely gravitates towards wind and solar power generation.
+
+But it didn’t always used to be this way. In the early 1950s, around 50% of Alberta’s capacity was hydroelectric, but that share has since decreased to about 3-5%.
+
+<center>
+![](https://i.imgur.com/UQAhGvU.png){width=600px}
+</center>
+
+This decrease is expected to continue, with predicted hydroelectric capacity accounting for only 2% of total by 2050.
+
+This despite the fact that, according to a 2010 study, Alberta contains [42-53,000 GWh](http://www.history.alberta.ca/energyheritage/energy/hydro-power/hydroelectricity-in-alberta-today.aspx) of hydroelectric energy potential.
+
+So why aren't we seeing more hydro development?
+
+The answer lies within the high costs and logistical demands of hydroelectric power generation, according to the Minister of Affordability and Utilities.
+
+On top of these costs, downstream water rights for other uses, like farming, further conflict with the future development of any hydro-related projects.
+
+[Original Article](https://www.cbc.ca/news/canada/edmonton/hydro-once-made-up-around-half-of-alberta-s-power-capacity-why-does-alberta-have-so-little-now-1.6744209)

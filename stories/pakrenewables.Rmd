@@ -1,0 +1,13 @@
+## Pakistan's Renewables Roadmap
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+Renewable energy experts and officials recently discussed Pakistan's "2030 solar and wind roadmap" in an international webinar organized by Agora Energiewende and the Institute of Policy Studies. The roadmap, developed by Pakistan's National Electric Power Regulatory Authority, aims to increase the country's renewable energy share to 30% by 2030.
+
+Speakers at the webinar emphasized the government's commitment to de-carbonizing the power sector and transitioning to renewable energy sources. While renewable energy integration with the grid may cause issues with the system operations due to its intermittent nature, the National Transmission and Despatch Company is analyzing scenarios for renewable energy uptake.
+
+The experts also reviewed a study suggesting an increase in Pakistan's total renewable energy capacity to 33 GW by 2030, reducing energy generation emissions by 50% and average energy generation costs by 15%. The study recommends a reinforcement of road infrastructure, a focus on flexibilization of hydro and coal units, and a localized tender plan for auctioning out solar and wind power.
+
+Furthermore, rooftop solar systems have potential for meeting local demands, reducing capacity payment burden and transmission losses, and managing daytime peaks. Mini and micro-grids present a feasible option for electrification in off-grid areas, improving rural livelihoods and increasing local business growth. The socioeconomic development of the communities is highly dependent on access to energy, and renewable energy can play a key role in addressing this challenge in Pakistan.
+
+Check out [this](https://www.brecorder.com/news/40229318/experts-discuss-2030-solar-and-wind-roadmap-for-pakistan) article for a little more depth on what this webinar entailed and what the roadmap looks like. If you're curious about why renewables in Pakistan is such a big deal, check out [this](https://www.cfr.org/in-brief/whats-stake-pakistans-power-crisis) article on the issues currently plaguing their power grid.
+
