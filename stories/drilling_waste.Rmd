@@ -1,0 +1,16 @@
+## Recycling Drilling Waste
+#### Kayla Layden
+
+<!-- <center>![](stories/sec_1.png)</center> -->
+<!-- <br> -->
+Since November 2021, Recover Energy Services Inc. has been reducing drilling waste by extracting base oil from drilling mud at its facility in Brazeau County, southwest of Edmonton.
+
+Each new oil well creates about 500 metric tons of drilling waste which is typically mixed with sawdust and sent to a class II landfill, where it takes years to break down. Recover Energy, however, uses hexane to extract base oil from the waste. Once this process is complete, a much smaller quantity of waste is sent to a landfill. The hexane can be recovered and reused, making the process even cleaner. The extracted base oil is also valuable; it is sold to companies that use it to produce more drilling mud. Theoretically, the base oil could also be further refined into diesel.
+
+So far, Recover Energy has accepted 2,000 loads of waste and produced 40,000 barrels of base oil. The company says it has averted up to 68,000 tons of greenhouse gas emissions by diverting waste normally sent to landfills. According to the U.S. EPA, this is equivalent to taking approximately 14,000 cars off of the road for a year. 
+
+Looking to the future, more than 20 locations throughout North America have been identified by the company as potential expansion sites.
+
+[Original Article](https://www.cbc.ca/news/canada/edmonton/how-this-facility-in-central-alberta-is-giving-new-life-to-oil-waste-1.6759872)
+
+[Recover Energy's Website](https://www.recover-energy.com/)

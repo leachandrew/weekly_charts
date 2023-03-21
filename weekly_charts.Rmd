@@ -1,5 +1,5 @@
 ---
-title: Weekly Energy Charts
+title: Leach's Occasional Energy Charts
 date: <text>`r format(Sys.time(), '%B %d, %Y')`</text>
 output:
   html_document:
@@ -22,7 +22,7 @@ editor: source
 ---
 
 ```{r CaCHE, include=FALSE,cache=FALSE}
-reset<-0
+reset<-1
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
@@ -114,7 +114,7 @@ data_fetch<-function(key=KEY, cat=241335){
   url <-paste("https://api.eia.gov/category/?api_key=",
                       key, "&category_id=", cat, "&out=xml", sep="" )
   
-  
+  #https://api.eia.gov/v2/petroleum/pri/spt/data/?frequency=daily&data[0]=value&facets[series][]=RWTC&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000?&api_key=",key
   #http://api.eia.gov/category/?api_key=YOUR_API_KEY_HERE&category_id=476336
   #url <- paste("https://api.eia.gov/category?api_key=",
   #             key, "&category_id=", cat, "&out=xml", sep="" )
@@ -216,7 +216,7 @@ bb_data<<-data
 ```
 
 
-```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=TRUE} 
+```{r eia_spot_prices, cache=KEEP_EIA_CACHE,eval=F} 
 #don't need to cache this long-term - it's daily data
 #GET EIA NYMEX SPOTS 
 subs<-data_fetch(KEY,cat=241335)
@@ -522,21 +522,11 @@ Sign up to receive our email updates via [Substack](https://leach.substack.com/)
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/batteryboom.Rmd'}
+```{r , child = 'stories/drilling_waste.Rmd'}
 ```
 
-```{r , child = 'stories/pakrenewables.Rmd'}
+```{r , child = 'stories/capusaincrease.Rmd'}
 ```
-
-```{r , child = 'stories/hydrogen_comm.Rmd'}
-```
-
-```{r , child = 'stories/home_solar.Rmd'}
-```
-
-```{r , child = 'stories/ab_hydro.Rmd'}
-```
-
 
 # Oil
 
@@ -546,14 +536,14 @@ Sign up to receive our email updates via [Substack](https://leach.substack.com/)
 
 ```{r feature_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
 names<-c("Brent","WTI","WCS")
-levels_chart(data=data,names,5,curr="USD",title_sent="")
+levels_chart(data=data,names,2,curr="USD",title_sent="",break_set="3 months")
 ```
 
 ### Alberta Crude
 
 ```{r alberta_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
 names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,5,curr="USD",title_sent="")
+levels_chart(data=data,names,2,curr="USD",title_sent="",break_set="3 months")
 ```
 
 ### Alberta Crude (Short)
@@ -749,7 +739,7 @@ rail_exports
 
 ## US Oil {.tabset .tabset-fade}
 
-```{r wpsr_setup, cache=TRUE,eval=TRUE}
+```{r wpsr_setup, cache=TRUE,eval=F}
 #first, build a list of series names we want to access
 #get the information from the EIA weekly supply API
 cat_store <- list()
@@ -869,7 +859,7 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 
 
 ### Production
-```{r us_crude_prod,eval=TRUE, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",eval=TRUE,dpi=220}
+```{r us_crude_prod,eval=F, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",dpi=220}
 #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
 EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -935,7 +925,7 @@ lto_dpr
 
 ### Net Imports
 
-```{r us_crude_imp,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=TRUE,dpi=220}
+```{r us_crude_imp, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=F,dpi=220}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
       title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -944,7 +934,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per D
 
 ### Oil and Product Net Imports
 
-```{r us_crude_net_imp, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE,dpi=220}
+```{r us_crude_net_imp, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
 EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
   theme(legend.position = "none")
@@ -953,7 +943,7 @@ EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Tho
   
 ### Inventories
 
-```{r us_crude_inv, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE,dpi=220}
+```{r us_crude_inv, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
 EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
   theme(legend.position = "none")
@@ -1149,10 +1139,18 @@ levels_chart_gas(data=data,names,6,"USD",break_set="1 month")
 
 ### Global Gas
 
+```{r global_gas_long, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
+data<-data %>% mutate(`NBP UK`=`NBP Gas`*`GBP USD`/10)
+names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
+levels_chart_gas(data=data,names,15*12,"USD")
+```
+
+### Global Gas (short)
+
 ```{r global_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
 data<-data %>% mutate(`NBP UK`=`NBP Gas`*`GBP USD`/10)
 names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
-levels_chart_gas(data=data,names,60,"USD")
+levels_chart_gas(data=data,names,24,"USD")
 ```
 
 
@@ -1229,7 +1227,7 @@ gas_dpr
 
 ### Storage
 
-```{r nat_gas_store,eval=TRUE, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10,dpi=220, fig.pos="H",eval=TRUE}
+```{r nat_gas_store,eval=F, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10,dpi=220, fig.pos="H"}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
 ```
 
@@ -1442,8 +1440,6 @@ renew_plot<-ggplot(gen_mix%>%filter(!Source %in% c("Natural Gas","Coal", "Trade"
   labs(x="",y="Renewable Supply (MW)",
        title="Alberta Renewable Supply Mix",
        caption="Source: AESO Data, accessed via NRGStream")
-
-
 
 wind_fcast_plot<-ggplot(wind_fcast) +
   geom_ribbon(aes(x = Date, ymin =MIN , ymax = MAX,fill="B"))+
@@ -1839,6 +1835,10 @@ solar_fcast_plot
 <td>
 [March 3, 2023](https://leachandrew.github.io/weekly_charts/2023_03_03.html)
 </td>
+<td>
+[March 20, 2023](https://leachandrew.github.io/weekly_charts/2023_03_20.html)
+</td>
+
 </tr>
 
 </table> 

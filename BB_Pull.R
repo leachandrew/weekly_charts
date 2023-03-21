@@ -1300,7 +1300,7 @@ data<-data %>% mutate(
 
 
 
-ggplot(data%>%filter(Date>ymd("2015-09-01"))%>%
+ggplot(data%>%filter(Date>ymd("2016-09-01"))%>%
           select(Date,NWR_bitumen,NWR_maya,wcs_maya,wcs_wti)%>%
            mutate(
            nwr_wcs_7ma=roll::roll_mean(NWR_bitumen,30),
@@ -1311,16 +1311,20 @@ ggplot(data%>%filter(Date>ymd("2015-09-01"))%>%
   geom_line(aes(Date,wcs_wti_7ma,color="WTI-WCS differential"),size=1.5)+
   #geom_line(aes(Date,73.059,color="2018 NWSR Toll Estimate"),size=1.5,linetype="dashed")+
   #geom_line(aes(Date,39.67,color="2012 NWSR Toll Estimate"),size=1.5,linetype="dashed")+
-  geom_line(aes(Date,73.059),size=1.5,linetype="dashed",color="black")+
-  geom_line(aes(Date,39.67),size=1.5,linetype="dashed",color="black")+
-  annotate("text",x = ymd("2015-09-05"), y=73+5,label = "2018 NWSR Toll Estimate, $73.06/bbl",size=rel(2.5),hjust=0,vjust=.5)+
+  geom_line(aes(Date,73.059),size=1.5,linetype="11",color="black")+
+  geom_line(aes(Date,39.67),size=1.5,linetype="21",color="black")+
+  geom_line(aes(Date,59.47),size=1.5,linetype="31",color="black")+
+  
+  annotate("text",x = Sys.Date()-months(12), y=59.47+5,label = "2022 NWSR Toll Estimate, $59.47/bbl",size=rel(2.5),hjust=0,vjust=.5)+
+  
+  annotate("text",x = Sys.Date()-months(12), y=73+5,label = "2018 NWSR Toll Estimate, $73.06/bbl",size=rel(2.5),hjust=0,vjust=.5)+
 
-  annotate("text",x = ymd("2015-09-05"), y=39.67+5,label = " 2012 NWSR Toll Estimate, $39.67/bbl ",size=rel(2.5),hjust=0,vjust=.5)+
+  annotate("text",x = Sys.Date()-months(12), y=39.67+5,label = " 2012 NWSR Toll Estimate, $39.67/bbl ",size=rel(2.5),hjust=0,vjust=.5)+
   
   theme_minimal()+weekly_graphs()+
   scale_x_date(date_labels = "%b\n%Y",date_breaks = "12 months",expand=c(0,0) )+
   #expand_limits(x = as.Date(c("2015-09-01", "2020-10-01")))+
-  expand_limits(y = c(0,180))+
+  expand_limits(y = c(0,180),x=Sys.Date()+months(1))+
   scale_y_continuous(expand = c(0,0),breaks=pretty_breaks(8))+
   #scale_shape_manual("",values=c(16,16))+
   #scale_fill_manual("",values=colors_tableau10())+
@@ -1333,7 +1337,7 @@ ggplot(data%>%filter(Date>ymd("2015-09-01"))%>%
   labs(x="",y="Margin or spread (CA$ per barrel)",
        #title="Coal and Gas Generation and Carbon Prices (MW, 2007-2015)",
        #title="Adjusted Drops in Generation by Plant Type (MW, 2020)",
-       caption="Source: Prices via Bloomberg, contract details via Alberta Energy Annual Reports, 2013-2014 and 2019-2020, calculations by Andrew Leach. Margins and spreads shown at 30 day moving averages.",
+       caption="Source: Prices via Bloomberg, contract details via Alberta Energy Annual Reports, 2013-2014, 2019-2020, and 2021-22, calculations and graph by Andrew Leach.\n Margins and spreads shown at 30 day moving averages, based on refinery design specifications and valuing commodity streams at Edmonton or Hardisty spot prices.",
        NULL)+
   NULL  
 ggsave("nwr.png",width = 14, height=7,dpi=600,bg="white")

@@ -1,0 +1,17 @@
+## Further projected increases in USA battery capacity
+#### [Yousaff Habib](https://www.linkedin.com/in/yousaff-habib-6684891a5/)
+
+In my last chart, I wrote about the massive increase in battery capacity in the United States over the last year. This trend seems as though it will continue, as the United States is expected to significantly increase its energy storage capacity over the next five years, with an estimated 75 GW of battery energy storage to be added across all sectors by 2027. This projection comes from a report by the American Clean Power Association and Wood Mackenzie.
+
+The report states that renewable energy and energy storage are responsible for over 82% of planned capacity additions in the US, with solar accounting for more than 50% of all planned generation capacity. Energy storage has seen considerable growth in recent years, with 4.8 GW / 12.1 GWh of storage capacity added in 2022 alone, nearly equaling the combined totals of 2020 and 2021.
+
+![Source: Wood Mackenzie](https://pv-magazine-usa.com/wp-content/uploads/sites/2/2023/03/vcsPRAsset_3765814_181973_cd7c6869-d560-4b38-aa7c-be397c4d0414_0-1.png)
+
+However, in late 2022, the deployment of energy storage slowed due to supply chain and interconnection constraints, resulting in over 3 GW of projects being delayed or cancelled. While utility-scale storage slowed, residential battery adoption continued to rise, growing by 11% in Q4 2022. The report predicts that the US will add approximately 75 GW of storage capacity between 2023 and 2027, with grid-scale installations accounting for 81% of new capacity.
+
+![Source: Wood Mackenzie](https://pv-magazine-usa.com/wp-content/uploads/sites/2/2023/03/vcsPRAsset_3765814_181974_c32560cf-aa77-4bb1-906f-db3783b1d053_0-1.png)
+
+Price relief for batteries is expected as commodity prices decline, but supply delays and a tight labor market may continue to present challenges this year. Despite these challenges, the report suggests that energy storage is already a key component of building a resilient grid that supports abundant clean energy. 
+
+You can find the report, which has a more in depth analysis and more charts [here](https://cleanpower.org/resources/u-s-energy-storage-monitor/). A must read if you're interested in the deployment of solar capacity especially.
+
