@@ -522,10 +522,10 @@ Sign up to receive our email updates via [Substack](https://leach.substack.com/)
 
 # Featured Stories {.tabset .tabset-fade}
 
-```{r , child = 'stories/drilling_waste.Rmd'}
+```{r , child = 'stories/capalberta.Rmd'}
 ```
 
-```{r , child = 'stories/capusaincrease.Rmd'}
+```{r , child = 'stories/budget.Rmd'}
 ```
 
 # Oil
@@ -857,14 +857,6 @@ ribbon_graph<-function(data_sent,series_name,unit_sent,years,alt_axis=FALSE){
 }
 ```
 
-
-### Production
-```{r us_crude_prod,eval=F, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",dpi=220}
-#function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
-EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
-  theme(legend.position = "none")
-```
-
 ```{r dpr_data, echo = TRUE,message=FALSE,  include=FALSE, warning=FALSE,cache=KEEP_EIA_CACHE,dpi=220}
 dpr_file<-"https://www.eia.gov/petroleum/drilling/xls/dpr-data.xlsx"
 #https://www.eia.gov/petroleum/drilling/xls/dpr-data.xlsx
@@ -917,11 +909,19 @@ gas_dpr<-ggplot(dpr_data,aes(Month,Total_gas_prod/10^6,group = Play,fill=Play)) 
        caption="Source: EIA Drilling Productivity Report.")
 ```
 
+
 ### LTO Production by Play
 ```{r dpr_oil_play, echo = FALSE, warning=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
 lto_dpr
 ```  
 
+### Total Production
+
+```{r us_crude_prod,eval=F, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",dpi=220}
+#function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
+EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
+  theme(legend.position = "none")
+```
 
 ### Net Imports
 
@@ -1218,14 +1218,45 @@ ngx_forwards(ngx_data,date_list,label_list,series_sent,title_sent,units_sent="US
 
 
 
-## US Natural Gas {.tabset .tabset-fade}
+## Natural Gas {.tabset .tabset-fade}
 
-### Shale Gas Production
+### WCSB Production
+```{r wcsb_gas,echo = FALSE, message=FALSE,warning=FALSE, results="asis", cache=KEEP_CER_CACHE, fig.width=10, fig.pos="H",dpi=220}
+
+#download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/natural-gas/statistics/marketable-natural-gas-production-in-canada-production-de-gaz-commercialisable-#au-canada.xlsx", mode = "wb")
+
+download.file("https://www.cer-rec.gc.ca/en/data-analysis/energy-commodities/natural-gas/statistics/marketable-natural-gas-production-canada-production-gaz-naturel-commercialisable-canada.xlsx",destfile="gas_prod.xlsx",mode="wb")
+              
+#test<-openxlsx::read.xlsx("gas_prod.xlsx", sheet = "2000+ - 103m3d 103m3j",skipEmptyRows = T)
+
+cer_gas_prod<-readxl::read_excel("gas_prod.xlsx", sheet = "2000+ - 103m3d 103m3j", range = NULL, col_names = TRUE,
+                        col_types = NULL, na = "", trim_ws = TRUE, skip = 8) %>% select(-2,-10,-12,-13)%>%
+    pivot_longer(-Date,names_to="Region",values_to = "Production")%>%
+  mutate(WCSB=Region%in%c("Alberta","BC","Sask"))%>%
+  group_by(Region)%>%
+  fill(Production, .direction=c("downup")) %>%
+  filter(!is.na(Date))
+
+ggplot(cer_gas_prod%>%filter(WCSB)) +
+  geom_area(aes(Date,Production/1000,fill=Region),position="stack",color="black",linewidth=0.5) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_fill_manual("",values = colors_ua10(),guide = "legend")+
+  scale_x_datetime(date_breaks="12 months",date_labels =  "%b\n%Y",expand=c(0,0)) +
+  weekly_small()+
+  labs(y="Marketable Gas Production (Bcf/d)",x="",
+       title=paste("WCSB Marketable Gas Production",sep=""),
+       caption="Source: CER Data.")
+
+
+```  
+
+
+### US Shale Production
 ```{r dpr_gas_play,echo = FALSE, warning=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
 gas_dpr
 ```  
 
-### Storage
+### US Storage
 
 ```{r nat_gas_store,eval=F, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10,dpi=220, fig.pos="H"}
 ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
@@ -1837,6 +1868,9 @@ solar_fcast_plot
 </td>
 <td>
 [March 20, 2023](https://leachandrew.github.io/weekly_charts/2023_03_20.html)
+</td>
+<td>
+[April 13, 2023](https://leachandrew.github.io/weekly_charts/2023_04_13.html)
 </td>
 
 </tr>
