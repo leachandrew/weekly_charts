@@ -21,7 +21,7 @@ knit: (function(input_file, encoding) {
 editor: source 
 ---
 
-```{r CaCHE, include=FALSE,cache=FALSE}
+```{r cache, include=FALSE,cache=FALSE}
 reset<-1
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
@@ -104,6 +104,7 @@ library(ggrepel)
 library(ggthemes)
 library(cansim)
 library(rvest)
+library(readxl)
 #quick function to make time breaks on axes
 
 
@@ -520,19 +521,22 @@ Sign up to receive our email updates via [Substack](https://leach.substack.com/)
 </center>
 
 
-# Featured Stories {.tabset .tabset-fade}
+<!-- # Featured Stories {.tabset .tabset-fade} -->
 
-```{r , child = 'stories/capalberta.Rmd'}
-```
+<!-- ## Econ 366 Chart Week 2023 -->
+<!-- It’s been a long term for everyone, but I’m excited to end it with a really special post for you all today. This year, as part of my University of Alberta ECON 366 energy economics class, I offered students the chance to participate in a Charts Week compilation, modeled on what Jason Kirby has done at Maclean's magazine and the Globe and Mail for the Canadian economics community. This term's compilation is available [here](https://econ366.aleach.ca/files/charts_2023.html). -->
 
-```{r , child = 'stories/budget.Rmd'}
-```
+<!-- ```{r , child = 'stories/capalberta.Rmd'} -->
+<!-- ``` -->
+
+<!-- ```{r , child = 'stories/budget.Rmd'} -->
+<!-- ``` -->
 
 # Oil
 
 ## Weekly Crude Prices {.tabset .tabset-fade}
 
-### Feature Crude
+### Crude Benchmarks
 
 ```{r feature_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
 names<-c("Brent","WTI","WCS")
@@ -546,22 +550,22 @@ names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitume
 levels_chart(data=data,names,2,curr="USD",title_sent="",break_set="3 months")
 ```
 
-### Alberta Crude (Short)
+<!-- ### Alberta Crude (Short) -->
 
-```{r alberta_crude_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
-names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen")
-levels_chart(data=data,names,1,curr="USD",break_set="2 months",title_sent="")
-```
+<!-- ```{r alberta_crude_short, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220} -->
+<!-- names<-c("Syncrude Sweet Synthetic","Edmonton Mixed Sweet","WCS","Implied Bitumen") -->
+<!-- levels_chart(data=data,names,1,curr="USD",break_set="2 months",title_sent="") -->
+<!-- ``` -->
 
-### US Crude
+<!-- ### US Crude -->
 
 
-```{r us_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220}
-names(data)[grep("ANS",names(data))]<-"Alaska North Slope"
-names(data)[grep("Clearbrook",names(data))]<-"Bakken"
-names<-c("Brent","WTI","LLS","Bakken","Alaska North Slope")
-levels_chart(data=data,names,5,curr="USD",title_sent="")
-```
+<!-- ```{r us_crude, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=FALSE, fig.width=10, fig.pos="H",dpi=220} -->
+<!-- names(data)[grep("ANS",names(data))]<-"Alaska North Slope" -->
+<!-- names(data)[grep("Clearbrook",names(data))]<-"Bakken" -->
+<!-- names<-c("Brent","WTI","LLS","Bakken","Alaska North Slope") -->
+<!-- levels_chart(data=data,names,5,curr="USD",title_sent="") -->
+<!-- ``` -->
 
 
 ### Global Crude
@@ -639,15 +643,17 @@ oil_by_rail<- oil_by_rail %>% fill(year) %>%
   mutate(
     date=ymd(paste(year,"-",mth_num,"-",day,sep = "")))
 
-rail_exports<-ggplot(oil_by_rail) +
-  geom_col(aes(date,volume_bbl_per_day/1000,fill="Crude by Rail Exports")) +
+rail_exports<-
+  ggplot(oil_by_rail) +
+  geom_line(aes(date,volume_bbl_per_day/1000,color="Crude by Rail Exports"),linewidth=1.25) +
   scale_y_continuous(expand = c(0, 0)) +
-  scale_x_date(name=NULL,date_breaks="6 months",date_labels =  "%b\n%Y",expand=c(0,0)) +
-  scale_fill_manual("",values = colors_ua10(),guide = "legend")+
+  scale_x_date(name=NULL,date_breaks="2 years",date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_color_manual("",values = colors_ua10(),guide = "none")+
+  expand_limits(y=0)+
   weekly_small()+
-  labs(y="Export Volumes (1000 bbl/d)",x="Date",
+  labs(y="Export Volumes (1000 bbl/d)",x="",
        title=paste("Canadian Oil Exports by Rail",sep=""),
-       caption="Source: CER Data.")
+       caption="Source: Canadian Energy Regulator.")
 
 ```
 
@@ -666,7 +672,7 @@ cdn_crude_exports<-crude_disp_new %>% filter(geo=='Canada',supply_and_dispositio
          supply_and_disposition=fct_recode(supply_and_disposition,"Total Exports"="Exports"),
          supply_and_disposition=fct_relevel(supply_and_disposition,"Total Exports"))%>%
 ggplot(aes(group=supply_and_disposition,color=supply_and_disposition))+
-  geom_line(aes(Date,value/10^6/days_in_month(month(Date))))+
+  geom_line(aes(Date,value/10^6/days_in_month(month(Date))),linewidth=1.25)+
   scale_colour_manual(NULL,values=colors_ua10())+
     scale_x_date(date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0))+
     scale_y_continuous(expand = c(0, 0)) +
@@ -694,7 +700,7 @@ ggplot(aes(group=supply_and_disposition,fill=supply_and_disposition))+
 cdn_crude_imports<-crude_disp_new %>% filter(geo=='Canada',supply_and_disposition%in% c("Imports"),
                           uom=="Barrels")%>%
   ggplot(aes(group=supply_and_disposition,color=supply_and_disposition))+
-  geom_line(aes(Date,value/10^3/days_in_month(month(Date))))+
+  geom_line(aes(Date,value/10^3/days_in_month(month(Date))),linewidth=1.25)+
   scale_colour_manual(NULL,values=colors_ua10())+
     scale_x_date(date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0))+
     scale_y_continuous(expand = c(0, 0)) +
@@ -915,69 +921,70 @@ gas_dpr<-ggplot(dpr_data,aes(Month,Total_gas_prod/10^6,group = Play,fill=Play)) 
 lto_dpr
 ```  
 
-### Total Production
 
-```{r us_crude_prod,eval=F, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",dpi=220}
-#function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)")
-EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+
-  theme(legend.position = "none")
-```
+<!-- ### Total Production -->
 
-### Net Imports
+<!-- ```{r us_crude_prod,eval=F, echo = FALSE, warning=FALSE, message=FALSE,results="asis", cache=FALSE,fig.width=10,fig.pos="H",dpi=220} -->
+<!-- #function(data_sent,names,name_labels,years,title_sent="Benchmark Oil Prices",break_set="12 months",y_lab="Spot Prices ($US/bbl)") -->
+<!-- EIA_levels_chart(all_data,"Field Production of Crude Oil","Field Production, Thousands of Barrels per Day",10,title_sent ="US Field Production of Crude Oil",y_lab="Production (1000 bbl/d)")+ -->
+<!--   theme(legend.position = "none") -->
+<!-- ``` -->
 
-```{r us_crude_imp, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=F,dpi=220}
-EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10,
-      title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+
-  theme(legend.position = "none")
-```
+<!-- ### Net Imports -->
 
-
-### Oil and Product Net Imports
-
-```{r us_crude_net_imp, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
-EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10,
-  title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+
-  theme(legend.position = "none")
-```
-  
-  
-### Inventories
-
-```{r us_crude_inv, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220}
-EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10,
-      title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+
-  theme(legend.position = "none")
-```
+<!-- ```{r us_crude_imp, echo = FALSE, warning=FALSE,message=FALSE,results="asis", cache=FALSE, fig.width=10, fig.pos="H",eval=F,dpi=220} -->
+<!-- EIA_levels_chart(all_data,"Net Imports of Crude Oil","Thousands of Barrels per Day",10, -->
+<!--       title_sent ="US Net Imports of Crude Oil",y_lab="Net Imports (1000 bbl/d)")+ -->
+<!--   theme(legend.position = "none") -->
+<!-- ``` -->
 
 
-### EIA STEO Forecasts
+<!-- ### Oil and Product Net Imports -->
 
-```{r steo_supply_demand, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE}
-grid.arrange(arrangeGrob(demand +   weekly_small()+
-                             theme(   legend.position="none",
-                                      plot.title = element_text(face="bold",size=rel(.7)),
-                                      plot.subtitle = element_blank(),
-                                      #       legend.margin=margin(c(0,0,0,0),unit="cm"),
-                                      #       legend.text = element_text(colour="black", size = 14, face = "bold"),
-                                              plot.caption = element_blank(),
-                                      #       plot.title = element_blank(),
-                                      #       plot.subtitle = element_text(size = 14, face = "italic"),
-                                      #       panel.grid.minor = element_blank(),
-                                      #       text = element_text(size = 12,face = "bold"),
-                                      #       axis.text = element_text(size = 12,face = "bold", colour="black"),
-                                             axis.text.x = element_blank(),
-                                             NULL ),
-                             
-  supply+ weekly_small()+
-              theme(legend.position="bottom",
-                    plot.title = element_text(face="bold",size=rel(.7)),
-                plot.subtitle = element_blank(),
-                    NULL)
-  ,
-  ncol=1,heights=c(3.5,5))
-  )
+<!-- ```{r us_crude_net_imp, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220} -->
+<!-- EIA_levels_chart(all_data,"Net Imports of Crude Oil and Petroleum Products","Thousands of Barrels per Day",10, -->
+<!--   title_sent ="US Net Imports of Crude Oil and Products",y_lab="Net Imports (1000 bbl/d)")+ -->
+<!--   theme(legend.position = "none") -->
+<!-- ``` -->
 
-```
+
+<!-- ### Inventories -->
+
+<!-- ```{r us_crude_inv, eval=F,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",dpi=220} -->
+<!-- EIA_levels_chart(all_data,"Ending Stocks of Crude Oil","Thousands of Barrels",10, -->
+<!--       title_sent ="US Crude Oil Inventories",y_lab="Total Inventories (1000 bbl)")+ -->
+<!--   theme(legend.position = "none") -->
+<!-- ``` -->
+
+
+<!-- ### EIA STEO Forecasts -->
+
+<!-- ```{r steo_supply_demand, eval=TRUE,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10, fig.pos="H",eval=TRUE} -->
+<!-- grid.arrange(arrangeGrob(demand +   weekly_small()+ -->
+<!--                              theme(   legend.position="none", -->
+<!--                                       plot.title = element_text(face="bold",size=rel(.7)), -->
+<!--                                       plot.subtitle = element_blank(), -->
+<!--                                       #       legend.margin=margin(c(0,0,0,0),unit="cm"), -->
+<!--                                       #       legend.text = element_text(colour="black", size = 14, face = "bold"), -->
+<!--                                               plot.caption = element_blank(), -->
+<!--                                       #       plot.title = element_blank(), -->
+<!--                                       #       plot.subtitle = element_text(size = 14, face = "italic"), -->
+<!--                                       #       panel.grid.minor = element_blank(), -->
+<!--                                       #       text = element_text(size = 12,face = "bold"), -->
+<!--                                       #       axis.text = element_text(size = 12,face = "bold", colour="black"), -->
+<!--                                              axis.text.x = element_blank(), -->
+<!--                                              NULL ), -->
+
+<!--   supply+ weekly_small()+ -->
+<!--               theme(legend.position="bottom", -->
+<!--                     plot.title = element_text(face="bold",size=rel(.7)), -->
+<!--                 plot.subtitle = element_blank(), -->
+<!--                     NULL) -->
+<!--   , -->
+<!--   ncol=1,heights=c(3.5,5)) -->
+<!--   ) -->
+
+<!-- ``` -->
 
 
 
@@ -1051,16 +1058,10 @@ ref_runs<- ref_runs %>% group_by(Region) %>%
 #lims=c(max(ref_runs$Date)-years(3),max(ref_runs$Date)+months(3))
 #breaks<-seq.Date(min(ref_runs$Date), max(ref_runs$Date)+months(3), by="1 year")
 
-ref_run_graph<-ggplot(ref_runs) +
+ref_run_graph<-
+  ggplot(ref_runs) +
   geom_area(aes(Date,Runs*6.2929,fill=Region),position="stack") +
-  #geom_ribbon(aes(Date,Runs*6.2929,fill=Region),position="stack") +
-  #geom_area(data=filter(df1,df1$Pipeline!="test"),aes(Year,Capacity*6.2929/1000,fill=Pipeline),position="stack",alpha=0.8) +
-  #geom_line(aes(Date,m12_avg*6.2929,colour=Region),position="stack",size=3) +
-  #geom_point(size=1) +
-  #scale_color_viridis("",discrete=TRUE,option="D",labels="Expected Export Demand")+
-  #scale_colour_manual("",labels=c("Expected Export Demand"),values=c("Black"))+
-  #scale_fill_viridis("",discrete=TRUE,option="D")+
-  scale_x_date(name=NULL,breaks=pretty_breaks(),date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_x_date(name=NULL,date_breaks="2 years",date_labels =  "%b\n%Y",expand=c(0,0)) +
   scale_fill_manual("",values = colors_ua10(),guide = "legend")+
   guides(colour = guide_legend(order = 1), 
          fill = guide_legend(order = 2))+
@@ -1079,11 +1080,11 @@ west_runs<-ggplot(filter(ref_runs,Region=="Western Canada")) +
   #geom_line(aes(Year,Oil.Available.for.Export*6.2929/1000, colour = "test" ),size=3) +
   geom_line(aes(Date,m12_avg*6.2929,colour=Region),position="stack",size=1.25) +
   #scale_color_viridis("",discrete=TRUE,option="D",labels="Expected Export Demand")+
-  scale_colour_manual("",labels=c("52 Week Average"),values=colors_ua10()[3])+
+  scale_colour_manual("",labels=c("52 Week Average"),values=colors_ua10()[1])+
   #scale_fill_manual("",labels=c("Weekly Throughput"),values=c("Red"))+
   #scale_fill_viridis("",discrete=TRUE,option="D")+
-  scale_x_date(name=NULL,breaks = pretty_breaks(),date_labels =  "%b\n%Y",expand=c(0,0)) +
-  scale_fill_manual("",values = colors_ua10(),guide = "legend",labels="Weekly Runs")+
+  scale_x_date(name=NULL,date_breaks="2 years",date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_fill_manual("",values = colors_ua10()[2],guide = "legend",labels="Weekly Runs")+
   guides(colour = guide_legend(order = 1), 
          fill = guide_legend(order = 2))+
   #scale_y_continuous(expand = c(0, 0)) +
@@ -1108,13 +1109,13 @@ ref_prod_price_levels<-levels_chart(data=data,names,10,"CAD",title_sent="Edmonto
 
 ### Canadian Refinery Runs
 ```{r cdn_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_CER_CACHE, fig.width=10, fig.pos="H",dpi=220}
-ref_run_graph
+ref_run_graph 
 ```
 
 
 ### Western Canada Refinery Runs
 ```{r west_ref_runs, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_CER_CACHE, fig.width=10, fig.pos="H",dpi=220}
-west_runs
+west_runs 
 ```
 
 
@@ -1234,14 +1235,19 @@ cer_gas_prod<-readxl::read_excel("gas_prod.xlsx", sheet = "2000+ - 103m3d 103m3j
     pivot_longer(-Date,names_to="Region",values_to = "Production")%>%
   mutate(WCSB=Region%in%c("Alberta","BC","Sask"))%>%
   group_by(Region)%>%
-  fill(Production, .direction=c("downup")) %>%
-  filter(!is.na(Date))
+  fill(Production, .direction=c("up")) %>%
+  ungroup()%>%
+  filter(!is.na(Date),!is.na(Production))%>%
+  filter(Date<max(Date))
+  
+  
 
-ggplot(cer_gas_prod%>%filter(WCSB)) +
+ggplot(cer_gas_prod%>%filter(WCSB,Date>=ymd("2015-01-01"))) +
   geom_area(aes(Date,Production/1000,fill=Region),position="stack",color="black",linewidth=0.5) +
   scale_y_continuous(expand = c(0, 0)) +
+  expand_limits(y=550)+
   scale_fill_manual("",values = colors_ua10(),guide = "legend")+
-  scale_x_datetime(date_breaks="12 months",date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_x_datetime(date_breaks="6 months",date_labels="%b\n%Y",expand=c(0,0)) +
   weekly_small()+
   labs(y="Marketable Gas Production (Bcf/d)",x="",
        title=paste("WCSB Marketable Gas Production",sep=""),
@@ -1256,11 +1262,11 @@ ggplot(cer_gas_prod%>%filter(WCSB)) +
 gas_dpr
 ```  
 
-### US Storage
+<!-- ### US Storage -->
 
-```{r nat_gas_store,eval=F, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10,dpi=220, fig.pos="H"}
-ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage")
-```
+<!-- ```{r nat_gas_store,eval=F, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_EIA_CACHE, fig.width=10,dpi=220, fig.pos="H"} -->
+<!-- ribbon_graph(all_data,"Weekly Lower 48 States Natural Gas Working Underground Storage","Billion Cubic Feet",5,alt_axis ="Lower-48 Working Underground Storage") -->
+<!-- ``` -->
 
 
 # Power
@@ -1349,7 +1355,7 @@ assign_time <- function(data, date_var=date, he_var=he){
 ```
 
 
-```{r aeso,warning=FALSE,message=FALSE,echo=FALSE,cache=FALSE}
+```{r aeso,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_AESO_CACHE}
 get_forecast_report <- function(start_date, end_date) {
   #testing below here
   #start_date<- Sys.Date()-months(1)
@@ -1402,12 +1408,12 @@ price_ail<-assign_peaks(price_ail)
 
 
 wind_forecast<-function(){
-  wind_fcast<-read.csv("http://ets.aeso.ca/Market/Reports/Manual/Operations/prodweb_reports/wind_power_forecast/WPF_LongTerm.csv",skip=4)
+  wind_fcast<-read.csv("http://ets.aeso.ca/Market/Reports/Manual/Operations/prodweb_reports/wind_solar_forecast/wind_rpt_longterm.csv")
   wind_fcast<- wind_fcast[-seq(nrow(wind_fcast),nrow(wind_fcast)-1),]
   wind_fcast[,2]<-as.numeric(as.character(wind_fcast[,2]))
   wind_fcast[,1]<-as.POSIXct(as.character(wind_fcast[,1]))
   names(wind_fcast)[1]<-"Date"
-  wind_fcast
+  wind_fcast %>% clean_names()
 }
 wind_fcast<-wind_forecast()
 
@@ -1417,6 +1423,21 @@ solar_forecast<-function(){
 }
 
 solar_fcast<-solar_forecast()
+
+
+combo_fcast<-function(){
+  read.csv("http://ets.aeso.ca/Market/Reports/Manual/Operations/prodweb_reports/wind_solar_forecast/windsolar_rpt_longterm.csv")%>%
+    clean_names()%>%
+    mutate(min=as.numeric(min),
+           max=as.numeric(max),
+           most_likely=as.numeric(most_likely))%>%
+  rename(date=1)%>%
+    mutate(date=ymd_hm(date))
+}
+renew_fcast<-combo_fcast()
+
+
+
 
 ```
 
@@ -1432,7 +1453,7 @@ gen_mix <- read.csv(paste(nrg_folder,"AESO_Gen_Mix.csv",sep="/"),skip = 2,header
 names(gen_mix)<-c("date","Coal","Hydro","Trade","Natural Gas","Other (incl. biomass)","Solar","Wind")
 gen_mix<-gen_mix%>%mutate(Trade=-1*Trade)
 gen_mix<-gen_mix%>%pivot_longer(-date,names_to="Source",values_to="gen")%>%
-  mutate(date=dmy_hms(date),
+  mutate(date=dmy_hms(date,tz="America/Denver"),
 #change factor order to sort by avg gen
         Source=factor(Source, levels=c("Wind","Solar","Hydro","Other (incl. biomass)","Natural Gas","Coal","Trade")))
 gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
@@ -1447,20 +1468,22 @@ gen_mix_plot<-ggplot(gen_mix,aes(date,gen, group=Source, fill = Source)) +
        title="Supply Mix, Past 30 Days",
        caption="Source: AESO Data, accessed via NRGStream")
 #gen_mix_plot
-gen_mix_plot_short<-ggplot(gen_mix%>%filter(date(date)==today()),aes(date,gen, group=Source, fill = Source)) +
+gen_mix_plot_short<-
+  ggplot(gen_mix%>%filter(date(date)>=today()-days(7),!is.na(gen)),aes(date,gen, group=Source, fill = Source)) +
   geom_area(position="stack")+
   weekly_small()+
-  scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
+  scale_x_datetime(expand = c(0,0),date_breaks="1 days",date_labels = "%b %d")+
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
   scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
   guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
   #theme(legend.position = "none")+
   labs(x="",y="Supply (MW)",
-       title="Alberta Supply Mix",
+       title="Alberta Supply Mix, Past 7 Days",
        caption="Source: AESO Data, accessed via NRGStream")
 
 
-renew_plot<-ggplot(gen_mix%>%filter(!Source %in% c("Natural Gas","Coal", "Trade")),aes(date,gen, group=Source, fill = Source)) +
+renew_plot<-
+  ggplot(gen_mix%>%filter(!Source %in% c("Natural Gas","Coal", "Trade")),aes(date,gen, group=Source, fill = Source)) +
   geom_area(position="stack")+
   weekly_small()+
   scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
@@ -1472,23 +1495,40 @@ renew_plot<-ggplot(gen_mix%>%filter(!Source %in% c("Natural Gas","Coal", "Trade"
        title="Alberta Renewable Supply Mix",
        caption="Source: AESO Data, accessed via NRGStream")
 
-wind_fcast_plot<-ggplot(wind_fcast) +
-  geom_ribbon(aes(x = Date, ymin =MIN , ymax = MAX,fill="B"))+
-  geom_line(aes(Date,MOST.LIKELY,colour="A"), size=1.25)+
+wind_fcast_plot<-
+  ggplot(wind_fcast) +
+  geom_ribbon(aes(x = date, ymin =min , ymax = max,fill="B"))+
+  geom_line(aes(date,most_likely,colour="A"), size=1.25)+
   weekly_small()+
   scale_x_datetime(expand = c(0,0),labels = date_format("%b %d\n%H:00"),breaks = "1 day")+
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
   scale_color_manual("",labels=c("Most Likely Wind Generation"),values="#007C41")+
   scale_fill_manual("",labels=c("Range of Potential Wind Generation"),values=alpha("#007C41",.3))+
-  guides(fill = guide_legend(nrow = 1))+
+  guides(color = guide_legend(nrow = 1,order = 1),fill = guide_legend(nrow = 1,order = 2))+
   #theme(legend.position = "none")+
   labs(x="",y="Average Hourly Generation (MW)",
        title="Wind Generation Forecast",
        caption="Source: AESO Data")
 
 
+combi_fcast_plot<-
+  ggplot(renew_fcast) +
+  geom_ribbon(aes(x = date, ymin =min , ymax = max,fill="B"))+
+  geom_line(aes(date,most_likely,colour="A"), size=1.25)+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),labels = date_format("%b %d\n%H:00"),breaks = "1 day")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_color_manual("",labels=c("Most Likely Renewable Generation"),values="#FFDB05")+
+  scale_fill_manual("",labels=c("Range of Potential Renewable Generation"),values=alpha("#007C41",.4))+
+  guides(color = guide_legend(nrow = 1,order = 1),fill = guide_legend(nrow = 1,order = 2))+
+  #theme(legend.position = "none")+
+  labs(x="",y="Average Hourly Generation (MW)",
+       title="Renewable Generation Forecast",
+       caption="Source: AESO Data")
 
-solar_fcast_plot<-ggplot(solar_fcast) +
+
+solar_fcast_plot<-
+  ggplot(solar_fcast) +
   geom_ribbon(aes(x = date, ymin =min , ymax = max,fill="B"))+
   geom_line(aes(date,most_likely,colour="A"), linewidth=1.25)+
   weekly_small()+
@@ -1496,7 +1536,7 @@ solar_fcast_plot<-ggplot(solar_fcast) +
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
   scale_color_manual("",labels=c("Most Likely Solar Generation"),values="#007C41")+
   scale_fill_manual("",labels=c("Range of Potential Solar Generation"),values=alpha("#FFDB05",.8))+
-  guides(fill = guide_legend(nrow = 1))+
+  guides(color = guide_legend(nrow = 1,order = 1),fill = guide_legend(nrow = 1,order = 2))+
   #theme(legend.position = "none")+
   labs(x="",y="Average Hourly Generation (MW)",
        title="Solar Generation Forecast",
@@ -1504,23 +1544,63 @@ solar_fcast_plot<-ggplot(solar_fcast) +
 
 
 
-#solar_fcast_plot
 
 ```
 
 
 
-```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,cache=KEEP_AESO_CACHE}
+```{r prices_and_loads,fig.width=10, fig.pos="H",warning=FALSE,message=FALSE,cache=KEEP_AESO_CACHE}
 #graph of prices and loads from aeso
 period_start<-max(price_ail$start_date)-weeks(1)
 end_date<-max(price_ail$start_date)
 
-peak_data<-price_ail %>% filter(date>=period_start,date<=end_date) %>%
+#renewables vs price plot
+renew_gen<-gen_mix%>%filter(!Source %in% c("Natural Gas","Coal", "Trade"))%>%
+  group_by(date,Source)%>%
+  summarize(gen=sum(gen,na.rm=T))%>%group_by(date)%>%
+  mutate(total_renew=sum(gen,na.rm=T))%>%
+  ungroup()%>%
+  #mutate(date=as.POSIXct(date,tz="America/Denver"))%>%
+  I()
+
+peak_data<-price_ail %>% filter(!is.na(actual_posted_pool_price),date>=max(date)-weeks(1))%>%
+  #filter(date>=period_start,date<=end_date) %>%
   mutate(peak_ail=ifelse(on_peak,actual_ail,NA),
          peak_price=ifelse(on_peak,actual_posted_pool_price,NA),
   )
 
-max_price<-max(max(peak_data$actual_posted_pool_price))
+
+
+
+#renew_gen<-renew_gen %>% left_join(peak_data %>% select(date=time,on_peak,price=actual_posted_pool_price))%>%
+#  filter(!is.na(price))%>%
+#  mutate(peak_gen=ifelse(on_peak,gen,NA))
+
+#trim data for which you have all the info
+
+peak_data<-peak_data %>% left_join(renew_gen %>% select(time=date,Source,gen)%>%pivot_wider(names_from=Source,values_from=gen))%>%
+filter(!is.na(Wind))
+  #I()#mutate(peak_gen=ifelse(on_peak,gen,NA))
+
+renew_panel<-
+  ggplot(peak_data%>%select(time,Wind,Solar,Hydro,"Other (incl. biomass)")%>%pivot_longer(-time,names_to = "Source",values_to = "gen")%>%
+           mutate(Source=fct_relevel(Source,"Solar","Wind","Hydro"))) +
+  #geom_line(aes(time,gen,colour="basic"),size=1.25)+
+  #geom_line(aes(time,peak_gen,colour="peak"),size=1.25)+
+  geom_area(aes(time,gen,fill=Source),position="stack")+
+  scale_fill_manual("",values=c(colors_ua10()[2],colors_ua10()[1],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
+  scale_x_datetime(expand=c(0,0),breaks="1 day",labels = date_format("%H:00\n%b %d\n%Y",tz="America/Denver"))+
+  scale_y_continuous(expand = c(0,0))+expand_limits(y=0)+
+  theme_minimal()+
+  theme(legend.position="bottom",
+        legend.margin=margin(c(0,0,0,0),unit="cm"),
+        legend.text = element_text(colour="black", size = 12, face = "bold"),
+        axis.title.y = element_text(margin = margin(t = 0, r = 5, b = 0, l = 0, unit = "pt"))
+  )+
+  labs(y="Renewable Generation (MW)",x="",
+       title=paste("Alberta Renewable Generation",sep=""),
+  )
+
 
 
 #previous week prices
@@ -1532,7 +1612,7 @@ top_panel<-ggplot(peak_data) +
   scale_color_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
   scale_fill_manual("",values = colors_ua10(),labels=c("Off-peak period","Peak period"))+
   scale_x_datetime(expand=c(0,0),breaks="1 day",labels = date_format("%H:00\n%b %d\n%Y",tz="America/Denver"))+
-  scale_y_continuous(limits = c(0,max_price))+
+  scale_y_continuous()+expand_limits(y=0)+
   theme_minimal()+
   theme(legend.position="bottom",
         legend.margin=margin(c(0,0,0,0),unit="cm"),
@@ -1568,11 +1648,6 @@ mylegend<-g_legend(top_panel)
 ```
 
 ## AESO Market Summary {.tabset .tabset-fade}
-### Supply Mix
-
-```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
-gen_mix_plot
-```
 
 ### Prices and Loads
 
@@ -1605,6 +1680,9 @@ mylegend, nrow=2,heights=c(10, 1),bottom =text_grob(
 ```
 
 
+
+
+
 ```{r ngx_forwards_aeso,echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_NRGSTREAM_CACHE}
 
 
@@ -1630,28 +1708,28 @@ new_forwards<-function(){
   #clip all_forwards
   #all_forwards<-all_forwards%>%filter(Trade_Date<as.Date("2018-01-01"))
   #import and proces new ones
-  forwards<-proc_forwards(paste(nrg_folder,"forwards2018.csv",sep="/"),"FLAT")
-  peak_forwards<-proc_forwards(paste(nrg_folder,"peak_forwards.csv",sep="/"),"PEAK")
-  ext_peak_forwards<-proc_forwards(paste(nrg_folder,"ext_peak_forwards.csv",sep="/"),"EXT_PEAK")
-  off_peaks<-proc_forwards(paste(nrg_folder,"off_peak_forwards.csv",sep="/"),"OFF_PEAK")
+  flat_forwards<-proc_forwards(paste(nrg_folder,"flat_forwards.csv",sep="/"),"FLAT")
+  #peak_forwards<-proc_forwards(paste(nrg_folder,"peak_forwards.csv",sep="/"),"PEAK")
+  #ext_peak_forwards<-proc_forwards(paste(nrg_folder,"ext_peak_forwards.csv",sep="/"),"EXT_PEAK")
+  #off_peaks<-proc_forwards(paste(nrg_folder,"off_peak_forwards.csv",sep="/"),"OFF_PEAK")
   #rro<-proc_forwards(paste(nrg_folder,"rro_forwards.csv",sep="/"),"RRO")
   
   #stack new ones
-  new_forwards<-rbind(forwards,peak_forwards,ext_peak_forwards,off_peaks)
+  #new_forwards<-rbind(forwards,peak_forwards,ext_peak_forwards,off_peaks)
+  new_forwards<-rbind(flat_forwards)
   new_forwards<-arrange(new_forwards,Trade_Date,Inst_Date,Type)
   new_forwards
   #save(all_forwards,file="forwards.RData")
 }
 
-p_l<-read_csv(file=paste(nrg_folder,"ab_pricing.csv",sep="/"),skip=5)%>%
+p_l<- read_csv(file=paste(nrg_folder,"ab_pricing.csv",sep="/"),skip=5)%>%
   clean_names()%>%
   rename(pool_price=3,load=2)%>%
   mutate(
     date=dmy_hms(effective_date),
     month=month(date),
     year=year(date)
-  )%>%
-  group_by(month,year)%>%
+  )%>%  group_by(month,year)%>%
   summarize(price=sum(pool_price*load,na.rm=T)/sum(load,na.rm = T))%>%
   mutate(Inst_Date=ymd(paste(year,month,1,sep="-")))
     
@@ -1680,42 +1758,96 @@ aeso_fwds<-ggplot(df1 %>% filter(Type=="FLAT",Inst_Date<=Trade_Date+years(3))) +
   geom_line(aes(Inst_Date,price,lty="Load-weighted Pool Price"),size=1.05)+
   geom_line(aes(Inst_Date,Settle,colour=as.factor(Trade_Date),group=as.factor(Trade_Date)),size=1.05)+
   scale_y_continuous(breaks=pretty_breaks())+
-  scale_x_date(breaks=pretty_breaks(),date_labels = "%b\n%Y",date_breaks = "6 months")+
+  #scale_x_date(breaks=pretty_breaks(),date_labels = "%b\n%Y",date_breaks = "6 months")+
   expand_limits(y=0)+
-  scale_color_manual("",values=colors_ua10(),guide=guide_legend(nrow=1,order=1))+
-  scale_linetype_manual("",values="21",guide=guide_legend(nrow=1,order=2))+
+  scale_color_manual("",values=colors_ua10(),guide=guide_legend(nrow=1,order=2))+
+  scale_linetype_manual("",values="21",guide=guide_legend(nrow=1,order=1))+
   #scale_linetype("Contract",guide=guide_legend(nrow=3,order=1))+ # Change linetypes
   theme_minimal()+theme(    
     legend.position = "bottom",
     legend.key.width=unit(1,"line"),
     legend.margin=margin(c(0,0,0,0),unit="cm"),
     legend.text = element_text(colour="black", size = 16, face = "bold"),
-    legend.box = "vertical",
+    legend.box = "horizontal",
     plot.caption = element_text(size = 14, face = "italic"),
     plot.title = element_text(face = "bold"),
     plot.subtitle = element_text(size = 16, face = "italic"),
     panel.grid.minor = element_blank(),
     text = element_text(size = 16,face = "bold"),
     axis.text = element_text(size = 16,face = "bold", colour="black")
-  )+    labs(y="Settlement Price ($/MWh)",x="\nInstrument Date",
+  )+    labs(y="Settlement Price ($/MWh)",x="",
              title="Alberta Power Forward Curves (Calendar Strip)",
              caption="Data via NRGStream")
 
 ```
 
-### AESO Forward Prices
+### Supply (30 days)
+
+```{r aeso_mix_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
+gen_mix_plot
+```
+
+### Supply (7 Days)
+
+```{r aeso_mix_short, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
+gen_mix_plot_short
+```
+
+
+
+### Forward Prices
 
 ```{r aeso_fwd_prices, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=F, fig.width=10,dpi=220, fig.pos="H"}
 aeso_fwds
 
 ```
 
+## AESO Renewables {.tabset .tabset-fade}
 
 
 ### Renewable Supply
 
 ```{r aeso_renew_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
 renew_plot
+```
+
+### Prices and Renewable Generation
+
+```{r aeso_renew_gen_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
+grid.arrange(arrangeGrob(top_panel + scale_color_manual("",values=c(colors_ua10()[1],colors_ua10()[1]))+ theme(legend.position="none",
+                                           legend.margin=margin(c(0,0,0,0),unit="cm"),
+                                           legend.text = element_text(colour="black", size = 14, face = "bold"),
+                                           plot.caption = element_text(size = 12, face = "italic"),
+                                           plot.title = element_text(size = 14,face = "bold"),
+                                           plot.subtitle = element_text(size = 12, face = "italic"),
+                                           panel.grid.minor = element_blank(),
+                                           text = element_text(size = 10,face = "bold"),
+                                           axis.text = element_text(size = 10,face = "bold", colour="black"),
+                                           axis.text.x = element_blank()
+),
+renew_panel + theme(legend.position="bottom",
+                     plot.caption = element_text(size = 12, face = "italic"),
+                     plot.title = element_text(size = 14,face = "bold"),
+                     plot.subtitle = element_text(size = 12, face = "italic"),
+                     panel.grid.minor = element_blank(),
+                     text = element_text(size = 10,face = "bold"),
+                     axis.text = element_text(size = 10,face = "bold", colour="black")
+),
+ncol=1,heights=c(3,4.5))
+)
+#,
+#mylegend, nrow=2,heights=c(10, 1),bottom =text_grob(
+#  "Source: AESO data, graph by Andrew Leach. Peak periods are between 7am and 11pm other than on statutory holidays or Sundays.",
+#  face = "italic", color = "black",size=10,just="center",lineheight = 1
+#)
+#)
+```
+
+
+### Forecast Renewable Supply
+
+```{r aeso_renew_fcast_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
+combi_fcast_plot
 ```
 
 

@@ -595,6 +595,31 @@ global_crude_15<-
   weekly_graphs()
 gg_save(global_crude_15)
 
+names<-c("WTI","WCS")
+
+w_crude_15<-
+  data %>%filter(Date>ymd("2000-01-01")&Date<ymd("2020-01-01"))%>%
+  select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  filter(!is.na(value))%>%
+  mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  ggplot() +
+  geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
+  #geom_point(size=1) +
+  scale_colour_manual(NULL,values=grey.colors(3,start = 0,end=.7) )+
+  scale_x_date(name=NULL,date_breaks = "2 years", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
+  expand_limits(x=ymd("2020-03-01"))+
+  expand_limits(y=c(0,150))+
+  guides(colour=guide_legend(nrow=1))+
+  labs(y="Spot Prices ($US/bbl)",x="Year",
+       #title=title_sent,
+       #caption="Data via Bloomberg",
+       )+
+  weekly_graphs()
+gg_save(w_crude_15)
+
+
+
 global_crude_covid<-
   data %>%filter(Date>ymd("2018-01-01")&Date<ymd("2023-04-01"))%>%
   select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
@@ -616,16 +641,18 @@ global_crude_covid<-
 gg_save(global_crude_covid)
 
 
-names<-c("Urals","WTI","WCS")
+names<-c("Urals","WTI")
 global_crude_russia<-
   data %>%filter(Date>ymd("2021-01-01")&Date<ymd("2023-04-01"))%>%
   select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
   filter(!is.na(value))%>%
-  mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  mutate(variable=fct_relevel(variable,"Urals",after=Inf),
+         variable=fct_relevel(variable,"WTI","WCS")
+         )%>%
   ggplot() +
   geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
   #geom_point(size=1) +
-  scale_colour_manual(NULL,values=colors_ua10())+
+  scale_colour_manual(NULL,values=grey.colors(3,start = 0,end=.7) )+
   scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",expand=c(0,0)) +
   scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
   #expand_limits(x=ymd("2020-12-01"))+
@@ -633,7 +660,8 @@ global_crude_russia<-
   guides(colour=guide_legend(nrow=1))+
   labs(y="Spot Prices ($US/bbl)",x="Year",
        #title=title_sent,
-       caption="Data via Bloomberg")+
+       #caption="Data via Bloomberg"
+       )+
   weekly_graphs()
 gg_save(global_crude_russia)
 
@@ -657,8 +685,37 @@ gg_save(na_light_crude_usd)
 data<-data %>% mutate(`NBP UK`=`NBP Gas`*`GBP USD`/10)
 
 names<-c("AECO NIT","Henry Hub","Japan LNG JCC","NBP UK")
-global_gas<-levels_chart_gas(data=data,names,15,"USD")
+global_gas<-levels_chart_gas(data=data,names,43,"USD")
 gg_save(global_gas)
+
+
+names<-c("AECO NIT","Henry Hub","NBP UK")
+  global_gas_russia<-
+    data %>%filter(Date>ymd("2021-01-01")&Date<ymd("2023-04-01"))%>%
+  select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  filter(!is.na(value))%>%
+    mutate(variable=fct_recode(variable,"NIT (Alberta)"="AECO NIT"),
+           variable=fct_recode(variable,"Henry Hub (USA)"="Henry Hub"),
+           variable=fct_relevel(variable,"Henry Hub (USA)"),
+           variable=fct_recode(variable,"NBP (UK)"="NBP UK"),
+           
+    )%>%
+  ggplot() +
+  geom_line(aes(Date,value,group = variable,colour=variable,lty=variable),size=1.25) +
+    scale_colour_manual(NULL,values=grey.colors(4,start = 0,end=.7) )+
+    scale_linetype_manual(NULL,values=c("solid","11","32" ))+
+    
+    scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",expand=c(0,0)) +
+    scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
+    
+    guides(colour=guide_legend(nrow=1))+
+    labs(y="Spot Prices ($US/MMBTU)",x="Year")+
+    weekly_graphs()+
+    theme(legend.key.width = unit(2,"cm"))
+gg_save(global_gas_russia)
+
+
+
 
 global_gas_short<-levels_chart_gas(data=data,names,5,"USD")
 gg_save(global_gas_short)
@@ -1445,6 +1502,50 @@ ngx_data_read<-function(file_name){
   ngx_data[ngx_data$settle!=0,] #take out ones that are exactly zero
 }
 
+ngx_data_read_new<-function(file_name){
+  #testing stuff
+  #file_name<-"NGX_gas_forwards.csv"
+  ngx_data <- read.csv(paste(nrg_folder,file_name,sep="/"),blank.lines.skip=T,stringsAsFactors=F,header=F)
+  #figure out where individual series start NGX and NYMEX data
+  series<-ngx_data[grep("Trade Date",ngx_data$V1)-1,1]
+  series<-sapply(strsplit(series,"\\ - "), `[`, 1) #cut out the other crap in the series labels
+  series<-gsub("NGX ","",series) #cut out the other crap in the series labels
+  header_rows<-grep("Trade Date",ngx_data$V1)[] #find the headers rows
+  units<-gsub("High ","",ngx_data[header_rows,5]) #extract units of measure from the headers
+  volumes<-gsub("Volume ","",ngx_data[header_rows,7]) #extract units of measure from the headers
+  series_rows<-grep("Trade Date",ngx_data$V1)-1
+  start_rows<-header_rows+1
+  end_rows<-c((grep("Trade Date",ngx_data$V1)-2)[-1],NROW(ngx_data)) #skip the header and series rows
+  ngx_data$series<-""
+  ngx_data$price_units<-""
+  ngx_data$volume_units<-""
+  for(sets in seq(1,NROW(start_rows))){
+    ngx_data$series[start_rows[sets]:end_rows[sets]]<-series[sets]
+    ngx_data$price_units[start_rows[sets]:end_rows[sets]]<-units[sets]
+    ngx_data$volume_units[start_rows[sets]:end_rows[sets]]<-volumes[sets]
+  }
+  names(ngx_data)<-ngx_data[2,]
+  names(ngx_data)[9:11]<-c("series","price_units","volume_units")
+  ngx_data<-ngx_data[-c(series_rows,header_rows),] #strip out series and header rows
+  names(ngx_data)<-gsub(" USD/MMbtu","",names(ngx_data))
+  names(ngx_data)<-gsub(" MMbtu","",names(ngx_data))
+  names(ngx_data)<-gsub(" MMBtu","",names(ngx_data))
+  #fix column types
+  ngx_data<-ngx_data%>%clean_names()%>%
+    mutate(trade_date=mdy(trade_date),
+           instrument_date=mdy(instrument_date))%>%
+    select(trade_date,instrument_date,everything())
+  ngx_data[,3:8] <- lapply(ngx_data[,3:8], as.numeric)
+  #ngx_data[,9:11] <- lapply(ngx_data[,9:11],factor)
+  ngx_data <- ngx_data %>% group_by(trade_date,series,price_units) %>% mutate(spot_price=first(settle),trade_month=month(trade_date),trade_year=year(trade_date),
+                                                                              inst_month=month(instrument_date),inst_year=year(instrument_date)) %>%
+    ungroup() %>% 
+    group_by(trade_month,trade_year,instrument_date,series,price_units) %>% mutate(monthly_spot=mean(settle)) %>% 
+    ungroup()
+  ngx_data[ngx_data$settle!=0,] #take out ones that are exactly zero
+}
+
+
 ngx_old_data<-function(){
   #build ngx data background
   ngx_data_old<-ngx_data_read("NGX_gas_forwards_03_04.csv")
@@ -1456,13 +1557,21 @@ ngx_old_data<-function(){
   ngx_data_old<-rbind(ngx_data_old,ngx_data_read("NGX_gas_forwards_13_14.csv"))
   ngx_data_old<-rbind(ngx_data_old,ngx_data_read("NGX_gas_forwards_16.csv"))
   ngx_data_old<-rbind(ngx_data_old,ngx_data_read("NGX_gas_forwards_17.csv"))
+  #ngx_data_old<-rbind(ngx_data_old,ngx_data_read_new("NGX_gas_forwards_22.csv"))
   save(ngx_data_old, file= "ngx_gas_old.RData")
 }
 
 #ngx_old_data()
 
 load(file=paste(nrg_folder,"ngx_gas_old.RData",sep="/"))
-ngx_data<-rbind(ngx_data_old,ngx_data_read("NGX_gas_forwards.csv"))
+#ngx_data_old<-ngx_data_old %>% ungroup()
+#save(ngx_data_old,file=paste(nrg_folder,"ngx_gas_old.RData",sep="/"))
+
+ngx_data<-ngx_data_old %>% bind_rows(ngx_data_read("NGX_gas_forwards_22.csv"))%>%
+  bind_rows(ngx_data_read_new("NGX_gas_forwards.csv"))
+
+#ngx_data<-ngx_data_old %>% bind_rows(ngx_data_read("NGX_gas_forwards_22.csv"))%>%
+#  bind_rows(ngx_data_read_new("NGX_gas_forwards.csv"))
 
 
 
@@ -1525,7 +1634,7 @@ forward_spaghetti<-function(data_sent,date_list,label_list,series_sent,title_sen
   
 }
 
-
+#forward_spaghetti()
 
 
 ## @knitr NGX_forward_graphs
