@@ -22,7 +22,7 @@ editor: source
 ---
 
 ```{r cache, include=FALSE,cache=FALSE}
-reset<-1
+reset<-0
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
@@ -1159,7 +1159,8 @@ levels_chart_gas(data=data,names,24,"USD")
 
 ```{r na_gas, echo = FALSE, warning=FALSE, message=FALSE, results="asis", cache=KEEP_BB_CACHE, fig.width=10, fig.pos="H",dpi=220}
 names(data)<-gsub("So Cal Gas Co CityGate","SoCal Citygate",names(data))
-names<-c("Dawn","PGE Citygate","AECO NIT","Chicago Citygate","Algonquin Citygate","SoCal Citygate")
+names(data)<-gsub(" Citygate","",names(data))
+names<-c("Dawn","AECO NIT","Chicago","Algonquin","SoCal","PGE")
 levels_chart_gas(data=data,names,12,"USD",break_set="2 months",title_sent="Natural Gas Daily Spot Prices")
 ```
 
@@ -1495,6 +1496,20 @@ renew_plot<-
        title="Alberta Renewable Supply Mix",
        caption="Source: AESO Data, accessed via NRGStream")
 
+solar_plot<-
+  ggplot(gen_mix%>%filter(Source %in% c("Solar")),aes(date,gen, group=Source, fill = Source)) +
+  geom_area(position="stack")+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_fill_manual("",values=c(colors_ua10()[2]))+
+  guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
+  #theme(legend.position = "none")+
+  labs(x="",y="Renewable Supply (MW)",
+       title="Alberta Renewable Supply Mix",
+       caption="Source: AESO Data, accessed via NRGStream")
+
+
 wind_fcast_plot<-
   ggplot(wind_fcast) +
   geom_ribbon(aes(x = date, ymin =min , ymax = max,fill="B"))+
@@ -1578,12 +1593,31 @@ peak_data<-price_ail %>% filter(!is.na(actual_posted_pool_price),date>=max(date)
 
 #trim data for which you have all the info
 
-peak_data<-peak_data %>% left_join(renew_gen %>% select(time=date,Source,gen)%>%pivot_wider(names_from=Source,values_from=gen))%>%
-filter(!is.na(Wind))
+peak_data<-peak_data %>% left_join(renew_gen %>% select(time=date,Source,gen)%>%pivot_wider(names_from=Source,values_from=gen))#%>%filter(!is.na(Wind))
   #I()#mutate(peak_gen=ifelse(on_peak,gen,NA))
 
 renew_panel<-
   ggplot(peak_data%>%select(time,Wind,Solar,Hydro,"Other (incl. biomass)")%>%pivot_longer(-time,names_to = "Source",values_to = "gen")%>%
+           mutate(Source=fct_relevel(Source,"Wind","Solar","Hydro"))) +
+  #geom_line(aes(time,gen,colour="basic"),size=1.25)+
+  #geom_line(aes(time,peak_gen,colour="peak"),size=1.25)+
+  geom_area(aes(time,gen,fill=Source),position="stack")+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
+  scale_x_datetime(expand=c(0,0),breaks="1 day",labels = date_format("%H:00\n%b %d\n%Y",tz="America/Denver"))+
+  scale_y_continuous(expand = c(0,0))+expand_limits(y=0)+
+  theme_minimal()+
+  theme(legend.position="bottom",
+        legend.margin=margin(c(0,0,0,0),unit="cm"),
+        legend.text = element_text(colour="black", size = 12, face = "bold"),
+        axis.title.y = element_text(margin = margin(t = 0, r = 5, b = 0, l = 0, unit = "pt"))
+  )+
+  labs(y="Renewable Generation (MW)",x="",
+       title=paste("Alberta Renewable Generation",sep=""),
+  )
+
+solar_panel<-
+  ggplot(peak_data%>%select(time,Wind,Solar,Hydro,"Other (incl. biomass)")%>%pivot_longer(-time,names_to = "Source",values_to = "gen")%>%
+           filter(Source=="Solar")%>%
            mutate(Source=fct_relevel(Source,"Solar","Wind","Hydro"))) +
   #geom_line(aes(time,gen,colour="basic"),size=1.25)+
   #geom_line(aes(time,peak_gen,colour="peak"),size=1.25)+
@@ -1597,10 +1631,9 @@ renew_panel<-
         legend.text = element_text(colour="black", size = 12, face = "bold"),
         axis.title.y = element_text(margin = margin(t = 0, r = 5, b = 0, l = 0, unit = "pt"))
   )+
-  labs(y="Renewable Generation (MW)",x="",
+  labs(y="Solar Generation (MW)",x="",
        title=paste("Alberta Renewable Generation",sep=""),
   )
-
 
 
 #previous week prices
@@ -1623,6 +1656,8 @@ top_panel<-ggplot(peak_data) +
        title=paste("Alberta Hourly Wholesale Power Prices",sep=""),
        subtitle=paste(month.name[month(period_start)]," ",day(period_start),", ",year(period_start)," to ",month.name[month(end_date)]," ",day(end_date), ", ",year(end_date),sep="")
   )
+
+
 bottom_panel<-ggplot(peak_data) +
   geom_line(aes(time,actual_ail,colour="basic"),size=1.25)+
   geom_line(aes(time,peak_ail,colour="peak"),size=1.25)+
@@ -1637,13 +1672,15 @@ bottom_panel<-ggplot(peak_data) +
         legend.text = element_text(colour="black", size = 12, face = "bold"),
   )+    labs(y="Internal Load (MW)",x="")
 #caption="Source: SolarPeople system data via Neurio API\nGraph by Andrew Leach")
+#a.gplot<-bottom_panel
+
 g_legend<-function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
   legend <- tmp$grobs[[leg]]
   return(legend)}
 
-mylegend<-g_legend(top_panel)
+mylegend<-g_legend(bottom_panel)
 
 ```
 
@@ -1841,6 +1878,7 @@ ncol=1,heights=c(3,4.5))
 #  face = "italic", color = "black",size=10,just="center",lineheight = 1
 #)
 #)
+#solar_panel
 ```
 
 
@@ -2013,7 +2051,7 @@ solar_fcast_plot
 <center>
   Sign up to receive our email updates via [Substack](https://leach.substack.com/)<br>
 <iframe src="https://leach.substack.com/embed" width="480" height="100" style="border:0px solid #EEE; background:white;margin-bottom:-40px" frameborder="0" scrolling="no" data-external="1"></iframe>
-</center>
-Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. <br>
+</center><br><br>
+Brought to you by Andrew Leach and the [FES](https://www.ualberta.ca/energy-systems/research.html) Grids and Storage Research Team. <br><br>
 Thanks to [NRGStream](https://www.nrgstream.com) for data accesss!<br>
 </p>
