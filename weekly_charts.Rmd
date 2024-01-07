@@ -22,7 +22,7 @@ editor: source
 ---
 
 ```{r cache, include=FALSE,cache=FALSE}
-reset<-0
+reset<-1
 KEEP_CANSIM_CACHE<-TRUE
 KEEP_AESO_CACHE<-TRUE
 KEEP_NRGSTREAM_CACHE<-TRUE
