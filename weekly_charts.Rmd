@@ -1359,8 +1359,8 @@ assign_time <- function(data, date_var=date, he_var=he){
 ```{r aeso,warning=FALSE,message=FALSE,echo=FALSE,cache=KEEP_AESO_CACHE}
 get_forecast_report <- function(start_date, end_date) {
   #testing below here
-  #start_date<- Sys.Date()-months(1)
-  #end_date <- min(start_date+months(1),Sys.Date()-days(1)) #31 days of data
+  #start_date<- Sys.Date()
+  #end_date <- min(start_date+months(1),Sys.Date()+days(10)) #31 days of data
   #end testing - above should be commented if you're not testing
   
   start_date <- as.Date(start_date)
@@ -1403,7 +1403,11 @@ get_forecast_report <- function(start_date, end_date) {
 #set date to today
 day<-Sys.Date()-days(30)
 #get last month of data
-price_ail<-get_forecast_report(as.Date(day), as.Date(Sys.Date())+days(1))
+price_ail<-get_forecast_report(as.Date(day), as.Date(Sys.Date()))
+#day<-Sys.Date()+days(1)
+#get last month of data
+#price_ail<-get_forecast_report(as.Date(day), as.Date(day+days(10)))
+
 price_ail<-assign_date_time_days(price_ail)
 price_ail<-assign_peaks(price_ail)
 
@@ -1530,6 +1534,26 @@ combi_fcast_plot<-
   ggplot(renew_fcast) +
   geom_ribbon(aes(x = date, ymin =min , ymax = max,fill="B"))+
   geom_line(aes(date,most_likely,colour="A"), size=1.25)+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),labels = date_format("%b %d\n%H:00"),breaks = "1 day")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_color_manual("",labels=c("Most Likely Renewable Generation"),values="#FFDB05")+
+  scale_fill_manual("",labels=c("Range of Potential Renewable Generation"),values=alpha("#007C41",.4))+
+  guides(color = guide_legend(nrow = 1,order = 1),fill = guide_legend(nrow = 1,order = 2))+
+  #theme(legend.position = "none")+
+  labs(x="",y="Average Hourly Generation (MW)",
+       title="Renewable Generation Forecast",
+       caption="Source: AESO Data")
+
+
+
+
+load_share_fcast_plot<-
+  ggplot(
+    renew_fcast%>%left_join(price_ail %>% select(time,forecast_ail),by=c("date"="time"))
+    ) +
+  geom_ribbon(aes(x = date, ymin =min/forecast_ail , ymax = max/forecast_ail,fill="B"))+
+  geom_line(aes(date,most_likely/forecast_ail,colour="A"), size=1.25)+
   weekly_small()+
   scale_x_datetime(expand = c(0,0),labels = date_format("%b %d\n%H:00"),breaks = "1 day")+
   #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
