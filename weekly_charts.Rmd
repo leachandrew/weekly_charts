@@ -1272,6 +1272,7 @@ gas_dpr
 
 # Power
 
+
 ```{r power functions,warning=FALSE,message=FALSE,echo=FALSE,cache=FALSE}
 
 assign_peaks<-function(data_orig,time_var=time){
@@ -1871,6 +1872,56 @@ aeso_fwds
 ```{r aeso_renew_plot, echo = FALSE, warning=FALSE,message=FALSE, results="asis", cache=KEEP_AESO_CACHE, fig.width=10, fig.pos="H",dpi=220}
 renew_plot
 ```
+
+
+
+```{r aeso_gen_mix_long,fig.width=10, fig.pos="H",cache=KEEP_NRGSTREAM_CACHE}
+gen_and_load <- read.csv(paste(nrg_folder,"AESO_Gen_and_Load.csv",sep="/"),skip = 2,header = TRUE, stringsAsFactors=FALSE)
+names(gen_and_load)<-c("date","AIL","Coal","Hydro","Trade","Natural Gas","Net_Gen","Net_to_Grid","Other","Solar","Wind")
+gen_and_load<-gen_and_load%>%mutate(Trade=-1*Trade,Renew=Other+Solar+Wind)
+gen_and_load<-gen_and_load%>%pivot_longer(-c(date,AIL,Net_Gen,Net_to_Grid),names_to="Source",values_to="gen")%>%
+  mutate(date=dmy_hms(date,tz="America/Denver"),
+#change factor order to sort by avg gen
+        Source=factor(Source, levels=c("Wind","Solar","Hydro","Other (incl. biomass)","Natural Gas","Coal","Trade")))
+
+gen_and_load<-gen_and_load%>%filter(Source!="Trade")%>%
+  filter(!is.na(gen),!is.na(AIL),!is.na(Net_Gen),!is.na(Net_to_Grid))%>%
+  group_by(Source)%>%mutate(day_30_avg=rollapply(gen, width=30*24, FUN=function(x) mean(x, na.rm=TRUE), by=1, by.column=TRUE, partial=TRUE, fill=NA, align="right"))%>%
+  mutate(day_30_avg_AIL=rollapply(AIL, width=30*24, FUN=function(x) mean(x, na.rm=TRUE), by=1, by.column=TRUE, partial=TRUE, fill=NA, align="right"))%>%ungroup()%>%
+  mutate(source_factor=day_30_avg_AIL/day_30_avg)%>%
+  mutate(gen_scaled=gen*source_factor)%>%
+  mutate(shortfall=AIL-gen_scaled)%>%
+  group_by(Source)%>%
+  mutate(cumul_shortfall=cumsum(shortfall))%>%ungroup()
+
+
+gen_mix_long_plot<-ggplot(gen_mix_long,aes(date,gen, group=Source, fill = Source)) +
+  geom_area(position="stack")+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),date_breaks="3 days",date_labels = "%b\n%d")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
+  guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
+  #theme(legend.position = "none")+
+  labs(x="Year",y="Supply (MW)",
+       title="Supply Mix, Past 30 Days",
+       caption="Source: AESO Data, accessed via NRGStream")
+#gen_mix_long_plot
+gen_mix_plot_short<-
+  ggplot(gen_mix%>%filter(date(date)>=today()-days(7),!is.na(gen)),aes(date,gen, group=Source, fill = Source)) +
+  geom_area(position="stack")+
+  weekly_small()+
+  scale_x_datetime(expand = c(0,0),date_breaks="1 days",date_labels = "%b %d")+
+  #scale_y_continuous(limits=c(0,5990),expand = c(0,0))+
+  scale_fill_manual("",values=c(colors_ua10()[1],colors_ua10()[2],colors_ua10()[4],colors_ua10()[3],colors_ua10()[8],colors_ua10()[5],colors_ua10()[6]))+
+  guides(fill = guide_legend(nrow = 1, keywidth = 1.25))+
+  #theme(legend.position = "none")+
+  labs(x="",y="Supply (MW)",
+       title="Alberta Supply Mix, Past 7 Days",
+       caption="Source: AESO Data, accessed via NRGStream")
+```
+
+
 
 ### Prices and Renewable Generation
 

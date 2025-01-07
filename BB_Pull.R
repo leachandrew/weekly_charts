@@ -619,22 +619,30 @@ w_crude_15<-
 gg_save(w_crude_15)
 
 
-
+names<-c("Brent","WTI","WCS")
 global_crude_covid<-
-  data %>%filter(Date>ymd("2018-01-01")&Date<ymd("2023-04-01"))%>%
+  data %>%
+  filter(Date>ymd("2008-01-01")&Date<=ymd("2024-11-01"))%>%
   select(Date,USDCAD,all_of(names))%>% pivot_longer(-c(Date,USDCAD),names_to = "variable")%>%
+  mutate(month=month(Date),year=year(Date))%>%
+  group_by(month,year,variable)%>%
+  summarize(value=mean(value,na.rm=T))%>%ungroup()%>%
+  mutate(Date=ymd(paste(year,month,days_in_month(month),sep="-")))%>%
   filter(!is.na(value))%>%
   mutate(variable=fct_relevel(variable,"WCS",after=Inf))%>%
+  mutate(variable=fct_recode(variable,"Western Canadian Select (WCS)"="WCS"))%>%
+  mutate(variable=fct_recode(variable,"West Texas Intermediate (WTI)"="WTI"))%>%
   ggplot() +
   geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
   #geom_point(size=1) +
-  scale_colour_manual(NULL,values=colors_ua10())+
-  scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  #scale_colour_manual(NULL,values=colors_ua10())+
+  scale_color_grey(NULL)+
+  scale_x_date(name=NULL,date_breaks = "12 months", date_labels =  "%Y",expand=c(0,0)) +
   scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
   expand_limits(x=ymd("2020-03-01"))+
   expand_limits(y=c(0,150))+
   guides(colour=guide_legend(nrow=1))+
-  labs(y="Spot Prices ($US/bbl)",x="Year",
+  labs(y="Monthly Average Prices ($US/bbl)",x="Year",
        #title=title_sent,
        caption="Data via Bloomberg")+
   weekly_graphs()
@@ -1784,14 +1792,116 @@ fwd_year<-fwd_data %>% group_by(inst_year) %>% summarize(settle=mean(settle))%>%
 
 
 
+## @knitr utilities
 
+bonds<-data%>%select(Date,"GoC 30 year","Cdn Utility Yields")%>%
+  pivot_longer(-Date,names_to = "bond",values_to = "yield")%>%
+  mutate(bond=as_factor(bond),
+         bond=fct_recode(bond,"30-year A-rated Canadian utility bond yield"="Cdn Utility Yields"),
+         bond=fct_recode(bond,"30-year Government of Canada bond yield"="GoC 30 year")    )%>%
+  mutate(date=floor_date(Date,unit="week"))%>%
+  group_by(date,bond)%>%
+  summarize(yield=last(yield))%>%
+  group_by(date)%>%
+  mutate(spread=yield[2]-yield[1],
+         gcoc=case_when(
+           year(date)<2009~ 9.60+0.75*(yield[1]-5.68),
+           year(date)>2023~ 9.0 + 0.5 *(yield[1]-3.1) + 0.5*(spread-1.53),
+           year(date)>2009 & year(date)<2011~ 9,
+           year(date)>2010 & year(date)<2013~ 8.75,
+           year(date)>2012 & year(date)<2017~ 8.3,
+           year(date)>2016 & year(date)<2024~ 8.5,
+           TRUE~ 9),
+         formula_2009=9.60+0.75*(yield[1]-5.68),
+         formula_2024=9.0 + 0.5 *(yield[1]-3.1) + 0.5*(spread-1.53)
+         )
+
+ggplot(bonds) +
+  geom_line(aes(date,yield,group=bond,colour=bond),size=1.25)+
+  geom_line(aes(date,gcoc,color="AUC Deemed Generic Cost of Capital"),size=2)+
+  geom_line(aes(date,formula_2024,color="AUC 2024 Formula"),size=1.25)+
+  geom_line(aes(date,formula_2009,color="AUC 2004-2009 Formula"),size=1.25)+
+  geom_area(aes(date,spread,fill="Utility - GoC 30 year spread"),size=0.9,alpha=.5)+
+  scale_color_manual("",values=c(colors_ua10()[c(1,3,5,6)],"black"))+
+  scale_fill_manual("",values=colors_ua10()[-c(1:3)])+
+  guides(color=guide_legend(nrow = 2))+
+  #scale_color_brewer("",palette = "Set1")+
+  #scale_color_viridis("EUA Vintage",discrete = T)+
+  scale_x_date(name=NULL,date_breaks = "1 years", date_labels =  "%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks()) +
+  expand_limits(y=c(0,10.5),x=max(bonds$date)+months(2))+
+  theme_bw() +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "gray",linetype="dotted"),
+        axis.line.x = element_line(color = "gray"),
+        axis.line.y = element_line(color = "gray"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        #plot.subtitle = element_text(size = 12,hjust=0.5),
+        #plot.caption = element_text(face="italic",size = 12,hjust=0),
+        legend.key.width=unit(1.5,"line"),
+        legend.position = "bottom",
+        #legend.direction = "horizontal",
+        #legend.box = "horizontal",
+        #legend.text = element_text(size = 12),
+        #plot.title = element_text(hjust=0.5,size = 14)
+        )+
+  labs(y="Yield or Return (%)",x="",
+       title="Bond Yields and AUC Implied Deemed Cost of Capital",
+       subtitle="AUC Generic Cost of Capital (GCOC) derived using October, 2023 base date for 2024.\nCalculations use the formula set in AUC Decision 27084-D02-2023 (October 31, 2023)",
+       caption="Source: Data via Bloomberg, graph by Andrew Leach")
+ggsave("AUC_gcoc.png",width=14,height=8)
+
+
+
+data%>%select(Date,"VIX")%>%
+  mutate(date=floor_date(Date,unit="week"))%>%
+  group_by(date,VIX)%>%
+  summarize(VIX=last(VIX))%>%
+ggplot() +
+  geom_line(aes(date,VIX),size=1.25)+
+  scale_color_manual("",values=c(colors_ua10()[c(1,3,5,6)],"black"))+
+  scale_fill_manual("",values=colors_ua10()[-c(1:3)])+
+  guides(color=guide_legend(nrow = 2))+
+  #scale_color_brewer("",palette = "Set1")+
+  #scale_color_viridis("EUA Vintage",discrete = T)+
+  scale_x_date(name=NULL,date_breaks = "1 years", date_labels =  "%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks()) +
+  expand_limits(y=c(0,10.5),x=max(data$Date)+months(1))+
+  theme_bw() +
+  theme(panel.border = element_blank(),
+        panel.grid = element_blank(),
+        panel.grid.major.y = element_line(color = "gray",linetype="dotted"),
+        axis.line.x = element_line(color = "gray"),
+        axis.line.y = element_line(color = "gray"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        #plot.subtitle = element_text(size = 12,hjust=0.5),
+        #plot.caption = element_text(face="italic",size = 12,hjust=0),
+        legend.key.width=unit(1.5,"line"),
+        legend.position = "bottom",
+        #legend.direction = "horizontal",
+        #legend.box = "horizontal",
+        #legend.text = element_text(size = 12),
+        #plot.title = element_text(hjust=0.5,size = 14)
+  )+
+  labs(y="CBOT Volatility Index",x="",
+       title="Chicago Board of Trade Volatility Index (VIX)",
+       #subtitle="AUC Generic Cost of Capital (GCOC) derived using October, 2023 base date for 2024.\nCalculations use the formula set in AUC Decision 27084-D02-2023 (October 31, 2023)",
+       caption="Source: Data via Bloomberg, graph by Andrew Leach")
+ggsave("AUC_VIX.png",width=14,height=8)
+
+
+
+## @knitr EUAs
 
 #Emissions EUAs
 #load data
 #data<-load_bb_daily()
 EUA_data<-data[,c(1,grep("ICE ECX EMISSION",names(data))),]
 EUA_data<-EUA_data[,-grep("Current",names(EUA_data))]
-EUA_data<-EUA_data[,-grep("EUA Prompt",names(EUA_data))]
+#EUA_data<-EUA_data[,-grep("EUA Prompt",names(EUA_data))]
 EUA_data<-EUA_data[,-grep("Phase 3",names(EUA_data))]
 EUA_data <- data.frame(lapply(EUA_data, function(x) {
   gsub("#N/A N/A", "", x)
@@ -1799,31 +1909,36 @@ EUA_data <- data.frame(lapply(EUA_data, function(x) {
 
 
 name_list<- gsub("EUA.", "", names(EUA_data))
-name_list<- gsub("ICE.ECX.EMISSION..Dec", "ECX 20", names(EUA_data))
+name_list<- gsub("ICE.ECX.EMISSION.Dec", "ECX 20", names(EUA_data))
 names(EUA_data)<-name_list
 EUA_data[,-1] = apply(EUA_data[,-1], 2, function(x) as.numeric(as.character(x)))
 EUA_data$Date = as.Date(EUA_data$Date)
-EUA_data<-EUA_data[EUA_data$Date>=as.Date("2005-04-22"),]
-df1<-reshape2::melt(EUA_data,id=c("Date"),variable.name = "Inst_Year",value.name = "Settle")
+#EUA_data<-EUA_data[EUA_data$Date>=as.Date("2005-04-22"),]
+df1<-EUA_data%>% pivot_longer(-Date,names_to="Inst_Year",values_to = "Settle")
 df1<-na.omit(df1)
 df1$Inst_Year<- gsub("ECX ", "", df1$Inst_Year)
 
 df1<-filter(df1,as.numeric(as.character(Inst_Year))>=as.numeric(year(df1$Date)))
 
-years<-3
-lims<-c(max(df1$Date)-years(years),max(df1$Date)+months(1))
-Instruments<-c(2015,2017,2019,2021)
-df2<-filter(df1,Date>lims[1] & Inst_Year %in% Instruments)
-lims_y<-c(min(0,min(df2$Settle,na.rm = T)),max(df2$Settle,na.rm = T)+2)
-round(lims_y/2)*2 #round to nearest multiple of 5
+#years<-3
+#lims<-c(max(df1$Date)-years(years),max(df1$Date)+months(1))
+#Instruments<-c(2015,2017,2019,2021)
+#df2<-filter(df1,Date>lims[1] & Inst_Year %in% Instruments)
+#lims_y<-c(min(0,min(df2$Settle,na.rm = T)),max(df2$Settle,na.rm = T)+2)
+#round(lims_y/2)*2 #round to nearest multiple of 5
+df2<-df1 %>% mutate(date=floor_date(Date,unit="month"))%>%
+  group_by(date,Inst_Year)%>%
+  summarize(Settle=last(Settle))
 
-
-ggplot(subset(df1,Inst_Year %in% Instruments)) +
-  geom_line(aes(Date,Settle,group=as.factor(Inst_Year),colour=as.factor(Inst_Year)),size=2)+
+                    
+                    
+ggplot(df2%>%filter(Inst_Year>=2022)) +
+  geom_line(aes(date,Settle,group=as.factor(Inst_Year),colour=Inst_Year),size=0.9)+
   #geom_vline(xintercept = as.Date("2017-04-19")+
-  scale_color_brewer("EUA Vintage",palette = "Set1")+
-  scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
-  scale_y_continuous(expand = c(0, 0),limits=lims_y,breaks=c(-5,seq(0,lims_y[2],2))) +
+  #scale_color_brewer("EUA Vintage",palette = "Set1")+
+  scale_color_viridis("EUA Vintage",discrete = T)+
+  scale_x_date(name=NULL,date_breaks = "1 year", date_labels =  "%b\n%Y",expand=c(0,0)) +
+  scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks()) +
   theme_bw() +
   theme(panel.border = element_blank(),
         panel.grid = element_blank(),
@@ -1836,55 +1951,17 @@ ggplot(subset(df1,Inst_Year %in% Instruments)) +
         plot.caption = element_text(face="italic",size = 12,hjust=0),
         legend.key.width=unit(2,"line"),
         legend.position = "bottom",
-        legend.direction = "horizontal",
+        #legend.direction = "horizontal",
         legend.box = "horizontal",
         legend.text = element_text(size = 12),
         plot.title = element_text(hjust=0.5,size = 14))+
   labs(y="Settlement Price (Euros/tonne)",x="\nTrade Date",
        title="EUA Settlement Prices",
-       caption="Source: Data via Bloomberg\nGraph by Andrew Leach")
+       caption="Source: Data via Bloomberg, graph by Andrew Leach")
+ggsave("EUA_spag.png",width=14,height=8)
 
 
-today_date<-as.Date("2017-12-31")
-today_date<-max(EUA_data$Date)
-dates<-c(today_date,today_date-years(1),today_date-years(2),today_date-years(3),today_date-years(4))
-
-png<-1
-if(png==1)
-  set_png(file="EUA_forwards.png")
-
-ggplot(subset(df1,Date %in% dates)) +
-  geom_line(aes(Inst_Year,Settle,colour=as.factor(Date),group=as.factor(Date)),size=2)+
-  scale_color_brewer("Trade Date",palette = "Set1")+
-  guides(col = guide_legend(ncol = 3))+
-  #scale_x_date(name=NULL,date_breaks = "3 months", date_labels =  "%b\n%Y",limits=lims,expand=c(0,0)) +
-  scale_x_discrete(expand = c(0,0.1)) +
-  scale_y_continuous(expand = c(0, 0),limits=lims_y,breaks=c(-5,seq(0,lims_y[2],2))) +
-  theme_classic() +
-  theme(panel.border = element_blank(),
-        panel.grid = element_blank(),
-        panel.grid.major.y = element_line(color = "gray",linetype="dotted"),
-        axis.line.x = element_line(color = "gray"),
-        axis.line.y = element_line(color = "gray"),
-        axis.text = element_text(size = 12),
-        axis.text.x = element_text(margin = margin(t = 10)),
-        axis.title = element_text(size = 12),
-        #axis.label.x = element_text(size=20,vjust=+5),
-        plot.subtitle = element_text(size = 12,hjust=0.5),
-        plot.caption = element_text(face="italic",size = 12,hjust=0),
-        legend.key.width=unit(2,"line"),
-        legend.position = "bottom",
-        #legend.direction = "horizontal",
-        #legend.box = "horizontal",
-        legend.text = element_text(size = 12),
-        plot.title = element_text(hjust=0.5,size = 14))+
-  labs(y="Settlement Price (Euros/tonne)",x="\nInstrument Date",
-       title="EUA Settlement Prices",
-       caption="Source: Data via Bloomberg\nGraph by Andrew Leach")
-
-if(png==1)#set these to only turn on if you're making PNG graphs
-  dev.off()
-
+## @knitr Other
 
 
 
