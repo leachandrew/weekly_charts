@@ -620,6 +620,8 @@ gg_save(w_crude_15)
 
 
 names<-c("Brent","WTI","WCS")
+ex = interval(ymd("2014-07-01"),ymd("2023-12-31"))
+
 global_crude_covid<-
   data %>%
   filter(Date>ymd("2008-01-01")&Date<=ymd("2024-11-01"))%>%
@@ -633,10 +635,16 @@ global_crude_covid<-
   mutate(variable=fct_recode(variable,"Western Canadian Select (WCS)"="WCS"))%>%
   mutate(variable=fct_recode(variable,"West Texas Intermediate (WTI)"="WTI"))%>%
   ggplot() +
-  geom_line(aes(Date,value,group = variable,colour=variable),size=1.25) +
+  geom_line(aes(Date,value,group = variable,colour=variable,lty=variable),size=1.25) +
+  annotate("text", x = as.Date(ex@start + as.duration(ex)/2)+days(90), y =120, label = "Study\nperiod",size=4.5,hjust=0.5,vjust=0.5)+
+    annotate("rect", fill = "grey80", alpha = .3, 
+            xmin = ymd("2014-07-01"), xmax =ymd("2023-12-31"),
+             ymin = -Inf, ymax = Inf)+
+  
   #geom_point(size=1) +
-  #scale_colour_manual(NULL,values=colors_ua10())+
-  scale_color_grey(NULL)+
+  scale_colour_manual(NULL,values=c("black","grey20","grey50"))+
+  scale_linetype_manual(NULL,values=c("solid","21","solid"))+
+  #scale_color_grey(NULL)+
   scale_x_date(name=NULL,date_breaks = "12 months", date_labels =  "%Y",expand=c(0,0)) +
   scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks(n=9)) +
   expand_limits(x=ymd("2020-03-01"))+
@@ -644,7 +652,8 @@ global_crude_covid<-
   guides(colour=guide_legend(nrow=1))+
   labs(y="Monthly Average Prices ($US/bbl)",x="Year",
        #title=title_sent,
-       caption="Data via Bloomberg")+
+       #caption="Data via Bloomberg",
+       NULL)+
   weekly_graphs()
 gg_save(global_crude_covid)
 
@@ -678,11 +687,11 @@ names<-c("Brent","WTI","Maya","WCS")
 global_crude<-levels_chart(data=data,names,5,"USD")
 gg_save(global_crude)
 
-names<-c("Syncrude Sweet Synthetic","WTI","Edmonton Mixed Sweet","WCS","Implied Bitumen")
+names<-c("Syncrude Sweet Synthetic","WTI","WCS","Implied Bitumen")
 ab_crude<-levels_chart(data=data,names,5,"USD")
 gg_save(ab_crude)
 
-names<-c("Syncrude Sweet Synthetic","WTI","Edmonton Mixed Sweet","WCS","Implied Bitumen")
+names<-c("Syncrude Sweet Synthetic","WTI","WCS","Implied Bitumen")
 ab_crude_cad<-levels_chart(data=data,names,5,"CAD")
 gg_save(ab_crude_cad)
 
@@ -747,7 +756,7 @@ data<-data %>% mutate(`Edmonton Wholesale Refined Products`=`ULSD Edmonton`/3+2*
                         `Reg Gas Retail Edmonton Incl Tax`*2/3,
                       `AECO/NIT Natural Gas (BOE)`=`AECO NIT`*5.5513652248856 )
 
-names<-c("Edmonton Wholesale Refined Products","Edmonton Mixed Sweet",
+names<-c("Edmonton Wholesale Refined Products","Syncrude Sweet Synthetic",
          "Implied Bitumen","AECO/NIT Natural Gas (BOE)") 
 oil_v_gas<-levels_chart(data=data,names,5,"CAD",title_sent="Edmonton Oil and Natural Gas Prices")
 gg_save(oil_v_gas)
@@ -912,9 +921,9 @@ mbv_ngl<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Mt Belvieu 
 gg_save(mbv_ngl)
 
 names<-c("Edmonton Propane",
-         "Edmonton Butane","Edmonton Condensate")
+         "Edmonton Butane")
 labels<-names
-edm_ngl<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"))
+edm_ngl<-ngl_levels_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices")
 gg_save(edm_ngl)
 
 
@@ -1002,7 +1011,7 @@ ngl_spread_chart<-function(data_sent,names,labels_sent,years,curr="USD",title_se
 
 
 names<-c("Edmonton Propane",
-         "Edmonton Butane","Edmonton Condensate")
+         "Edmonton Butane")
 labels<-names
 #ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Edmonton NGL Prices",exempt_set = c("Edmonton Condensate"),
 #                 spread_name = "can_spread",file_name = "can_ngls")
@@ -1011,8 +1020,8 @@ labels<-names
 names<-c("Mont Belvieu Ethane","Mont Belvieu Propane",
          "Mont Belvieu Butane","Mont Belvieu Natural Gasoline")
 labels<-names
-#ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Mont Belvieu NGL Prices",exempt_set = c("Edmonton Condensate"),
-#                 spread_name = "us_spread",file_name = "us_ngls")
+ngl_spread_chart(data=data,names,labels,5,"USD",title_sent="Mont Belvieu NGL Prices",exempt_set = c("Edmonton Condensate"),
+                 spread_name = "us_spread",file_name = "us_ngls")
 
 
 
@@ -1866,26 +1875,10 @@ ggplot() +
   guides(color=guide_legend(nrow = 2))+
   #scale_color_brewer("",palette = "Set1")+
   #scale_color_viridis("EUA Vintage",discrete = T)+
-  scale_x_date(name=NULL,date_breaks = "1 years", date_labels =  "%Y",expand=c(0,0)) +
+  scale_x_date(name=NULL,date_breaks = "2 years", date_labels =  "%Y",expand=c(0,0)) +
   scale_y_continuous(expand = c(0, 0),breaks=pretty_breaks()) +
   expand_limits(y=c(0,10.5),x=max(data$Date)+months(1))+
-  theme_bw() +
-  theme(panel.border = element_blank(),
-        panel.grid = element_blank(),
-        panel.grid.major.y = element_line(color = "gray",linetype="dotted"),
-        axis.line.x = element_line(color = "gray"),
-        axis.line.y = element_line(color = "gray"),
-        axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12),
-        #plot.subtitle = element_text(size = 12,hjust=0.5),
-        #plot.caption = element_text(face="italic",size = 12,hjust=0),
-        legend.key.width=unit(1.5,"line"),
-        legend.position = "bottom",
-        #legend.direction = "horizontal",
-        #legend.box = "horizontal",
-        #legend.text = element_text(size = 12),
-        #plot.title = element_text(hjust=0.5,size = 14)
-  )+
+  theme_irpp(base_size = 16)+
   labs(y="CBOT Volatility Index",x="",
        title="Chicago Board of Trade Volatility Index (VIX)",
        #subtitle="AUC Generic Cost of Capital (GCOC) derived using October, 2023 base date for 2024.\nCalculations use the formula set in AUC Decision 27084-D02-2023 (October 31, 2023)",
